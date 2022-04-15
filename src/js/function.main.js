@@ -49,6 +49,7 @@ notificar = (data, icon) => {
 		title: data
 	})
 }
+// alerta
 const alerta = (title, data, icon) => {
 	Swal.fire({
 		icon: icon,
@@ -57,3 +58,21 @@ const alerta = (title, data, icon) => {
 		footer: '<a href="">Why do I have this issue?</a>'
 	})
 }
+
+// menu lateral
+// variable de lista que aparece y desaparece
+let listElements = document.querySelectorAll('.list__button--click')
+
+listElements.forEach(listElement => {
+	listElement.addEventListener('click', () => {
+		listElement.classList.toggle('arrow')
+		let height = 0
+		let menu = listElement.nextElementSibling //obtener el hermano adyacente
+		// evaluamos el alto de los submenu dinamicamnete
+		if (menu.clientHeight == 0) {
+			height = menu.scrollHeight
+		}
+		// cambiar el valor del height
+		menu.style.height = `${height}px`
+	})
+})
