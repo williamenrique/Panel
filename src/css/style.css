@@ -64,10 +64,13 @@ body {
 .nav .content-head .nav-info .nav-dat-info .info-name {
   font-size: 14px;
   margin-bottom: 5px;
+  text-transform: capitalize;
 }
 
 .nav .content-head .nav-info .nav-dat-info .info-email {
-  font-size: 8px;
+  font-size: 10px;
+  font-weight: 300;
+  text-transform: lowercase;
 }
 
 .nav__link {
@@ -117,6 +120,7 @@ body {
 .link_active {
   color: #f6f8fa;
   font-size: 18px;
+  font-weight: 700;
 }
 
 .arrow .list__arrow {
