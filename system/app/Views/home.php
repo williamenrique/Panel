@@ -3,7 +3,7 @@ head($data);
 // getModal('modals',$data);
 ?>
 
-<div class="container">
+<div class="container-main">
 	<div class="navigation">
 		<ul class="">
 			<li class="">
@@ -71,7 +71,7 @@ head($data);
 				<img src="./src/images/default.png" alt="">
 			</div>
 		</div>
-		<div class="container-main">
+		<div class="container-box">
 			<div class="cardBox">
 				<div class="card">
 					<div>
@@ -160,6 +160,36 @@ head($data);
 								<td>Paid</td>
 								<td><span class="status deleivered">Delivered</span></td>
 							</tr>
+								<tr>
+								<td>Star Refrigerator</td>
+								<td>$1200</td>
+								<td>Paid</td>
+								<td><span class="status deleivered">Delivered</span></td>
+							</tr>
+							<tr>
+								<td>Star Refrigerator</td>
+								<td>$1200</td>
+								<td>Paid</td>
+								<td><span class="status deleivered">Delivered</span></td>
+							</tr>
+							<tr>
+								<td>Star Refrigerator</td>
+								<td>$1200</td>
+								<td>Paid</td>
+								<td><span class="status deleivered">Delivered</span></td>
+							</tr>
+							<tr>
+								<td>Star Refrigerator</td>
+								<td>$1200</td>
+								<td>Paid</td>
+								<td><span class="status deleivered">Delivered</span></td>
+							</tr>
+							<tr>
+								<td>Star Refrigerator</td>
+								<td>$1200</td>
+								<td>Paid</td>
+								<td><span class="status deleivered">Delivered</span></td>
+							</tr>
 							<tr>
 								<td>Star Refrigerator</td>
 								<td>$1200</td>
@@ -181,7 +211,7 @@ head($data);
 						</tbody>
 					</table>
 				</div>
-				<div class="recentCustomers">
+				<!-- <div class="recentCustomers">
 					<div class="cardHeader">
 						<h2>Recent Customers</h2>
 					</div>
@@ -229,7 +259,7 @@ head($data);
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
