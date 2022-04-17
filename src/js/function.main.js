@@ -59,24 +59,6 @@ const alerta = (title, data, icon) => {
 	})
 }
 
-// menu lateral
-// variable de lista que aparece y desaparece
-// let listElements = document.querySelectorAll('.list__button--click')
-
-// listElements.forEach(listElement => {
-// 	listElement.addEventListener('click', () => {
-// 		listElement.classList.toggle('arrow')
-// 		let height = 0
-// 		let menu = listElement.nextElementSibling //obtener el hermano adyacente
-// 		// evaluamos el alto de los submenu dinamicamnete
-// 		if (menu.clientHeight == 0) {
-// 			height = menu.scrollHeight
-// 		}
-// 		// cambiar el valor del height
-// 		menu.style.height = `${height}px`
-// 	})
-// })
-
 let toggle = document.querySelector('.toggle')
 let navigation = document.querySelector('.navigation')
 let main = document.querySelector('.main')
