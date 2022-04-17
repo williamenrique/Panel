@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6f9;
+}
+
+.container-dash {
+  position: relative;
+  width: 100%;
+}
+
+.container-dash .navigation {
+  position: fixed;
+  width: 220px;
+  height: 100%;
+  background: #2c3e50;
+  transition: .5s;
+  overflow: hidden;
+}
+
+.container-dash .navigation .head {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding: 20px 30px;
+  color: rgba(199, 203, 206, 0.8);
+}
+
+.container-dash .navigation .head .fa-solid {
+  display: none;
+}
+
+.container-dash .navigation .head .version .v {
+  font-size: 1em;
+}
+
+.container-dash .navigation ul {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+}
+
+.container-dash .navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  margin-bottom: 5px;
+  border-radius: 20px 0 0 20px;
+  padding-left: 20px;
+}
+
+.container-dash .navigation ul li:hover {
+  background: #f4f6f9;
+}
+
+.container-dash .navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: rgba(199, 203, 206, 0.8);
+  padding: 5px 0;
+}
+
+.container-dash .navigation ul li a:hover {
+  color: #303440;
+}
+
+.container-dash .navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.container-dash .navigation ul li a .icon .fa-solid {
+  font-size: 20px;
+}
+
+.container-dash .navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 20px;
+  height: 30px;
+  line-height: 30px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+.container-dash .main {
+  position: absolute;
+  width: calc(100% - 220px);
+  top: 0;
+  left: 220px;
+  min-height: 100vh;
+  transition: .5s;
+}
+
+.container-dash .main .topbar {
+  position: fixed;
+  width: calc(100% - 220px);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 2px 2px 10px 3px rgba(75, 84, 92, 0.4);
+  transition: .5s;
+}
+
+.container-dash .main .topbar .toggle {
+  position: relative;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: rgba(199, 203, 206, 0.8);
+  cursor: pointer;
+}
+
+.container-dash .main .topbar .search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.container-dash .main .topbar .search label {
+  position: relative;
+  width: 100%;
+}
+
+.container-dash .main .topbar .search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(199, 203, 206, 0.4);
+  color: rgba(199, 203, 206, 0.8);
+  font-size: 1.1em;
+}
+
+.container-dash .main .topbar .search label .fa-solid {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.1em;
+  line-height: 24px;
+  color: rgba(199, 203, 206, 0.8);
+}
+
+.container-dash .main .topbar .user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container-dash .main .topbar .user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container-dash .main .container {
+  width: 95%;
+  margin: 100px auto;
+}
+
+.container-dash .navigation.active {
+  width: 70px;
+}
+
+.container-dash .navigation.active .head .version .inicio {
+  display: none;
+}
+
+.container-dash .navigation.active .head .version .v {
+  font-size: 1.2em;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+
+.container-dash .main.active {
+  width: calc(100% - 70px);
+  left: 70px;
+}
+
+.container-dash .main .topbar.active {
+  width: calc(100% - 70px);
+}
+
+.container-dash .main .topbar.sticky {
+  background: #fff;
+  height: 60px;
+}
+
+@media (max-width: 991px) {
+  .container-dash .navigation {
+    left: -220px;
+  }
+  .container-dash .navigation.active {
+    width: 220px;
+    left: 0;
+  }
+  .container-dash .main {
+    width: 100%;
+    left: 0;
+  }
+  .container-dash .main .topbar {
+    width: 100%;
+  }
+  .container-dash .main.active {
+    left: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-dash .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .container-dash .navigation .head {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    padding: 20px 30px;
+    color: rgba(199, 203, 206, 0.8);
+  }
+  .container-dash .navigation .head .fa-solid {
+    display: block;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  .container-dash .navigation .head .version {
+    display: flex;
+    align-items: center;
+  }
+  .container-dash .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .container-dash .navigation.active .head .version .inicio {
+    display: block;
+  }
+  .container-dash .navigation.active .head .version .v {
+    position: static;
+    margin-left: 10px;
+  }
+  .container-dash .main .topbar .user {
+    min-width: 40px;
+  }
+}
+/*# sourceMappingURL=dashboard.css.map */
