@@ -62,12 +62,23 @@ const alerta = (title, data, icon) => {
 let toggle = document.querySelector('.toggle')
 let navigation = document.querySelector('.navigation')
 let main = document.querySelector('.main')
+let topbar = document.querySelector('.topbar')
+let close = document.querySelector('.close')
 
 const toggleMenu = () => {
 	toggle.classList.toggle('active')
 	navigation.classList.toggle('active')
 	main.classList.toggle('active')
+	topbar.classList.toggle('active')
 }
 toggle.addEventListener('click', () => {
 	toggleMenu()
+})
+close.onclick = () => {
+	navigation.classList.toggle('active')
+	main.classList.toggle('active')
+	topbar.classList.toggle('active')
+}
+window.addEventListener('scroll', () => {
+	topbar.classList.toggle('sticky', window.scrollY > 0)
 })

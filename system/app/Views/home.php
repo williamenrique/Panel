@@ -5,6 +5,10 @@ head($data);
 
 <div class="container-main">
 	<div class="navigation">
+		<div class="nav-head">
+			<span class="version">V-1.0</span>
+			<i class="fa-solid fa-xmark"></i>
+		</div>
 		<ul class="">
 			<li class="">
 				<a href="#">

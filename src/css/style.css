@@ -18,16 +18,34 @@ body {
 
 .container-main .navigation {
   position: fixed;
-  width: 250px;
+  width: 220px;
   height: 100%;
   background: #003147;
   transition: 0.5s;
   overflow: hidden;
 }
 
+.container-main .navigation .nav-head {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  color: #dadcdd;
+}
+
+.container-main .navigation .nav-head .version {
+  font-size: 1.5em;
+}
+
+.container-main .navigation .nav-head .fa-solid {
+  display: none;
+}
+
 .container-main .navigation ul {
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
   width: 100%;
 }
@@ -70,7 +88,7 @@ body {
 
 .container-main .navigation ul li a .icon .fa-solid {
   color: #dadcdd;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .container-main .navigation ul li a .iconImg {
@@ -109,21 +127,25 @@ body {
 
 .container-main .main {
   position: absolute;
-  width: calc(100% - 250px);
-  left: 250px;
+  width: calc(100% - 220px);
+  left: 220px;
   min-height: 100vh;
   background-color: #ebecec;
   transition: .5s;
 }
 
 .container-main .main .topbar {
-  width: 100%;
+  position: fixed;
+  width: calc(100% - 220px);
   background-color: #f8f9f9;
-  height: 60px;
-  padding: 0 10px;
+  height: 70px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 2px 2px 10px 3px #003147;
+  transition: .5s;
+  z-index: 1;
 }
 
 .container-main .main .topbar .toggle {
@@ -197,7 +219,7 @@ body {
 
 .container-main .main .container-box {
   width: 95%;
-  margin: 20px auto;
+  margin: 120px auto;
 }
 
 .container-main .main .container-box .cardBox {
@@ -353,5 +375,54 @@ body {
 .container-main .main.active {
   width: calc(100% - 50px);
   left: 50px;
+}
+
+.container-main .main .topbar.active {
+  width: calc(100% - 50px);
+}
+
+.container-main .main .topbar.sticky {
+  background: #fff;
+  height: 60px;
+}
+
+@media (max-width: 991px) {
+  .container-main .navigation {
+    left: -220px;
+  }
+  .container-main .navigation.active {
+    width: 220px;
+    left: 0;
+  }
+  .container-main .main {
+    width: 100%;
+    left: 0;
+  }
+  .container-main .main .topbar {
+    width: 100%;
+  }
+  .container-main .main.active {
+    left: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-main .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .container-main .navigation .nav-head .fa-solid {
+    display: block;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  .container-main .navigation ul {
+    top: 50px;
+  }
+  .container-main .navigation.active {
+    width: 100%;
+    left: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -5,6 +5,9 @@ $whiteText : #dadcdd;
 $white: #f8f9f9;
 $darkText : #737678;
 $darkLigthText : #9a9ea1;
+$w50 : calc(100% - 50px);
+$topbar : calc(100% - 220px);
+$navigation : 220px;
 *{
 	padding: 0;
 	margin: 0;
@@ -22,14 +25,29 @@ body{
 	width: 100%;
 	.navigation{
 		position: fixed;
-		width: 250px;
+		width: $navigation;
 		height: 100%;
 		background: $fondoDark;
 		transition: 0.5s;
 		overflow: hidden;
+		.nav-head{
+			position: relative;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px 20px;
+			color: $whiteText;
+			.version{
+				font-size: 1.5em;
+			}
+			.fa-solid{
+				display: none;
+			}
+		}
 		ul{
 			position: absolute;
-			top: 0;
+			top: 50px;
 			left: 0;
 			width: 100%;
 			li{
@@ -61,7 +79,7 @@ body{
 						text-align: center;
 						.fa-solid{
 							color:$whiteText;
-							font-size: 22px;
+							font-size: 18px;
 						}
 					}
 					.iconImg{
@@ -100,19 +118,23 @@ body{
 	}
 	.main{
 		position: absolute;
-		width: calc(100% - 250px);
-		left: 250px;
+		width: $topbar;
+		left: $navigation;
 		min-height: 100vh;
 		background-color: $fondoLigth;
 		transition: .5s;
 		.topbar{
-			width: 100%;
+			position: fixed;
+			width: $topbar;
 			background-color: $white;
-			height: 60px;
-			padding: 0 10px;
+			height: 70px;
+			padding: 0 20px;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			box-shadow: 2px 2px 10px 3px $fondoDark;
+			transition: .5s;
+			z-index: 1;
 			.toggle{
 				position: relative;
 				width: 60px;
@@ -177,7 +199,7 @@ body{
 		}
 		.container-box{
 			width: 95%;
-			margin: 20px auto;
+			margin: 120px auto;
 			.cardBox{
 				position: relative;
 				width: 100%;
@@ -321,7 +343,63 @@ body{
 	}
 	// main
 	.main.active{
-		width: calc(100% - 50px);
+		width: $w50;
 		left: 50px;
+	}
+	.main{
+		.topbar.active{
+				width: $w50;
+		}
+		.topbar.sticky{
+			background: #fff;
+			height: 60px;
+		}
+	}
+}
+
+// responsive
+@media (max-width: 991px){
+	.container-main{
+		.navigation{
+			left: -220px;
+		}
+		.navigation.active{
+			width: 220px;
+			left: 0;
+		}
+		.main{
+			width: 100%;
+			left: 0;
+			.topbar{
+				width: 100%;
+			}
+		}
+		.main.active{
+			left: 220px;
+		}
+	}
+}
+
+@media(max-width: 480px){
+	.container-main{
+		.navigation{
+			width: 100%;
+			left: -100%;
+			z-index: 1000;
+			.nav-head{
+				.fa-solid{
+					display: block;
+					font-size: 2em;
+					cursor: pointer;
+				}
+			}
+			ul{
+				top: 50px;
+			}
+		}
+		.navigation.active{
+			width: 100%;
+			left: 0;
+		}
 	}
 }
