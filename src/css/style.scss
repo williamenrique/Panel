@@ -238,7 +238,6 @@ body{
 				grid-template-columns: 2fr 1fr;
 				.recentOrders{
 					position: relative;
-					/* display: grid; */
 					min-height: 330px;
 					background-color: $white;
 					padding: 20px;
@@ -265,6 +264,16 @@ body{
 						width: 100%;
 						border-collapse: collapse;
 						margin-top: 10px;
+						.alert-table{
+							border: 1px solid;
+							width: 100%;
+							padding: 10px 0;
+							margin-top: 20px;
+							text-align: center;
+							color: $fondoDark;
+							font-size: 1.3em;
+							border-radius: 4px;
+						}
 						thead{
 							tr{
 								td{
@@ -311,6 +320,65 @@ body{
 							.status{
 								position: relative;
 								padding: 2px 4px;
+							}
+						}
+					}
+				}
+				.addSites{
+					background: $white;
+					padding: 20px;
+					border-radius: 4px;
+					.cardHeader{
+						display: flex;
+						justify-content: space-between;
+						align-items: flex-start;
+						margin-bottom: 10px;
+						h2{
+							font-weight: 600;
+						}
+					}
+					.formSiteAdd{
+						margin-top: 30px;
+						.box-input{
+							position: relative;
+							width: 100%;
+							label{
+								position: absolute;
+								top: 10px;
+								left: 5px;
+								.fa-solid{
+									color: $darkLigthText	;
+									font-size: 1.2em;
+								}
+							}
+							input{
+								width: 100%;
+								margin-bottom: 5px;
+								border: none;
+								outline: none;
+								border: 1px solid $darkText;
+								border-radius: 4px;
+								padding: 6px 0;
+								padding-left: 30px;
+								color: $darkText;
+								font-size: 1.2em;
+							}
+						}
+						.box-button{
+							.btn{
+							position: relative;
+							padding: 5px 10px;
+							background-color: $hoverligth;
+							color: $whiteText;
+							border: none;
+							padding: 6px 12px;
+							border-radius: 6px;
+							cursor: pointer;
+							transition: .5s;
+							&:hover{
+								background: rgba($color: $hoverligth, $alpha: .8);
+									letter-spacing: 1.5;
+								}
 							}
 						}
 					}

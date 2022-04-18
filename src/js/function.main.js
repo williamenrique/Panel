@@ -37,7 +37,7 @@ function soloLetras(e) {
 /****
  * funcion para la notificacion
  */
-notificar = (data, icon) => {
+notifi = (data, icon) => {
 	var Toast = Swal.mixin({
 		toast: true,
 		position: 'top-end',

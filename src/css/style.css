@@ -267,7 +267,6 @@ body {
 
 .container-main .main .container-box .details .recentOrders {
   position: relative;
-  /* display: grid; */
   min-height: 330px;
   background-color: #f8f9f9;
   padding: 20px;
@@ -299,6 +298,17 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+}
+
+.container-main .main .container-box .details .recentOrders table .alert-table {
+  border: 1px solid;
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 20px;
+  text-align: center;
+  color: #003147;
+  font-size: 1.3em;
+  border-radius: 4px;
 }
 
 .container-main .main .container-box .details .recentOrders table thead tr td {
@@ -353,6 +363,73 @@ body {
 .container-main .main .container-box .details .recentOrders table tbody .status {
   position: relative;
   padding: 2px 4px;
+}
+
+.container-main .main .container-box .details .addSites {
+  background: #f8f9f9;
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.container-main .main .container-box .details .addSites .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.container-main .main .container-box .details .addSites .cardHeader h2 {
+  font-weight: 600;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd {
+  margin-top: 30px;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-input {
+  position: relative;
+  width: 100%;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-input label {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-input label .fa-solid {
+  color: #9a9ea1;
+  font-size: 1.2em;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-input input {
+  width: 100%;
+  margin-bottom: 5px;
+  border: none;
+  outline: none;
+  border: 1px solid #737678;
+  border-radius: 4px;
+  padding: 6px 0;
+  padding-left: 30px;
+  color: #737678;
+  font-size: 1.2em;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn {
+  position: relative;
+  padding: 5px 10px;
+  background-color: #03a9f4;
+  color: #dadcdd;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn:hover {
+  background: rgba(3, 169, 244, 0.8);
+  letter-spacing: 1.5;
 }
 
 .container-main .navigation.active {

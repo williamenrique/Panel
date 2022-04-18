@@ -121,149 +121,40 @@ head($data);
 			<div class="details">
 				<div class="recentOrders">
 					<div class="cardHeader">
-						<h2>Recent Order</h2>
-						<a href="#" class="btn">View All</a>
+						<h2>Tus sitios</h2>
+						<!-- <a href="#" class="btn">View All</a> -->
 					</div>
-					<table>
+					<table class="listSitios">
 						<thead>
 							<tr>
-								<td>Name</td>
-								<td>Price</td>
-								<td>Payment</td>
-								<td>Status</td>
+								<td>Sitio</td>
+								<td>Usuario</td>
+								<td>Clave</td>
+								<td>Opcion</td>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-								<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-							<tr>
-								<td>Star Refrigerator</td>
-								<td>$1200</td>
-								<td>Paid</td>
-								<td><span class="status deleivered">Delivered</span></td>
-							</tr>
-						</tbody>
 					</table>
 				</div>
-				<!-- <div class="recentCustomers">
+				<div class="addSites">
 					<div class="cardHeader">
-						<h2>Recent Customers</h2>
+						<h2>Agregar Sitio</h2>
+						
 					</div>
-					<table>
-						<tbody>
-							<tr>
-								<td width="60px">
-									<div class="imgBx"><img src="./src/images/favicon.png" alt=""></div>
-								</td>
-								<td>
-									<h4>David <br><span>Italy</span></h4>
-								</td>
-							</tr>
-							<tr>
-								<td width="60px">
-									<div class="imgBx"><img src="./src/images/favicon.png" alt=""></div>
-								</td>
-								<td>
-									<h4>David <br><span>Italy</span></h4>
-								</td>
-							</tr>
-							<tr>
-								<td width="60px">
-									<div class="imgBx"><img src="./src/images/favicon.png" alt=""></div>
-								</td>
-								<td>
-									<h4>David <br><span>Italy</span></h4>
-								</td>
-							</tr>
-							<tr>
-								<td width="60px">
-									<div class="imgBx"><img src="./src/images/favicon.png" alt=""></div>
-								</td>
-								<td>
-									<h4>David <br><span>Italy</span></h4>
-								</td>
-							</tr>
-							<tr>
-								<td width="60px">
-									<div class="imgBx"><img src="./src/images/favicon.png" alt=""></div>
-								</td>
-								<td>
-									<h4>David <br><span>Italy</span></h4>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div> -->
+					<form  class="formSiteAdd">
+						<div class="box-input"><label for=""><i class="fa-solid fa-globe"></i></label><input id="txtSite" name="txtSite" type="text"></div>
+						<div class="box-input"><label for="">
+							<i class="fa-solid fa-anchor"></i>
+						</label><input id="txtUrl" name="txtUrl" type="text"></div>
+						<div class="box-input"><label for=""><i class="fa-solid fa-user"></i></label><input id="txtUser" name="txtUser" type="text"></div>
+						<div class="box-input"><label for=""><i class="fa-solid fa-lock"></i></label><input id="txtPass" name="txtPass" type="text"></div>
+						<div class="box-button">
+							<button type="button" class="btn btn-addSite">
+							<i class="fa-solid fa-plus"></i>
+							Agregar
+						</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
