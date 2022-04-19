@@ -1,5 +1,5 @@
 <?php
-class HomeModel extends Mysql {
+class SiteModel extends Mysql {
 	// declaramos variables para el uso interno
 	private $strSitio;
 	private $strUsuario;
@@ -11,7 +11,7 @@ class HomeModel extends Mysql {
 		parent::__construct();
 	}
 	public function getSitios(){
-		$sql = "SELECT * FROM table_sitio WHERE status != 0";
+		$sql = "SELECT * FROM table_sitio WHERE status != 0 LIMIT 10";
 		$request = $this->select_all($sql);
 		return $request;
 	}

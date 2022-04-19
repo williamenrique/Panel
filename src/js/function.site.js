@@ -10,7 +10,7 @@ function getStitios() {
 	 * usando un if reducido creamos un objeto del contenido en(request)
 	 *****************************************************/
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	let ajaxUrl = base_url + 'Home/getSitios';
+	let ajaxUrl = base_url + 'Site/getSitios';
 	//prepara los datos por ajax preparando el dom
 	request.open('GET', ajaxUrl, true);
 	//hacemos el envio al servidor
@@ -28,7 +28,7 @@ let addSite = document.querySelector('.btn-addSite')
 let formSiteAdd = document.querySelector('.formSiteAdd')
 addSite.addEventListener('click', () => {
 	var request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	var ajaxUrl = base_url + 'Home/setSitios';
+	var ajaxUrl = base_url + 'Site/setSitios';
 	//creamos un objeto del formulario con los datos haciendo referencia a formData
 	var formData = new FormData(formSiteAdd);
 	//prepara los datos por ajax preparando el dom
@@ -56,7 +56,7 @@ addSite.addEventListener('click', () => {
 let updateSite = document.querySelector('.btn-updateSite')
 updateSite.addEventListener('click', () => {
 	var request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	var ajaxUrl = base_url + 'Home/updateSite';
+	var ajaxUrl = base_url + 'Site/updateSite';
 	//creamos un objeto del formulario con los datos haciendo referencia a formData
 	var formData = new FormData(formSiteAdd);
 	//prepara los datos por ajax preparando el dom
@@ -94,7 +94,7 @@ function delSite(intSite) {
 		if (result.isConfirmed) {
 			//hacer una validacion para diferentes navegadores y crear el formato de lectura y hacemos la peticion mediante ajax
 			let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-			let ajaxUrl = base_url + 'Home/delSite/' + intSite;
+			let ajaxUrl = base_url + 'Site/delSite/' + intSite;
 			//id del atributo lr que obtuvimos enla variable
 			let strData = "intSite=" + intSite;
 			request.open("POST", ajaxUrl, true);
@@ -133,7 +133,7 @@ function delSite(intSite) {
 
 function editSite(intSite) {
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	let ajaxUrl = base_url + 'Home/getSite/' + intSite;
+	let ajaxUrl = base_url + 'Site/getSite/' + intSite;
 	//id del atributo lr que obtuvimos enla variable
 	let strData = "intSite=" + intSite;
 	request.open("POST", ajaxUrl, true);

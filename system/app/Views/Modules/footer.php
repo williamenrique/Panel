@@ -1,3 +1,5 @@
+	</div>
+</div>
 	<script>
 		let page_link = "<?= $data['page_link']?>";
 		if (document.querySelector("." + page_link)) {

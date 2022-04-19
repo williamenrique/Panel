@@ -244,6 +244,7 @@ body{
 					background-color: $white;
 					padding: 20px;
 					border-radius: 4px;
+					overflow-x: auto;
 					.cardHeader{
 						display: flex;
 						justify-content: space-between;
@@ -353,6 +354,7 @@ body{
 					background: $white;
 					padding: 20px;
 					border-radius: 4px;
+					min-height: 300px;
 					.cardHeader{
 						display: flex;
 						justify-content: space-between;
@@ -417,9 +419,214 @@ body{
 					}
 				}
 			}
+			.details-site{
+				position: relative;
+				width: 100%;
+				margin-top: 10px;
+				display: grid;
+				gap: 20px;
+				grid-template-columns: 2fr 1fr;
+				.cont-table{
+					min-height: 300px;
+					.cardHeader{
+						background: $white;
+						width: 100%;
+						border-radius: 4px;
+						padding: 20px;
+						margin-bottom: 10px;
+						h2{
+							font-size: 1.2em;
+						}
+						.box-table{
+							margin-top: 20px;
+							display: grid;
+							grid-template-columns: 30% 40% 20% 10%;
+							.table__header{
+								padding: 5px 0px;
+								border-bottom: 1px solid rgba($color: $darkLigthText, $alpha: .1);
+							}
+							.table__item{
+								padding: 5px 0;
+								font-size: .9em;
+								border-bottom: 1px solid rgba($color: $darkLigthText, $alpha: .7);
+							}
+							.accion{
+								display: flex;
+								justify-content: space-evenly;
+								font-size: 1.2em;
+								cursor: pointer;
+								.fa-pencil{
+									&:hover{
+										color: $yellow;
+									}
+								}
+								.fa-trash-can{
+									&:hover{
+										color: $red;
+									}
+								}
+							}
+						}
+					}
+				}
+				.cont-addSites{
+					.cardHeader{
+						background: $white;
+						width: 100%;
+						border-radius: 4px;
+						padding: 20px;
+						margin-bottom: 10px;
+						h2{
+							font-size: 1.2em;
+						}
+						.formSiteAdd{
+							margin-top: 30px;
+							background: $white;
+							.box-input{
+								position: relative;
+								width: 100%;
+								label{
+									position: absolute;
+									top: 10px;
+									left: 5px;
+									.fa-solid{
+										color: $darkLigthText	;
+										font-size: 1.2em;
+									}
+								}
+								input{
+									width: 100%;
+									margin-bottom: 5px;
+									border: none;
+									outline: none;
+									border: 1px solid $darkText;
+									border-radius: 4px;
+									padding: 6px 0;
+									padding-left: 30px;
+									color: $darkText;
+									font-size: 1.2em;
+								}
+							}
+							.box-button{
+								.btn-addSite{
+									background-color: $hoverligth;
+									&:hover{
+										background: rgba($color: $hoverligth, $alpha: .8);
+									}
+								}
+								.btn-updateSite{
+									display: none;
+									background: #1B1464;
+									&:hover{
+										background: rgba($color :#1B1464, $alpha: 0.8);
+									}
+								}
+								.btn{
+									position: relative;
+									padding: 5px 10px;
+									color: $whiteText;
+									border: none;
+									padding: 6px 12px;
+									border-radius: 6px;
+									cursor: pointer;
+									transition: .5s;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+	.alert-table{
+		border: 1px solid;
+		width: 100%;
+		padding: 10px 0;
+		margin-top: 20px;
+		text-align: center;
+		color: $fondoDark;
+		font-size: 1.3em;
+		border-radius: 4px;
+	}
+	tr{
+		border-bottom: 1px solid  $darkLigthText;
+	}
+	thead{
+		tr{
+			td{
+				font-weight: 600;
+				padding: 8px;
+				&:last-child{
+					// text-align: right;
+				}
+				&:nth-child(2){
+					// text-align: right;
+					padding-right: 20px;
+				}
+				&:nth-child(4){
+					text-align: center;
+				}
+			}
+		}
+	}
+	tbody{
+		tr{
+			border-bottom: 1px solid rgba($color :$darkText, $alpha: 0.3);
+			color: $darkText;
+			&:last-child{
+				border-bottom: none;
+			}
+			&:hover{
+				background-color: rgba($color: $darkLigthText, $alpha: .1);
+				// color: $white;
+				cursor: pointer;
+			}
+			td{
+				padding: 8px;
+				&:last-child{
+					// text-align: right;
+				}
+				&:nth-child(2){
+					// text-align: right;
+					// padding-right: 20px;
+				}
+				&:nth-child(4){
+					text-align: center;
+				}
+				a{
+					text-decoration: none;
+					color: $darkText;
+				}
+				.icon-action{
+					display: flex;
+					justify-content: space-evenly;
+					font-size: 1.2em;
+					.fa-pencil{
+						&:hover{
+							color: $yellow;
+						}
+					}
+					.fa-trash-can{
+						&:hover{
+							color: $red;
+						}
+					}
+				}
+			}
+		}
+		.status{
+			position: relative;
+			padding: 2px 4px;
+		}
+	}
+}
+
 
 // active
 .container-main{

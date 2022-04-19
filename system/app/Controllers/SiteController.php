@@ -1,5 +1,6 @@
 <?php
-class Home extends Controllers{
+header('Access-Control-Allow-Origin: *');
+class Site extends Controllers{
 	public function __construct(){
 		// session_start();
 		// if (empty($_SESSION['login'])) {
@@ -8,17 +9,17 @@ class Home extends Controllers{
 		//invocar para que se ejecute el metodo de la herencia
 		parent::__construct();
 	}
-	public function home(){
+	public function site(){
 		//invocar la vista con views y usamos getView y pasamos parametros esta clase y la vista
 		//incluimos un arreglo que contendra toda la informacion que se enviara al home
-		$data['page_tag'] = "Dashboard - Personal";
+		$data['page_tag'] = "Site - Personal";
 		$data['page_title'] = "Pagina Principal";
-		$data['page_name'] = "home";
-		$data['page_link'] = "dashboard";
-		$data['page_function'] = "function.sitio.js";
-		$this->views->getViews($this, "home", $data);
+		$data['page_name'] = "site";
+		$data['page_link'] = "site";
+		$data['page_function'] = "function.site.js";
+		$this->views->getViews($this, "site", $data);
 	}
-	
+
 	public function getSitios(){
 		$arrData = $this->model->getSitios();
 		$htmlOptions = "";
@@ -28,37 +29,27 @@ class Home extends Controllers{
 						';
 		}else{
 			$htmlOptions .= '
-				<thead>
-					<tr>
-						<td>Sitio</td>
-						<td>Usuario</td>
-						<td>Clave</td>
-						<td>Opcion</td>
-					</tr>
-				</thead>
-				<tbody >
+				<div class="table__header">Sitio</div>
+				<div class="table__header">Usuario</div>
+				<div class="table__header">Password</div>
+				<div class="table__header">Opciones</div>
 			';
 			for ($i=0; $i < count($arrData) ; $i++) {
 				$htmlOptions .= '
-					<tr>
-						<td><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></td>
-						<td>'.$arrData[$i]['usuario'].'</td>
-						<td>'.$arrData[$i]['pass'].'</td>
-						<td>
-							<div class="icon-action">
-								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
-								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-							</div>
-						</td>
-					</tr>';
+					<div class="table__item"><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></div>
+					<div class="table__item">'.$arrData[$i]['usuario'].'</div>
+					<div class="table__item">'.$arrData[$i]['pass'].'</div>
+					<div class="table__item accion">
+						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
+						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+					</div>
+						';
 			}
-			$htmlOptions .= '
-				</tbody>';
 		}
 		echo $htmlOptions;
 		die();
 	}
-
+	
 	// function agregar sitios
 	public function setSitios(){
 		$strUsuario = strClean($_POST['txtUser']);
@@ -153,17 +144,4 @@ class Home extends Controllers{
 			die();
 		}
 	}
-
 }
-
-
-/*
-			$arrData[$i]['n'] = $i + 1;
-			$arrData[$i]['pass'] = decryption($arrData[$i]['pass']);
-			$arrData[$i]['url'] = decryption($arrData[$i]['url']);
-			$arrData[$i]['opciones'] ='<div class="">
-																	
-																	<button type="button" class="btn btn-success btn-sm btnEditSitio" onClick="fnteditSitio('.$arrData[$i]['idSitio'].')" title="Editar" ><span class="fa fa-edit" aria-hidden="true"></i></button>
-																	<button type="button" class="btn btn-danger btn-sm btnDelSitio" onClick="fntDelSitio('.$arrData[$i]['idSitio'].')" title="Eliminar"><i class="fa fa-trash" aria-hidden="true"></i></button>
-																</div>';
-*/
