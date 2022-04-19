@@ -16,14 +16,13 @@ function getStitios() {
 	//hacemos el envio al servidor
 	request.send();
 	//obtenemos los resultados y evaluamos
-	let listSitios = document.querySelector('.listSitios');
-
 	request.onreadystatechange = function () { 
 		if (request.readyState == 4 && request.status == 200) {
 			document.querySelector('.listSitios').innerHTML = request.responseText;
 		}
 	}
 }
+
 let addSite = document.querySelector('.btn-addSite')
 let formSiteAdd = document.querySelector('.formSiteAdd')
 addSite.addEventListener('click', () => {
@@ -52,5 +51,83 @@ addSite.addEventListener('click', () => {
 	}
 })
 
-// function addSite() {
-// }
+
+function delSite(intSite) {
+	//obtenemos el valor del atributo individual
+	var intSite = intSite;
+	Swal.fire({
+		title: 'Estas seguro de eliminar el sitio.?',
+		text: "No podra ser revertido el proceso!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: 'btn btn-success',
+		cancelButtonColor: 'btn btn-danger',
+		confirmButtonText: 'Si, eliminar!'
+	}).then((result) => {
+		if (result.isConfirmed) {
+			//hacer una validacion para diferentes navegadores y crear el formato de lectura y hacemos la peticion mediante ajax
+			let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+			let ajaxUrl = base_url + 'Home/delSite/' + intSite;
+			//id del atributo lr que obtuvimos enla variable
+			let strData = "intSite=" + intSite;
+			request.open("POST", ajaxUrl, true);
+			//forma en como se enviara
+			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			//enviamos
+			request.send(strData);
+			// request.send();
+			request.onreadystatechange = function () {
+				//comprobamos la peticion
+				if (request.readyState == 4 && request.status == 200) {
+					//convertir en objeto JSON
+					let objData = JSON.parse(request.responseText);
+					if (objData.status) {
+						$(function () {
+							var Toast = Swal.mixin({
+								toast: true,
+								position: 'top-end',
+								showConfirmButton: false,
+								timer: 3000
+							})
+							Toast.fire({
+								icon: 'success',
+								title: objData.msg
+							})
+						})
+						getStitios()
+					} else {
+						Swal.fire('Atencion!', objData.msg, 'error');
+					}
+				}
+			}
+		}
+	})
+}
+
+function editSite(intSite) {
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	let ajaxUrl = base_url + 'Home/getSite/' + intSite;
+	//id del atributo lr que obtuvimos enla variable
+	let strData = "intSite=" + intSite;
+	request.open("POST", ajaxUrl, true);
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//enviamos
+	// request.send(strData);
+	request.send();
+	request.onreadystatechange = function () {
+		let objData = JSON.parse(request.responseText);
+		if (objData.status) { 
+			document.querySelector('#txtSite').value = objData.data.sitio
+			document.querySelector('#txtUrl').value = objData.data.URL
+			document.querySelector('#txtUser').value = objData.data.usuario
+			document.querySelector('#txtPass').value = objData.data.password
+			let btn_addSite = document.querySelector('btn-addSite')
+			let btn_updateSite = document.querySelector('btn-updateSite')
+			btn_addSite.style.display = 'none'
+			btn_updateSite.style.display = 'block'
+		}else {
+			notifi(objData.msg, "error");
+		}
+	}
+}

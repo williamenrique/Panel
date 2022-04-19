@@ -311,26 +311,26 @@ body {
   border-radius: 4px;
 }
 
+.container-main .main .container-box .details .recentOrders table tr {
+  border-bottom: 1px solid #9a9ea1;
+}
+
 .container-main .main .container-box .details .recentOrders table thead tr td {
   font-weight: 600;
   padding: 8px;
 }
 
-.container-main .main .container-box .details .recentOrders table thead tr td:last-child {
-  text-align: right;
-}
-
 .container-main .main .container-box .details .recentOrders table thead tr td:nth-child(2) {
-  text-align: right;
   padding-right: 20px;
 }
 
-.container-main .main .container-box .details .recentOrders table thead tr td:nth-child(3) {
+.container-main .main .container-box .details .recentOrders table thead tr td:nth-child(4) {
   text-align: center;
 }
 
 .container-main .main .container-box .details .recentOrders table tbody tr {
-  border-bottom: 1px solid rgba(154, 158, 161, 0.3);
+  border-bottom: 1px solid rgba(115, 118, 120, 0.3);
+  color: #737678;
 }
 
 .container-main .main .container-box .details .recentOrders table tbody tr:last-child {
@@ -338,8 +338,7 @@ body {
 }
 
 .container-main .main .container-box .details .recentOrders table tbody tr:hover {
-  background-color: #03a9f4;
-  color: #f8f9f9;
+  background-color: rgba(154, 158, 161, 0.1);
   cursor: pointer;
 }
 
@@ -347,17 +346,27 @@ body {
   padding: 8px;
 }
 
-.container-main .main .container-box .details .recentOrders table tbody tr td:last-child {
-  text-align: right;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td:nth-child(2) {
-  text-align: right;
-  padding-right: 20px;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td:nth-child(3) {
+.container-main .main .container-box .details .recentOrders table tbody tr td:nth-child(4) {
   text-align: center;
+}
+
+.container-main .main .container-box .details .recentOrders table tbody tr td a {
+  text-decoration: none;
+  color: #737678;
+}
+
+.container-main .main .container-box .details .recentOrders table tbody tr td .icon-action {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.2em;
+}
+
+.container-main .main .container-box .details .recentOrders table tbody tr td .icon-action .fa-pencil:hover {
+  color: #FFC312;
+}
+
+.container-main .main .container-box .details .recentOrders table tbody tr td .icon-action .fa-trash-can:hover {
+  color: #EA2027;
 }
 
 .container-main .main .container-box .details .recentOrders table tbody .status {
@@ -415,21 +424,32 @@ body {
   font-size: 1.2em;
 }
 
+.container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn-addSite {
+  background-color: #03a9f4;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn-addSite:hover {
+  background: rgba(3, 169, 244, 0.8);
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn-updateSite {
+  display: none;
+  background: #1B1464;
+}
+
+.container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn-updateSite:hover {
+  background: rgba(27, 20, 100, 0.8);
+}
+
 .container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn {
   position: relative;
   padding: 5px 10px;
-  background-color: #03a9f4;
   color: #dadcdd;
   border: none;
   padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
   transition: .5s;
-}
-
-.container-main .main .container-box .details .addSites .formSiteAdd .box-button .btn:hover {
-  background: rgba(3, 169, 244, 0.8);
-  letter-spacing: 1.5;
 }
 
 .container-main .navigation.active {

@@ -18,7 +18,7 @@ head($data);
 					</span>
 				</a>
 			</li>
-			<li class="active">
+			<li class="dashboard">
 				<a href="#">
 					<span class="icon"><i class="fa-solid fa-house"></i></span>
 					<span class="title">Dashboard</span>
@@ -125,14 +125,7 @@ head($data);
 						<!-- <a href="#" class="btn">View All</a> -->
 					</div>
 					<table class="listSitios">
-						<thead>
-							<tr>
-								<td>Sitio</td>
-								<td>Usuario</td>
-								<td>Clave</td>
-								<td>Opcion</td>
-							</tr>
-						</thead>
+						
 					</table>
 				</div>
 				<div class="addSites">
@@ -141,16 +134,25 @@ head($data);
 						
 					</div>
 					<form  class="formSiteAdd">
-						<div class="box-input"><label for=""><i class="fa-solid fa-globe"></i></label><input id="txtSite" name="txtSite" type="text"></div>
-						<div class="box-input"><label for="">
-							<i class="fa-solid fa-anchor"></i>
-						</label><input id="txtUrl" name="txtUrl" type="text"></div>
-						<div class="box-input"><label for=""><i class="fa-solid fa-user"></i></label><input id="txtUser" name="txtUser" type="text"></div>
-						<div class="box-input"><label for=""><i class="fa-solid fa-lock"></i></label><input id="txtPass" name="txtPass" type="text"></div>
+						<div class="box-input">
+							<label for=""><i class="fa-solid fa-globe"></i></label>
+							<input id="txtSite" name="txtSite" type="text" placeholder="Nombre del sitio web">
+						</div>
+						<div class="box-input">
+							<label for=""><i class="fa-solid fa-anchor"></i></label>
+							<input id="txtUrl" name="txtUrl" type="text" placeholder="URL del sitio"></div>
+						<div class="box-input">
+							<label for=""><i class="fa-solid fa-user"></i></label>
+							<input id="txtUser" name="txtUser" type="text" placeholder="Usuario registrado"></div>
+						<div class="box-input">
+							<label for=""><i class="fa-solid fa-lock"></i></label>
+							<input id="txtPass" name="txtPass" type="text" placeholder="Password para ingreso"></div>
 						<div class="box-button">
-							<button type="button" class="btn btn-addSite">
-							<i class="fa-solid fa-plus"></i>
+							<button type="button" class="btn btn-addSite"><i class="fa-solid fa-plus"></i>
 							Agregar
+						</button>
+						<button type="button" class="btn btn-updateSite"><i class="fa-solid fa-arrows-spin"></i>
+							actualizar
 						</button>
 						</div>
 					</form>

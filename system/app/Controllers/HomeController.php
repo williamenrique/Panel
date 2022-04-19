@@ -15,23 +15,28 @@ class Home extends Controllers{
 		$data['page_tag'] = "Dashboard - Personal";
 		$data['page_title'] = "Pagina Principal";
 		$data['page_name'] = "home";
+		$data['page_link'] = "dashboard";
 		$data['page_function'] = "function.sitio.js";
 		$this->views->getViews($this, "home", $data);
 	}
 	
 	public function getSitios(){
 		$arrData = $this->model->getSitios();
-		//provar que trae el array
-		// dep($arrData[0]['rol_status']);exit();
-		//recorrer el arreglo para colocara el status
 		$htmlOptions = "";
-		
 		if(empty($arrData)){
 			$htmlOptions .= '
 				<div class="alert-table">No se encontraron resultados</div>
 						';
 		}else{
 			$htmlOptions .= '
+				<thead>
+					<tr>
+						<td>Sitio</td>
+						<td>Usuario</td>
+						<td>Clave</td>
+						<td>Opcion</td>
+					</tr>
+				</thead>
 				<tbody >
 			';
 			for ($i=0; $i < count($arrData) ; $i++) {
@@ -39,7 +44,13 @@ class Home extends Controllers{
 					<tr>
 						<td><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></td>
 						<td>'.$arrData[$i]['usuario'].'</td>
-						<td>'.$arrData[$i]['pass'].'</td>
+						<td>'.decryption($arrData[$i]['pass']).'</td>
+						<td>
+							<div class="icon-action">
+								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
+								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+							</div>
+						</td>
 					</tr>';
 			}
 			$htmlOptions .= '
@@ -51,8 +62,6 @@ class Home extends Controllers{
 
 	// function agregar sitios
 	public function setSitios(){
-		// dep($_POST);
-	
 		$strUsuario = strClean($_POST['txtUser']);
 		$strPass = strClean($_POST['txtPass']);
 		$strUrl = strClean($_POST['txtUrl']);
@@ -77,7 +86,44 @@ class Home extends Controllers{
 		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
+
+	// delete site
+	public function delSite(){
+		if($_POST){
+			$idSite = intval($_POST['intSite']);
+			$requestDel = $this->model->delSite($idSite);
+			if($requestDel){
+				$arrResponse = array('status' => true, 'msg' => 'Sitio eliminado');
+			}else{
+				$arrResponse = array('status' => false, 'msg' => 'Error al eliminar');
+			}
+			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		}
+		die();
+	}
+
+	// edit site
+	public function getSite(int $intSite){
+		$intSite = intval($intSite);
+		if($intSite > 0 ){
+			$arrData = $this->model->getSite($intSite);
+			if(empty($arrData)){
+				$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados');
+			}else{
+				$pass = array('password'=> decryption($arrData['pass']),'URL'=> decryption($arrData['url']));
+				$data = $arrData + $pass;
+
+				$arrResponse = array('status' => true, 'data' => $data);
+			}
+			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		}
+		die();
+	}
+
+
+
 }
+
 
 /*
 			$arrData[$i]['n'] = $i + 1;
