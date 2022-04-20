@@ -52,7 +52,6 @@ addSite.addEventListener('click', () => {
 		}
 	}
 })
-
 // actualizar un sitio
 let updateSite = document.querySelector('.btn-updateSite')
 updateSite.addEventListener('click', () => {
@@ -131,7 +130,6 @@ function delSite(intSite) {
 		}
 	})
 }
-
 function editSite(intSite) {
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 	let ajaxUrl = base_url + 'Site/getSite/' + intSite
@@ -160,27 +158,48 @@ function editSite(intSite) {
 		}
 	}
 }
-
-function getSites(intSite) {
+function getSitesd(intSite, strSite) {
+	var intSite = intSite;
+	var strSite = strSite;
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-			let ajaxUrl = base_url + 'Site/getSitios/' + intSite;
-			//id del atributo lr que obtuvimos enla variable
-			let strData = "intSite=" + intSite;
-			request.open("POST", ajaxUrl, true);
-			//forma en como se enviara
-			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			//enviamos
-			request.send(strData);
-			// request.send();
-			request.onreadystatechange = function () { 
-			if (request.readyState == 4 && request.status == 200) {
-				document.querySelector('.listSitios').innerHTML = request.responseText;
-			}
+	let ajaxUrl = base_url + 'Site/getSites/?intSite='+intSite+'&strSite='+strSite
+	
+	request.open("POST", ajaxUrl, true)
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	//enviamos
+	request.send()
+	if (request.readyState == 4 && request.status == 200) {
+			document.querySelector('.listSitios').innerHTML = request.responseText;
 		}
 }
 
+getSites = (intSite, strSite) => {
+	var intSite = intSite;
+	var strSite = strSite;
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	let ajaxUrl = base_url + 'Site/getSites/?intSite='+intSite+'&strSite='+strSite
+	
+	request.open("GET", ajaxUrl, true)
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	//enviamos
+	request.send()
+	request.onreadystatechange = function () { 
+		if (request.readyState == 4 && request.status == 200) {
+			document.querySelector('.listSitios').innerHTML = request.responseText;
+		}
+	}
+}
 $('input[type=radio]').change(function () {
-	let intSite = $('input:radio[name=prioridad]:checked').val()
 	let strSite = document.querySelector('#searchSite').value
-	getStitios(intSite,strSite)
+	let intSite = $('input:radio[name=prioridad]:checked').val()
+	getSites(intSite, strSite)
+})
+
+let strSite = document.querySelector('#searchSite')
+strSite.addEventListener('keyup', () => {
+	let strSite = document.querySelector('#searchSite').value
+	let intSite = $('input:radio[name=prioridad]:checked').val()
+	getSites(intSite, strSite)
 })

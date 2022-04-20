@@ -80,18 +80,37 @@ class Site extends Controllers{
 	}
 
 	public function getSites(){
-		echo "el ID es  ".$_POST['intSite'];
-		die();
-		if($_POST){
-			$idSite = intval($_POST['intSite']);
-			$requestDel = $this->model->delSite($idSite);
-			if($requestDel){
-				$arrResponse = array('status' => true, 'msg' => 'Sitio eliminado');
-			}else{
-				$arrResponse = array('status' => false, 'msg' => 'Error al eliminar');
-			}
-			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		$intSite = $_GET['intSite'];
+		$strSite = $_GET['strSite'];
+		if($intSite == ''){
+			$intSite = 1;
 		}
+		$arrData = $this->model->getSites($intSite,$strSite);
+		$htmlOptions = "";
+		if(empty($arrData)){
+			$htmlOptions .= '
+				<div class="alert-table">No se encontraron resultados</div>
+						';
+		}else{
+			$htmlOptions .= '
+				<div class="table__header">Sitio</div>
+				<div class="table__header">Usuario</div>
+				<div class="table__header">Password</div>
+				<div class="table__header">Opciones</div>
+			';
+			for ($i=0; $i < count($arrData) ; $i++) {
+				$htmlOptions .= '
+					<div class="table__item"><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></div>
+					<div class="table__item">'.$arrData[$i]['usuario'].'</div>
+					<div class="table__item">'.$arrData[$i]['pass'].'</div>
+					<div class="table__item accion">
+						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
+						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+					</div>
+						';
+			}
+		}
+		echo $htmlOptions;
 		die();
 	}
 	// delete site

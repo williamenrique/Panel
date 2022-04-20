@@ -13,7 +13,7 @@ head($data);
 							<input type="text" name="searchSite" id="searchSite">
 						</div>
 						<div class="box-priority">
-							<input type="radio" name="prioridad" id="importante" value="1">
+							<input type="radio" name="prioridad" id="importante" value="1" checked>
 							<label for="importante">Importantes</label>
 							<input type="radio" name="prioridad" id="poco" value="2">
 							<label for="poco">Poco Uso</label>
