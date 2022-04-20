@@ -218,7 +218,7 @@ body {
 }
 
 .container-main .main .container-box {
-  width: 95%;
+  width: 98%;
   margin: 120px auto;
 }
 
@@ -248,6 +248,11 @@ body {
 }
 
 .container-main .main .container-box .cardBox .card .cardName {
+  color: #9a9ea1;
+}
+
+.container-main .main .container-box .cardBox .card .cardName a {
+  text-decoration: none;
   color: #9a9ea1;
 }
 
@@ -293,86 +298,6 @@ body {
   text-decoration: none;
   padding: 5px 10px;
   border-radius: 6px;
-}
-
-.container-main .main .container-box .details .recentOrders table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.container-main .main .container-box .details .recentOrders table .alert-table {
-  border: 1px solid;
-  width: 100%;
-  padding: 10px 0;
-  margin-top: 20px;
-  text-align: center;
-  color: #003147;
-  font-size: 1.3em;
-  border-radius: 4px;
-}
-
-.container-main .main .container-box .details .recentOrders table tr {
-  border-bottom: 1px solid #9a9ea1;
-}
-
-.container-main .main .container-box .details .recentOrders table thead tr td {
-  font-weight: 600;
-  padding: 8px;
-}
-
-.container-main .main .container-box .details .recentOrders table thead tr td:nth-child(2) {
-  padding-right: 20px;
-}
-
-.container-main .main .container-box .details .recentOrders table thead tr td:nth-child(4) {
-  text-align: center;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr {
-  border-bottom: 1px solid rgba(115, 118, 120, 0.3);
-  color: #737678;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr:last-child {
-  border-bottom: none;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr:hover {
-  background-color: rgba(154, 158, 161, 0.1);
-  cursor: pointer;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td {
-  padding: 8px;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td:nth-child(4) {
-  text-align: center;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td a {
-  text-decoration: none;
-  color: #737678;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td .icon-action {
-  display: flex;
-  justify-content: space-evenly;
-  font-size: 1.2em;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td .icon-action .fa-pencil:hover {
-  color: #FFC312;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody tr td .icon-action .fa-trash-can:hover {
-  color: #EA2027;
-}
-
-.container-main .main .container-box .details .recentOrders table tbody .status {
-  position: relative;
-  padding: 2px 4px;
 }
 
 .container-main .main .container-box .details .addSites {
@@ -475,14 +400,33 @@ body {
   margin-bottom: 10px;
 }
 
-.container-main .main .container-box .details-site .cont-table .cardHeader h2 {
+.container-main .main .container-box .details-site .cont-table .cardHeader .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-main .main .container-box .details-site .cont-table .cardHeader .header h2 {
   font-size: 1.2em;
+}
+
+.container-main .main .container-box .details-site .cont-table .cardHeader .header .box-filter {
+  border: 1px solid;
 }
 
 .container-main .main .container-box .details-site .cont-table .cardHeader .box-table {
   margin-top: 20px;
   display: grid;
   grid-template-columns: 30% 40% 20% 10%;
+}
+
+.container-main .main .container-box .details-site .cont-table .cardHeader .box-table .alert-table {
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 1.2em;
+  color: #003147;
 }
 
 .container-main .main .container-box .details-site .cont-table .cardHeader .box-table .table__header {

@@ -79,6 +79,21 @@ class Site extends Controllers{
 		die();
 	}
 
+	public function getSites(){
+		echo "el ID es  ".$_POST['intSite'];
+		die();
+		if($_POST){
+			$idSite = intval($_POST['intSite']);
+			$requestDel = $this->model->delSite($idSite);
+			if($requestDel){
+				$arrResponse = array('status' => true, 'msg' => 'Sitio eliminado');
+			}else{
+				$arrResponse = array('status' => false, 'msg' => 'Error al eliminar');
+			}
+			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+		}
+		die();
+	}
 	// delete site
 	public function delSite(){
 		if($_POST){

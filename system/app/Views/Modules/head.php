@@ -21,22 +21,22 @@
 		<ul class="">
 			<li class="">
 				<a href="#">
-					<span class="iconImg"><img src="./src/images/favicon.png" alt=""></span>
+					<span class="iconImg"><img src="<?= IMG?>favicon.png" alt=""></span>
 					<span class="">
 						<h2 class="title-user">William Enrique</h2>
 					</span>
 				</a>
 			</li>
 			<li class="dashboard">
-				<a href="#">
+				<a href="<?= base_url()?>">
 					<span class="icon"><i class="fa-solid fa-house"></i></span>
 					<span class="title">Dashboard</span>
 				</a>
 			</li>
-			<li class="">
-				<a href="#">
+			<li class="site">
+				<a href="<?= base_url()?>site">
 					<span class="icon"><i class="fa-solid fa-users"></i></span>
-					<span class="title">Customers</span>
+					<span class="title">Sitios web</span>
 				</a>
 			</li>
 			<li class="">

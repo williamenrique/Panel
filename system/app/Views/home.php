@@ -6,8 +6,10 @@ head($data);
 			<div class="cardBox">
 				<div class="card">
 					<div>
-						<div class="numbers">1,042</div>
-						<div class="cardName">Daily Views</div>
+						<div class="numbers">0</div>
+						<div class="cardName">
+							<a href="<?= base_url()?>/site">Ver resumen</a>
+						</div>
 					</div>
 					<div class="iconBox">
 						<i class="fa-solid fa-eye"></i>
@@ -16,7 +18,7 @@ head($data);
 
 				<div class="card">
 					<div>
-						<div class="numbers">1,042</div>
+						<div class="numbers">0</div>
 						<div class="cardName">Daily Views</div>
 					</div>
 					<div class="iconBox">
@@ -45,15 +47,12 @@ head($data);
 				</div>
 			</div>
 
-			<div class="details">
+			<!-- <div class="details">
 				<div class="recentOrders">
 					<div class="cardHeader">
 						<h2>Tus sitios</h2>
-						<!-- <a href="#" class="btn">View All</a> -->
 					</div>
-					<table class="listSitios">
-						
-					</table>
+					
 				</div>
 				<div class="addSites">
 					<div class="cardHeader">
@@ -85,7 +84,7 @@ head($data);
 						</div>
 					</form>
 				</div>
-			</div>
+			</div> -->
 		</div>
 
 <?php footer($data) ?>

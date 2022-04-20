@@ -6,7 +6,22 @@ head($data);
 	<div class="details-site">
 		<div class="cont-table">
 			<div class="cardHeader">
-				<h2>Tus sitios</h2>
+				<div class="header">
+					<h2>Tus sitios</h2>
+					<div class="box-filter">
+						<div class="box-search">
+							<input type="text" name="searchSite" id="searchSite">
+						</div>
+						<div class="box-priority">
+							<input type="radio" name="prioridad" id="importante" value="1">
+							<label for="importante">Importantes</label>
+							<input type="radio" name="prioridad" id="poco" value="2">
+							<label for="poco">Poco Uso</label>
+							<input type="radio" name="prioridad" id="deshabilitado" value="0">
+							<label for="deshabilitado">Deshabilitados</label>
+						</div>
+					</div>
+				</div>
 				<div class="box-table listSitios">
 				
 				</div>

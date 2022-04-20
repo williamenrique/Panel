@@ -11,7 +11,10 @@ class SiteModel extends Mysql {
 		parent::__construct();
 	}
 	public function getSitios(){
+		// $this->strSitio = $strSitio;
+		// $this->status = $status;
 		$sql = "SELECT * FROM table_sitio WHERE status != 0 LIMIT 10";
+		// $sql = "SELECT * FROM table_sitio WHERE sitio LIKE '%$this->strSitio%' AND status = $this->status";
 		$request = $this->select_all($sql);
 		return $request;
 	}

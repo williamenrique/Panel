@@ -118,6 +118,10 @@ body{
 			}
 		}
 	}
+}
+
+// parte del main topbar
+.container-main{
 	.main{
 		position: absolute;
 		width: $topbar;
@@ -199,8 +203,13 @@ body{
 				}
 			}
 		}
+	}
+}
+// parte del content-box
+.container-main{
+	.main{
 		.container-box{
-			width: 95%;
+			width: 98%;
 			margin: 120px auto;
 			.cardBox{
 				position: relative;
@@ -224,6 +233,10 @@ body{
 					}
 					.cardName{
 						color: $darkLigthText;
+						a{
+							text-decoration: none;	
+							color: $darkLigthText;
+						}
 					}
 					.iconBox{
 						font-size: 2.2em;
@@ -261,92 +274,6 @@ body{
 							text-decoration: none;
 							padding: 5px 10px;
 							border-radius: 6px;
-						}
-					}
-					table{
-						width: 100%;
-						border-collapse: collapse;
-						margin-top: 10px;
-						.alert-table{
-							border: 1px solid;
-							width: 100%;
-							padding: 10px 0;
-							margin-top: 20px;
-							text-align: center;
-							color: $fondoDark;
-							font-size: 1.3em;
-							border-radius: 4px;
-						}
-						tr{
-							border-bottom: 1px solid  $darkLigthText;
-						}
-						thead{
-							tr{
-								td{
-									font-weight: 600;
-									padding: 8px;
-									&:last-child{
-										// text-align: right;
-									}
-									&:nth-child(2){
-										// text-align: right;
-										padding-right: 20px;
-									}
-									&:nth-child(4){
-										text-align: center;
-									}
-								}
-							}
-						}
-						tbody{
-							tr{
-								border-bottom: 1px solid rgba($color :$darkText, $alpha: 0.3);
-								color: $darkText;
-								&:last-child{
-									border-bottom: none;
-								}
-								&:hover{
-									background-color: rgba($color: $darkLigthText, $alpha: .1);
-									// color: $white;
-									cursor: pointer;
-								}
-								td{
-									padding: 8px;
-									&:last-child{
-										// text-align: right;
-									}
-									&:nth-child(2){
-										// text-align: right;
-										// padding-right: 20px;
-									}
-									&:nth-child(4){
-										text-align: center;
-									}
-									a{
-										text-decoration: none;
-										color: $darkText;
-									}
-									.icon-action{
-										display: flex;
-										justify-content: space-evenly;
-										font-size: 1.2em;
-										.fa-pencil{
-											&:hover{
-												color: $yellow;
-											}
-										}
-										.fa-trash-can{
-											&:hover{
-												color: $red;
-											}
-										}
-									}
-								}
-							}
-							.status{
-								position: relative;
-								padding: 2px 4px;
-							}
 						}
 					}
 				}
@@ -419,6 +346,15 @@ body{
 					}
 				}
 			}
+
+		}
+	}
+}
+
+// sitio
+.container-main{
+	.main{
+		.container-box{
 			.details-site{
 				position: relative;
 				width: 100%;
@@ -434,13 +370,32 @@ body{
 						border-radius: 4px;
 						padding: 20px;
 						margin-bottom: 10px;
-						h2{
-							font-size: 1.2em;
+						.header{
+							display: flex;
+							justify-content: space-between;
+							h2{
+								font-size: 1.2em;
+							}
+							.box-filter{
+								// width: 50%;
+								border: 1px solid;
+							}
 						}
 						.box-table{
 							margin-top: 20px;
 							display: grid;
 							grid-template-columns: 30% 40% 20% 10%;
+							// overflow-y: auto;
+							// overflow-x: auto;
+							.alert-table{
+								text-align: center;
+								grid-column-start: 1;
+								grid-column-end: 5;
+								margin-top: 30px;
+								padding: 10px;
+								font-size: 1.2em;
+								color: $fondoDark;
+							}
 							.table__header{
 								padding: 5px 0px;
 								border-bottom: 1px solid rgba($color: $darkLigthText, $alpha: .1);
@@ -466,6 +421,7 @@ body{
 									}
 								}
 							}
+							
 						}
 					}
 				}
@@ -540,6 +496,8 @@ body{
 	}
 }
 
+
+// table
 table{
 	width: 100%;
 	border-collapse: collapse;
