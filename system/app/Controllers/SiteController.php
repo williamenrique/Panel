@@ -19,7 +19,7 @@ class Site extends Controllers{
 		$data['page_function'] = "function.site.js";
 		$this->views->getViews($this, "site", $data);
 	}
-
+	// obtener todos los sitios
 	public function getSitios(){
 		$arrData = $this->model->getSitios();
 		$htmlOptions = "";
@@ -49,7 +49,6 @@ class Site extends Controllers{
 		echo $htmlOptions;
 		die();
 	}
-	
 	// function agregar sitios
 	public function setSitios(){
 		$strUsuario = strClean($_POST['txtUser']);
@@ -78,7 +77,7 @@ class Site extends Controllers{
 		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
-
+	// obtener sitios pos stadus y sitio
 	public function getSites(){
 		$intSite = $_GET['intSite'];
 		$strSite = $_GET['strSite'];
@@ -127,7 +126,6 @@ class Site extends Controllers{
 		}
 		die();
 	}
-
 	// edit site
 	public function getSite(int $intSite){
 		$intSite = intval($intSite);
@@ -146,7 +144,7 @@ class Site extends Controllers{
 		}
 		die();
 	}
-
+	// actualizar sitio
 	public function updateSite(){
 		if($_POST){
 			$strUsuario = strClean($_POST['txtUser']);

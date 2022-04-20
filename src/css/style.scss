@@ -404,6 +404,10 @@ body{
 								padding: 5px 0;
 								font-size: .9em;
 								border-bottom: 1px solid rgba($color: $darkLigthText, $alpha: .7);
+								a{
+									color: $fondoDark;
+									text-decoration: none;
+								}
 							}
 							.accion{
 								display: flex;

@@ -23,7 +23,6 @@ function getStitios() {
 		}
 	}
 }
-
 // agregar nuevo sitio
 let addSite = document.querySelector('.btn-addSite')
 let formSiteAdd = document.querySelector('.formSiteAdd')
@@ -173,7 +172,6 @@ function getSitesd(intSite, strSite) {
 			document.querySelector('.listSitios').innerHTML = request.responseText;
 		}
 }
-
 getSites = (intSite, strSite) => {
 	var intSite = intSite;
 	var strSite = strSite;
@@ -196,7 +194,6 @@ $('input[type=radio]').change(function () {
 	let intSite = $('input:radio[name=prioridad]:checked').val()
 	getSites(intSite, strSite)
 })
-
 let strSite = document.querySelector('#searchSite')
 strSite.addEventListener('keyup', () => {
 	let strSite = document.querySelector('#searchSite').value

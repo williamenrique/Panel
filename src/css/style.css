@@ -440,6 +440,11 @@ body {
   border-bottom: 1px solid rgba(154, 158, 161, 0.7);
 }
 
+.container-main .main .container-box .details-site .cont-table .cardHeader .box-table .table__item a {
+  color: #003147;
+  text-decoration: none;
+}
+
 .container-main .main .container-box .details-site .cont-table .cardHeader .box-table .accion {
   display: flex;
   justify-content: space-evenly;
