@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-	getStitios()
+	// getStitios()
+	getSites()
 }, false)
 
 function getStitios() {
@@ -78,6 +79,7 @@ updateSite.addEventListener('click', () => {
 		}
 	}
 })
+// eliminar sitio
 function delSite(intSite) {
 	//obtenemos el valor del atributo individual
 	var intSite = intSite;
@@ -129,6 +131,7 @@ function delSite(intSite) {
 		}
 	})
 }
+// editar sitio
 function editSite(intSite) {
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 	let ajaxUrl = base_url + 'Site/getSite/' + intSite
@@ -157,24 +160,17 @@ function editSite(intSite) {
 		}
 	}
 }
-function getSitesd(intSite, strSite) {
-	var intSite = intSite;
-	var strSite = strSite;
-	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	let ajaxUrl = base_url + 'Site/getSites/?intSite='+intSite+'&strSite='+strSite
-	
-	request.open("POST", ajaxUrl, true)
-	//forma en como se enviara
-	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-	//enviamos
-	request.send()
-	if (request.readyState == 4 && request.status == 200) {
-			document.querySelector('.listSitios').innerHTML = request.responseText;
-		}
-}
-getSites = (intSite, strSite) => {
-	var intSite = intSite;
-	var strSite = strSite;
+// obtener sitios con status y sitio
+// let strSite = document.querySelector('#searchSite').value
+let intSite = $('input:radio[name=prioridad]:checked').val()
+const getSites = (intSite, strSite) => {
+	if (intSite == "" || strSite == "") {
+		var intSite = 1;
+		var strSite = '';
+	} else {
+		var intSite = intSite;
+		var strSite = strSite;
+	}
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 	let ajaxUrl = base_url + 'Site/getSites/?intSite='+intSite+'&strSite='+strSite
 	
@@ -189,11 +185,13 @@ getSites = (intSite, strSite) => {
 		}
 	}
 }
+// obtener el valor del status
 $('input[type=radio]').change(function () {
 	let strSite = document.querySelector('#searchSite').value
 	let intSite = $('input:radio[name=prioridad]:checked').val()
 	getSites(intSite, strSite)
 })
+// obtener el valo de la caja de busqueda
 let strSite = document.querySelector('#searchSite')
 strSite.addEventListener('keyup', () => {
 	let strSite = document.querySelector('#searchSite').value
