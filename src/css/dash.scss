@@ -1,12 +1,15 @@
-$fondoLigth : rgb(245, 247, 255);
-$fondoDark : rgb(17, 24, 39);
 $textWhite : rgb(255, 255, 255);
-$blueLigth : rgb(75, 73, 172);
-$fondoMedio : #192a56;
-$danger : rgb(255, 71, 71);
-$warning : rgb(255, 193, 0);
 $textLigth : rgb(193, 193, 193);
 $textDark : rgb(52, 58, 64);
+$textDarkLight : rgba($color : $textDark , $alpha : .5);
+$fondoLigth : rgb(245, 247, 255);
+$fondoDark : rgb(17, 24, 39);
+$primary-color : #1B1464;
+$fondoMiddle : #192a56;
+$blueLigth : rgb(75, 73, 172);
+$hoverligth : rgba($color : $fondoMiddle, $alpha : .7);
+$danger : #eb2f06;
+$warning : rgb(255, 193, 0);
 $black : rgb(40, 47, 58);
 $anchoF : 225px;
 $ancho : calc(100% - 225px);
@@ -162,7 +165,7 @@ body{
 				.card-body{
 					.text-card{
 						font-size: 1.2em;
-						color: $fondoMedio;
+						color: $fondoMiddle;
 						text-decoration: none;
 						transition: .5s;
 						cursor: pointer;
@@ -171,7 +174,7 @@ body{
 							margin-right: 4px;
 						}
 						&:hover{
-							color: rgba($color: $fondoMedio, $alpha: .7);
+							color: rgba($color: $fondoMiddle, $alpha: .7);
 						}
 					}
 				}
@@ -186,14 +189,72 @@ body{
 				padding: 20px;
 				background: $textWhite;
 				border-radius: 4px;
+				.title-header{
+					font-size: 1.5em;
+					text-transform: capitalize;
+					color: $fondoMiddle;
+				}
+				.header-tools{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+					margin-top: 20px;
+					padding: 10px 0;
+					border: 1px solid;
+					.tools{
+						.radio{
+							font-size: 14px;
+							font-weight: 500;
+							text-transform: capitalize;
+							display: inline-block;
+							vertical-align: middle;
+							position: relative;
+							padding-left: 30px;
+							cursor: pointer;
+							&+.radio{
+								margin-left: 20px;
+							}
+							input[type="radio"]{
+								display: none;
+								&:checked ~ span{
+									&::after{
+										transform: translate(-50% , -50%) scale(1);
+									}
+								}
+							}
+							span{
+								width: 16px;
+								height: 16px;
+								border-radius: 50%;
+								border: 3px solid $primary-color;
+								display: block;
+								position: absolute;
+								top: 0;
+								left: 7px;
+								&::after{
+									content: "";
+									width: 5px;
+									height: 5px;
+									background: $primary-color;
+									display: block;
+									position: absolute;
+									left: 50%;
+									top: 50%;
+									transform: translate(-50% , -50%) scale(0);
+									border-radius: 50%;
+									transition: 300ms ease-in-out 0s;
+								}
+							}
+						}
+					}
+				}
 				.table{
 					width: 100%;
 					border-collapse: collapse;
 					margin: 0;
 					padding: 0;
 					margin-top: 20px;
-					// table-layout: fixed;
-					// border: 1px solid;
 					thead{
 						tr{
 							text-align: left;
@@ -202,7 +263,7 @@ body{
 					th{
 						font-size: 1.3em;
 						padding: 10px;
-						color: $fondoMedio;
+						color: $fondoMiddle;
 						text-transform: uppercase;
 					}
 					td{
@@ -214,7 +275,7 @@ body{
 					}
 					tbody{
 						tr{
-							border-bottom: 1px solid rgba($color: $fondoMedio ,$alpha: .7);
+							border-bottom: 1px solid rgba($color: $fondoMiddle ,$alpha: .7);
 							font-size: 1.1em;
 							&:hover{
 								background: rgba($color: $textLigth, $alpha: .4);
@@ -236,28 +297,94 @@ body{
 									}
 								}
 							}
+							&:nth-child(even){
+								background: rgba($color: $textLigth, $alpha: .4);
+							}
 						}
 
 						td{
 							&:hover{
-								background: $fondoMedio;
-								color: $textWhite;
+								background: rgba($color: $textLigth, $alpha: .4);
+
 							}
 							
 						}
 					}
 				}
 			}
-			.cont-form{
+			.cont-addSites{
 				width: 300px;
-				padding: 20px;
-				background: $textWhite;
-				border-radius: 4px;
+				.cardHeader{
+					background: $textWhite;
+					width: 100%;
+					border-radius: 4px;
+					padding: 20px;
+					margin-bottom: 10px;
+					h2{
+						font-size: 1.2em;
+					}
+					.formSiteAdd{
+						margin-top: 30px;
+						background: $textWhite;
+						.box-input{
+							position: relative;
+							width: 100%;
+							label{
+								position: absolute;
+								top: 10px;
+								left: 5px;
+								.fa-solid{
+									color: $textDarkLight	;
+									font-size: 1.2em;
+								}
+							}
+							input{
+								width: 100%;
+								margin-bottom: 5px;
+								border: none;
+								outline: none;
+								border: 1px solid $textDark;
+								border-radius: 4px;
+								padding: 6px 0;
+								padding-left: 30px;
+								color: $textDark;
+								font-size: 1em;
+							}
+						}
+						.box-button{
+							.btn-addSite{
+								background-color: $fondoMiddle;
+								&:hover{
+									background: rgba($color: $fondoMiddle, $alpha: .8);
+								}
+							}
+							.btn-updateSite{
+								display: none;
+								background: #1B1464;
+								&:hover{
+									background: rgba($color :#1B1464, $alpha: 0.8);
+								}
+							}
+							.btn{
+								position: relative;
+								padding: 5px 10px;
+								color: $textWhite;
+								border: none;
+								padding: 6px 12px;
+								border-radius: 6px;
+								cursor: pointer;
+								transition: .5s;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
 }
-
+// .radio + .radio{
+// 	margin-left: 20px;
+// }
 .container-main{
 	.navigation.active{
 		left: -220px;
@@ -306,46 +433,45 @@ body{
 		}
 	}
 }
-@media (max-width :600px){
-.container-main{
-	.container{
-		.box-cont{
-			.cont-table{
-				.table{
-					thead{
-						display: none;
-					}
-					tbody{
-						tr{
-							margin-bottom: 15px;
-							background: rgba($color: $textLigth, $alpha: .4);
-							border-radius: 4px;
-							box-shadow: 0px 6px 11px -2px rgba($color: $fondoMedio, $alpha: .7);
-							display: block;
-							td{
-								display: block;
-								text-align: right;
-								// border-bottom: 1px solid rgba($color: $fondoMedio, $alpha: .7);
-								&:last-child{
-									border-bottom: 0px;
-									width: 100%;
-									text-align: right;
-								}
-								&::before{
-									content: attr(data-label);
-									text-transform: uppercase;
-									font-weight: bold;
-									float: left;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
-}
+// @media (max-width :600px){
+// .container-main{
+// 	.container{
+// 		.box-cont{
+// 			.cont-table{
+// 				.table{
+// 					thead{
+// 						display: none;
+// 					}
+// 					tbody{
+// 						tr{
+// 							margin-bottom: 15px;
+// 							background: rgba($color: $textLigth, $alpha: .4);
+// 							border-radius: 4px;
+// 							box-shadow: 0px 6px 11px -2px rgba($color: $fondoMiddle, $alpha: .7);
+// 							display: block;
+// 							td{
+// 								display: block;
+// 								text-align: right;
+// 								&:last-child{
+// 									border-bottom: 0px;
+// 									width: 100%;
+// 									text-align: right;
+// 								}
+// 								&::before{
+// 									content: attr(data-label);
+// 									text-transform: uppercase;
+// 									font-weight: bold;
+// 									float: left;
+// 								}
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+// }
 @media (max-width : 550px){
 	.container-main{
 		.navigation{

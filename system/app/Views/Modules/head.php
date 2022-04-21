@@ -27,7 +27,7 @@
 					<nav class="nav">
 						<ul class="list">
 							<li class="list__item ">
-								<a href="#" class="nav__link active">
+								<a href="#" class="nav__link">
 									<i class="fa-solid fa-house icon"></i>
 									Inicio</a>
 							</li>
@@ -66,7 +66,7 @@
 							</li>-->
 							<!-- item solo -->
 							<li class="list__item">
-								<a href="#" class="nav__link">
+								<a href="#" class="nav__link active">
 									<i class="fa-solid fa-globe icon"></i>
 									Sitios web</a>
 							</li>

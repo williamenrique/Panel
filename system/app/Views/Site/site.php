@@ -13,171 +13,30 @@
 		</div>
 	</div>
 	<!-- contenido  -->
-	<div class="datatable-container">
-		<div class="header-tools">
-			<div class="tools">
-				<ul>
-					<li><span><input type="checkbox"></span></li>
-					<li>
-						<button type="button">
-							<i class="material-icons">add_circle</i>
-						</button>
-					</li>
-					<li>
-						<button type="button">
-							<i class="material-icons">edit</i>
-						</button>
-					</li>
-					<li>
-						<button type="button">
-							<i class="material-icons">delete</i>
-						</button>
-					</li>
-				</ul>
-			</div>
-			<div class="search">
-				<input type="text" class="search-input">
-			</div>
-		</div>
-		<table class="datatable">
-			<thead>
-				<tr>
-					<th></th>
-					<th>Status</th>
-					<th>Sitio</th>
-					<th>Usuario</th>
-					<th>Password</th>
-					<th>Opciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="table-checkbox">
-						<input type="checkbox" name="" id="">
-					</td>
-					<td><span class="available"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
 
-				<tr>
-					<td class="table-checkbox">
-						<input type="checkbox" name="" id="">
-					</td>
-					<td><span class="available"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
-
-				<tr>
-					<td class="table-checkbox">
-						<input type="checkbox" name="" id="">
-					</td>
-					<td><span class="await"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
-
-				<tr>
-					<td class="table-checkbox">
-						<input type="checkbox" name="" id="">
-					</td>
-					<td><span class="offline"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="footer-tools"></div>
-	</div>
-
-	<div class="datatable-container">
-		<div class="header-tools">
-			<div class="tools">
-				<ul>
-					<li>
-						<button type="button">
-							<i class="material-icons">add_circle</i>
-						</button>
-					</li>
-					<li>
-						<button type="button">
-							<i class="material-icons">edit</i>
-						</button>
-					</li>
-					<li>
-						<button type="button">
-							<i class="material-icons">delete</i>
-						</button>
-					</li>
-				</ul>
-			</div>
-			<div class="search">
-				<input type="text" class="search-input">
-			</div>
-		</div>
-		<table class="datatable">
-			<thead>
-				<tr>
-					<th>Status</th>
-					<th>Sitio</th>
-					<th>Usuario</th>
-					<th>Password</th>
-					<th>Opciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-
-					<td><span class="available"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
-
-				<tr>
-
-					<td><span class="available"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
-
-				<tr>
-
-					<td><span class="await"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
-
-				<tr>
-
-					<td><span class="offline"></span></td>
-					<td>Facebook</td>
-					<td>williamenriqe</td>
-					<td>naca2105</td>
-					<td>d</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="footer-tools"></div>
-	</div>
 	
 	<div class="box-cont">
 		<div class="cont-table">
-			<h2>aqui la tabla</h2>
+			<p class="title-header">sitios web</p>
+			<div class="header-tools">
+				<div class="tools">
+					<label class="radio" for="importante">
+						<input type="radio" name="prioridad" id="importante" value="1" checked>
+						<span></span>
+						Importantes
+					</label>
+					<label class="radio" for="poco">
+						<input type="radio" name="prioridad" id="poco" value="2">
+						<span></span>
+						Poco Uso
+					</label>
+					
+				
+				</div>
+				<div class="search">
+					<input type="text" class="search-input">
+				</div>
+			</div>
 			<table class="table">
 				<thead>
 					<tr>
@@ -224,8 +83,34 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="cont-form">
-			<h2>aqui el formulario</h2>
+		<div class="cont-addSites">
+			<div class="cardHeader">
+				<h2>Agregar Sitio</h2>
+				<form  class="formSiteAdd">
+					<input type="hidden" name="txtIntSite" id="txtIntSite">
+					<div class="box-input">
+						<label for=""><i class="fa-solid fa-globe"></i></label>
+						<input id="txtSite" name="txtSite" type="text" placeholder="Nombre del sitio web">
+					</div>
+					<div class="box-input">
+						<label for=""><i class="fa-solid fa-anchor"></i></label>
+						<input id="txtUrl" name="txtUrl" type="text" placeholder="URL del sitio"></div>
+					<div class="box-input">
+						<label for=""><i class="fa-solid fa-user"></i></label>
+						<input id="txtUser" name="txtUser" type="text" placeholder="Usuario registrado"></div>
+					<div class="box-input">
+						<label for=""><i class="fa-solid fa-lock"></i></label>
+						<input id="txtPass" name="txtPass" type="text" placeholder="Password para ingreso"></div>
+					<div class="box-button">
+						<button type="button" class="btn btn-addSite"><i class="fa-solid fa-plus"></i>
+						Agregar
+					</button>
+					<button type="button" class="btn btn-updateSite"><i class="fa-solid fa-arrows-spin"></i>
+						actualizar
+					</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </div>

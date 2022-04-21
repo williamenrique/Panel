@@ -143,7 +143,7 @@ body {
 }
 
 .container-main .box-main .topbar .box-menu .toggle:hover {
-  color: #ff4747;
+  color: #eb2f06;
 }
 
 .container-main .box-main .topbar .info-user {
@@ -200,6 +200,70 @@ body {
   border-radius: 4px;
 }
 
+.container-main .container .box-cont .cont-table .title-header {
+  font-size: 1.5em;
+  text-transform: capitalize;
+  color: #192a56;
+}
+
+.container-main .container .box-cont .cont-table .header-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px 0;
+  border: 1px solid;
+}
+
+.container-main .container .box-cont .cont-table .header-tools .tools .radio {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.container-main .container .box-cont .cont-table .header-tools .tools .radio + .radio {
+  margin-left: 20px;
+}
+
+.container-main .container .box-cont .cont-table .header-tools .tools .radio input[type="radio"] {
+  display: none;
+}
+
+.container-main .container .box-cont .cont-table .header-tools .tools .radio input[type="radio"]:checked ~ span::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.container-main .container .box-cont .cont-table .header-tools .tools .radio span {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #1B1464;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 7px;
+}
+
+.container-main .container .box-cont .cont-table .header-tools .tools .radio span::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #1B1464;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: 300ms ease-in-out 0s;
+}
+
 .container-main .container .box-cont .cont-table .table {
   width: 100%;
   border-collapse: collapse;
@@ -247,23 +311,97 @@ body {
 }
 
 .container-main .container .box-cont .cont-table .table tbody tr .opciones .box-options .del:hover {
-  color: #ff4747;
+  color: #eb2f06;
 }
 
 .container-main .container .box-cont .cont-table .table tbody tr .opciones .box-options .update:hover {
   color: #ffc100;
 }
 
-.container-main .container .box-cont .cont-table .table tbody td:hover {
-  background: #192a56;
-  color: white;
+.container-main .container .box-cont .cont-table .table tbody tr:nth-child(even) {
+  background: rgba(193, 193, 193, 0.4);
 }
 
-.container-main .container .box-cont .cont-form {
+.container-main .container .box-cont .cont-table .table tbody td:hover {
+  background: rgba(193, 193, 193, 0.4);
+}
+
+.container-main .container .box-cont .cont-addSites {
   width: 300px;
-  padding: 20px;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader {
   background: white;
+  width: 100%;
   border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader h2 {
+  font-size: 1.2em;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd {
+  margin-top: 30px;
+  background: white;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input {
+  position: relative;
+  width: 100%;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input label {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input label .fa-solid {
+  color: rgba(52, 58, 64, 0.5);
+  font-size: 1.2em;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input input {
+  width: 100%;
+  margin-bottom: 5px;
+  border: none;
+  outline: none;
+  border: 1px solid #343a40;
+  border-radius: 4px;
+  padding: 6px 0;
+  padding-left: 30px;
+  color: #343a40;
+  font-size: 1em;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-addSite {
+  background-color: #192a56;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-addSite:hover {
+  background: rgba(25, 42, 86, 0.8);
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite {
+  display: none;
+  background: #1B1464;
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
+  background: rgba(27, 20, 100, 0.8);
+}
+
+.container-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn {
+  position: relative;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: .5s;
 }
 
 .container-main .navigation.active {
@@ -308,34 +446,6 @@ body {
 @media (max-width: 780px) {
   .container .box-cont {
     flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 600px) {
-  .container-main .container .box-cont .cont-table .table thead {
-    display: none;
-  }
-  .container-main .container .box-cont .cont-table .table tbody tr {
-    margin-bottom: 15px;
-    background: rgba(193, 193, 193, 0.4);
-    border-radius: 4px;
-    box-shadow: 0px 6px 11px -2px rgba(25, 42, 86, 0.7);
-    display: block;
-  }
-  .container-main .container .box-cont .cont-table .table tbody tr td {
-    display: block;
-    text-align: right;
-  }
-  .container-main .container .box-cont .cont-table .table tbody tr td:last-child {
-    border-bottom: 0px;
-    width: 100%;
-    text-align: right;
-  }
-  .container-main .container .box-cont .cont-table .table tbody tr td::before {
-    content: attr(data-label);
-    text-transform: uppercase;
-    font-weight: bold;
-    float: left;
   }
 }
 
