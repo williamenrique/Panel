@@ -16,7 +16,7 @@ class Site extends Controllers{
 		$data['page_title'] = "Pagina Principal";
 		$data['page_name'] = "site";
 		$data['page_link'] = "site";
-		$data['page_function'] = "function.site.js";
+		$data['page_function'] = "site.js";
 		$this->views->getViews($this, "site", $data);
 	}
 	// obtener todos los sitios

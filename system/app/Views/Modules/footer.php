@@ -1,5 +1,9 @@
+		<!-- cierre del box-main -->
+		</div>
+		<!-- cierre del container-main -->
 	</div>
-</div>
+
+
 	<script>
 		let page_link = "<?= $data['page_link']?>";
 		if (document.querySelector("." + page_link)) {
@@ -14,7 +18,7 @@
 	<script src="<?= PLUGINS?>sweetalert/sweetalert2@10.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="<?= JS.$data['page_function']?>"></script>
-	<script src="<?= JS?>function.main.js"></script>
+	<!-- <script src="<?= JS?>function.main.js"></script> -->
 </body>
 
 </html>
