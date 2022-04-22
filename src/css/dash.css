@@ -16,12 +16,6 @@ body {
   margin: 100px auto;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 20px;
-}
-
 .container-main {
   position: relative;
 }
