@@ -215,10 +215,13 @@ body{
 .container-main{
 	.box-main{
 		.box-cont{
-			display: flex;
+			// display: flex;
+			display: grid;
+			grid-template-columns: repeat(12,1fr);
 			gap: 10px;
 			.cont-table{
-				width: 100%;
+				// width: 100%;
+				grid-column: 1 / 10;
 				padding: 20px;
 				background: $white-color;
 				border-radius: 4px;
@@ -346,7 +349,8 @@ body{
 				}
 			}
 			.cont-addSites{
-				width: 300px;
+				// width: 300px;
+				grid-column: 10 / -1;
 				.cardHeader{
 					background: $white-color;
 					width: 100%;
@@ -430,6 +434,9 @@ body{
 		}
 	}
 }
+
+
+
 @media (max-width : 992px){
 	.container-main{
 		.navigation{
@@ -452,6 +459,15 @@ body{
 				&.active{
 					left: 220px;
 					width: calc(100% - 220px);
+				}
+			}
+			.box-cont{
+				.cont-table{
+					grid-column: 1 / -1;
+					
+				}
+				.cont-addSites{
+					grid-column: 1 / 6;
 				}
 			}
 		}
@@ -547,6 +563,16 @@ body{
 				&.active{
 					left: 220px;
 					width: calc(100% - 220px);
+				}
+			}
+			.box-cont{
+				.cont-table{
+					grid-column: 1 / -1;
+					overflow-x: scroll;
+					
+				}
+				.cont-addSites{
+					grid-column: 1 / -1;
 				}
 			}
 		}

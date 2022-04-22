@@ -190,12 +190,13 @@ body {
 }
 
 .container-main .box-main .box-cont {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   gap: 10px;
 }
 
 .container-main .box-main .box-cont .cont-table {
-  width: 100%;
+  grid-column: 1 / 10;
   padding: 20px;
   background: #fefefe;
   border-radius: 4px;
@@ -328,7 +329,7 @@ body {
 }
 
 .container-main .box-main .box-cont .cont-addSites {
-  width: 300px;
+  grid-column: 10 / -1;
 }
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader {
@@ -442,6 +443,12 @@ body {
     left: 220px;
     width: calc(100% - 220px);
   }
+  .container-main .box-main .box-cont .cont-table {
+    grid-column: 1 / -1;
+  }
+  .container-main .box-main .box-cont .cont-addSites {
+    grid-column: 1 / 6;
+  }
 }
 
 @media (max-width: 780px) {
@@ -493,6 +500,13 @@ body {
   .container-main .box-main .topbar.active {
     left: 220px;
     width: calc(100% - 220px);
+  }
+  .container-main .box-main .box-cont .cont-table {
+    grid-column: 1 / -1;
+    overflow-x: scroll;
+  }
+  .container-main .box-main .box-cont .cont-addSites {
+    grid-column: 1 / -1;
   }
 }
 /*# sourceMappingURL=dash.css.map */
