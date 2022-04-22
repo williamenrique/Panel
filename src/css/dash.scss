@@ -24,9 +24,12 @@ body{
 	font-size: 14px;
 	font-family: 'Poppins', sans-serif;
 }
-
+// navegacion
 .container-main{
 	position: relative;
+	.arrow .list__arrow{
+		transform: rotate(90deg);
+	}
 	.navigation{
 		position: fixed;
 		left: 0;
@@ -108,9 +111,9 @@ body{
 			}
 		}
 	}
-	.arrow .list__arrow{
-		transform: rotate(90deg);
-	}
+}
+// topbar
+.container-main{
 	.box-main{
 		position: absolute;
 		left: 220px;
@@ -152,228 +155,232 @@ body{
 			}
 		}
 	}
-	.container{
-		width: 96%;
-		margin: 100px auto;
-		.box-card{
-			margin-bottom: 20px;
-			.card{
-				width: 250px;
-				padding: 20px;
-				background: $warning;
-				border-radius: 4px;
-				.card-body{
-					.text-card{
-						font-size: 1.2em;
-						color: $fondoMiddle;
-						text-decoration: none;
-						transition: .5s;
-						cursor: pointer;
-						.numbers{
-							font-size: 1.3em;
-							margin-right: 4px;
-						}
-						&:hover{
-							color: rgba($color: $fondoMiddle, $alpha: .7);
+}
+.container-main{
+	.box-main{
+		.container{
+			width: 96%;
+			margin: 100px auto;
+			.box-card{
+				margin-bottom: 20px;
+				.card{
+					width: 250px;
+					padding: 20px;
+					background: $warning;
+					border-radius: 4px;
+					.card-body{
+						.text-card{
+							font-size: 1.2em;
+							color: $fondoMiddle;
+							text-decoration: none;
+							transition: .5s;
+							cursor: pointer;
+							.numbers{
+								font-size: 1.3em;
+								margin-right: 4px;
+							}
+							&:hover{
+								color: rgba($color: $fondoMiddle, $alpha: .7);
+							}
 						}
 					}
 				}
 			}
-		}
-		// contenido
-		.box-cont{
-			display: flex;
-			gap: 10px;
-			.cont-table{
-				width: 100%;
-				padding: 20px;
-				background: $textWhite;
-				border-radius: 4px;
-				.title-header{
-					font-size: 1.5em;
-					text-transform: capitalize;
-					color: $fondoMiddle;
-				}
-				.header-tools{
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
+			// contenido
+			.box-cont{
+				display: flex;
+				gap: 10px;
+				.cont-table{
 					width: 100%;
-					margin-top: 20px;
-					padding: 10px 0;
-					border: 1px solid;
-					.tools{
-						.radio{
-							font-size: 14px;
-							font-weight: 500;
-							text-transform: capitalize;
-							display: inline-block;
-							vertical-align: middle;
-							position: relative;
-							padding-left: 30px;
-							cursor: pointer;
-							&+.radio{
-								margin-left: 20px;
-							}
-							input[type="radio"]{
-								display: none;
-								&:checked ~ span{
-									&::after{
-										transform: translate(-50% , -50%) scale(1);
+					padding: 20px;
+					background: $textWhite;
+					border-radius: 4px;
+					.title-header{
+						font-size: 1.5em;
+						text-transform: capitalize;
+						color: $fondoMiddle;
+					}
+					.header-tools{
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						width: 100%;
+						margin-top: 20px;
+						padding: 10px 0;
+						border: 1px solid;
+						.tools{
+							.radio{
+								font-size: 14px;
+								font-weight: 500;
+								text-transform: capitalize;
+								display: inline-block;
+								vertical-align: middle;
+								position: relative;
+								padding-left: 30px;
+								cursor: pointer;
+								&+.radio{
+									margin-left: 20px;
+								}
+								input[type="radio"]{
+									display: none;
+									&:checked ~ span{
+										&::after{
+											transform: translate(-50% , -50%) scale(1);
+										}
 									}
 								}
-							}
-							span{
-								width: 16px;
-								height: 16px;
-								border-radius: 50%;
-								border: 3px solid $primary-color;
-								display: block;
-								position: absolute;
-								top: 0;
-								left: 7px;
-								&::after{
-									content: "";
-									width: 5px;
-									height: 5px;
-									background: $primary-color;
+								span{
+									width: 16px;
+									height: 16px;
+									border-radius: 50%;
+									border: 3px solid $primary-color;
 									display: block;
 									position: absolute;
-									left: 50%;
-									top: 50%;
-									transform: translate(-50% , -50%) scale(0);
-									border-radius: 50%;
-									transition: 300ms ease-in-out 0s;
-								}
-							}
-						}
-					}
-				}
-				.table{
-					width: 100%;
-					border-collapse: collapse;
-					margin: 0;
-					padding: 0;
-					margin-top: 20px;
-					thead{
-						tr{
-							text-align: left;
-						}
-					}
-					th{
-						font-size: 1.3em;
-						padding: 10px;
-						color: $fondoMiddle;
-						text-transform: uppercase;
-					}
-					td{
-						padding: 8px;
-						&:last-child{
-							width: 10px;
-							text-align: center;
-						}
-					}
-					tbody{
-						tr{
-							border-bottom: 1px solid rgba($color: $fondoMiddle ,$alpha: .7);
-							font-size: 1.1em;
-							&:hover{
-								background: rgba($color: $textLigth, $alpha: .4);
-							}
-							.opciones{
-								.box-options{
-									font-size: 1.2em;
-									cursor: pointer;
-									.del{
-										margin-right: 4px;
-										&:hover{
-											color: $danger;
-										}
-									}
-									.update{
-										&:hover{
-											color: $warning;
-										}
+									top: 0;
+									left: 7px;
+									&::after{
+										content: "";
+										width: 5px;
+										height: 5px;
+										background: $primary-color;
+										display: block;
+										position: absolute;
+										left: 50%;
+										top: 50%;
+										transform: translate(-50% , -50%) scale(0);
+										border-radius: 50%;
+										transition: 300ms ease-in-out 0s;
 									}
 								}
 							}
-							&:nth-child(even){
-								background: rgba($color: $textLigth, $alpha: .4);
+						}
+					}
+					.table{
+						width: 100%;
+						border-collapse: collapse;
+						margin: 0;
+						padding: 0;
+						margin-top: 20px;
+						thead{
+							tr{
+								text-align: left;
 							}
 						}
-
+						th{
+							font-size: 1.3em;
+							padding: 10px;
+							color: $fondoMiddle;
+							text-transform: uppercase;
+						}
 						td{
-							&:hover{
-								background: rgba($color: $textLigth, $alpha: .4);
-
+							padding: 8px;
+							&:last-child{
+								width: 10px;
+								text-align: center;
 							}
-							
+						}
+						tbody{
+							tr{
+								border-bottom: 1px solid rgba($color: $fondoMiddle ,$alpha: .7);
+								font-size: 1.1em;
+								&:hover{
+									background: rgba($color: $textLigth, $alpha: .4);
+								}
+								.opciones{
+									.box-options{
+										font-size: 1.2em;
+										cursor: pointer;
+										.del{
+											margin-right: 4px;
+											&:hover{
+												color: $danger;
+											}
+										}
+										.update{
+											&:hover{
+												color: $warning;
+											}
+										}
+									}
+								}
+								&:nth-child(even){
+									background: rgba($color: $textLigth, $alpha: .4);
+								}
+							}
+
+							td{
+								&:hover{
+									background: rgba($color: $textLigth, $alpha: .4);
+
+								}
+								
+							}
 						}
 					}
 				}
-			}
-			.cont-addSites{
-				width: 300px;
-				.cardHeader{
-					background: $textWhite;
-					width: 100%;
-					border-radius: 4px;
-					padding: 20px;
-					margin-bottom: 10px;
-					h2{
-						font-size: 1.2em;
-					}
-					.formSiteAdd{
-						margin-top: 30px;
+				.cont-addSites{
+					width: 300px;
+					.cardHeader{
 						background: $textWhite;
-						.box-input{
-							position: relative;
-							width: 100%;
-							label{
-								position: absolute;
-								top: 10px;
-								left: 5px;
-								.fa-solid{
-									color: $textDarkLight	;
-									font-size: 1.2em;
-								}
-							}
-							input{
-								width: 100%;
-								margin-bottom: 5px;
-								border: none;
-								outline: none;
-								border: 1px solid $textDark;
-								border-radius: 4px;
-								padding: 6px 0;
-								padding-left: 30px;
-								color: $textDark;
-								font-size: 1em;
-							}
+						width: 100%;
+						border-radius: 4px;
+						padding: 20px;
+						margin-bottom: 10px;
+						h2{
+							font-size: 1.2em;
 						}
-						.box-button{
-							.btn-addSite{
-								background-color: $fondoMiddle;
-								&:hover{
-									background: rgba($color: $fondoMiddle, $alpha: .8);
-								}
-							}
-							.btn-updateSite{
-								display: none;
-								background: #1B1464;
-								&:hover{
-									background: rgba($color :#1B1464, $alpha: 0.8);
-								}
-							}
-							.btn{
+						.formSiteAdd{
+							margin-top: 30px;
+							background: $textWhite;
+							.box-input{
 								position: relative;
-								padding: 5px 10px;
-								color: $textWhite;
-								border: none;
-								padding: 6px 12px;
-								border-radius: 6px;
-								cursor: pointer;
-								transition: .5s;
+								width: 100%;
+								label{
+									position: absolute;
+									top: 10px;
+									left: 5px;
+									.fa-solid{
+										color: $textDarkLight	;
+										font-size: 1.2em;
+									}
+								}
+								input{
+									width: 100%;
+									margin-bottom: 5px;
+									border: none;
+									outline: none;
+									border: 1px solid $textDark;
+									border-radius: 4px;
+									padding: 6px 0;
+									padding-left: 30px;
+									color: $textDark;
+									font-size: 1em;
+								}
+							}
+							.box-button{
+								.btn-addSite{
+									background-color: $fondoMiddle;
+									&:hover{
+										background: rgba($color: $fondoMiddle, $alpha: .8);
+									}
+								}
+								.btn-updateSite{
+									display: none;
+									background: #1B1464;
+									&:hover{
+										background: rgba($color :#1B1464, $alpha: 0.8);
+									}
+								}
+								.btn{
+									position: relative;
+									padding: 5px 10px;
+									color: $textWhite;
+									border: none;
+									padding: 6px 12px;
+									border-radius: 6px;
+									cursor: pointer;
+									transition: .5s;
+								}
 							}
 						}
 					}
@@ -382,9 +389,7 @@ body{
 		}
 	}
 }
-// .radio + .radio{
-// 	margin-left: 20px;
-// }
+
 .container-main{
 	.navigation.active{
 		left: -220px;

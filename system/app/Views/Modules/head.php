@@ -32,14 +32,14 @@
 									Inicio</a>
 							</li>
 							<!-- desplegable -->
-							<!-- <li class="list__item list__item--click ">
+							<li class="list__item list__item--click ">
 								<a href="#" class="nav__link click">
 									<i class="fa-solid fa-house icon"></i>
 									Servicios
 									<i class="fa-solid fa-arrow-right list__arrow"></i>
-								</a> -->
+								</a>
 							<!-- la lista que se desplegara -->
-							<!-- <ul class="listShow">
+							<ul class="listShow">
 									<li class="listInside">
 
 										<a href="#" class="linkInside">
@@ -63,7 +63,7 @@
 									</li>
 								</ul> 
 							
-							</li>-->
+							</li>
 							<!-- item solo -->
 							<li class="list__item">
 								<a href="#" class="nav__link active">
