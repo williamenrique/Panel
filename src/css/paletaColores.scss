@@ -15,7 +15,7 @@ $alphaT : .7;
 $info-color : #013ca6;
 $info-hover : rgba($color : $info-color, $alpha : $alphaT);
 $danger-color : #ff0000;
-$danger-hover : rgba($color : $danger-hover, $alpha : $alphaT);
+$danger-hover : rgba($color : $danger-color, $alpha : $alphaT);
 $warning-color : #ffdd00;
 $warning-hover : rgba($color : $warning-color, $alpha : $alphaT);
 $success-color : #009688;

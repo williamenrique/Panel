@@ -1,19 +1,36 @@
-$textWhite : rgb(255, 255, 255);
-$textLigth : rgb(193, 193, 193);
-$textDark : rgb(52, 58, 64);
-$textDarkLight : rgba($color : $textDark , $alpha : .5);
-$fondoLigth : rgb(245, 247, 255);
-$fondoDark : rgb(17, 24, 39);
-$primary-color : #1B1464;
-$fondoMiddle : #192a56;
-$blueLigth : rgb(75, 73, 172);
-$hoverligth : rgba($color : $fondoMiddle, $alpha : .7);
-$danger : #eb2f06;
-$warning : rgb(255, 193, 0);
-$black : rgb(40, 47, 58);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap');
+$primary-color : rgb(17, 24, 39);
+$primary-color-1 : rgb(3, 22, 52);
+
+$secondary-color : #9f9fa3;
+$background-dark : #262A33;
+$background-light : #E2E0CD;
+
+$text-dark : rgb(52, 58, 64);
+$text-light : rgb(193, 193, 193);
+$text-primary-light : #212121;
+$text-secondary-light : #757575;
+$text-blue : #192a56;
+
+$alphaT : .7;
+$info-color : #013ca6;
+$info-hover : rgba($color : $info-color, $alpha : $alphaT);
+$danger-color : #ff0000;
+$danger-hover : rgba($color : $danger-color, $alpha : $alphaT);
+$warning-color : #ffdd00;
+$warning-hover : rgba($color : $warning-color, $alpha : $alphaT);
+$success-color : #009688;
+$success-hover : rgba($color : $success-color, $alpha : $alphaT);
+
+$white-color : #fefefe;
+$black-color : #000000;
+$border : rgba($color: #BDBDBD, $alpha : .3);
+$border-radius : 4px;
+
+$transition : .5s;
 $anchoF : 225px;
 $ancho : calc(100% - 225px);
-$transition : .5s;
+
 *{
 	margin: 0;
 	padding: 0;
@@ -28,6 +45,11 @@ body{
 	width: 96%;
 	margin: 100px auto;
 }
+.grid-container{
+	display: grid;
+	grid-template-columns: repeat(12,1fr);
+	gap: 20px;
+}
 // navegacion
 .container-main{
 	position: relative;
@@ -40,15 +62,15 @@ body{
 		top: 0;
 		width: 220px;
 		height: 100%;
-		background: $fondoDark;
+		background: $primary-color;
 		transition: $transition;
 		.cont-menu{
 			.box-head{
 				padding: 20px 0px;
-				border-bottom: 1px solid rgba($color: $textLigth, $alpha: .5);
+				border-bottom: 1px solid $border;
 				.box-version{
 					text-align: center;
-					color: $textWhite;
+					color: $white-color;
 				}
 				.box-close{
 					display: none;
@@ -64,7 +86,7 @@ body{
 							width: 100%;
 							text-decoration: none;
 							font-size: 1.2em;
-							color: rgba($color: $textLigth, $alpha: .5);
+							color: rgba($color: $text-light, $alpha: .5);
 							display: flex;
 							align-items: center;
 							padding: 5px 20px 5px 20px;
@@ -78,11 +100,11 @@ body{
 								transition: transform .3s;
 							}
 							&.active{
-								color: $textWhite;
+								color: $white-color;
 							}
 							&:hover{
-								background: rgba($color: $textLigth, $alpha: .5);
-								color: $textWhite
+								background: rgba($color: $text-light, $alpha: .5);
+								color: $white-color
 							}
 						}
 						// desplegable
@@ -102,9 +124,9 @@ body{
 									margin-bottom: 2px;
 									padding: 2px 4px 2px 10px;
 									text-decoration: none;
-									color: rgba($color: $textLigth, $alpha: .5);
+									color: rgba($color: $text-light, $alpha: .5);
 									&:hover{
-										color: $textWhite;
+										color: $white-color;
 									}
 								}
 							}
@@ -122,7 +144,7 @@ body{
 		left: 220px;
 		top: 0;
 		width: calc(100% - 220px);
-		background: $fondoLigth;
+		background: $background-light;
 		transition: $transition;
 	}
 }
@@ -134,12 +156,12 @@ body{
 			top: 0;
 			width: calc(100% - 220px);
 			height: 70px;
-			background: $textWhite;
+			background: $white-color;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			padding: 0 20px;
-			box-shadow: 0px 11px 10px -9px $textLigth;
+			box-shadow: 0px 11px 10px -9px $text-light;
 			transition: $transition;
 			&.sticky{
 				height: 60px;
@@ -147,10 +169,10 @@ body{
 			.box-menu{
 				.toggle{
 					font-size: 1.8em;
-					color: $textLigth;
+					color: $text-light;
 					cursor: pointer;
 					&:hover{
-						color: $danger;
+						color: $danger-color;
 					}
 				}
 			}
@@ -172,12 +194,12 @@ body{
 			.card{
 				width: 250px;
 				padding: 20px;
-				background: $warning;
+				background: $warning-color;
 				border-radius: 4px;
 				.card-body{
 					.text-card{
 						font-size: 1.2em;
-						color: $fondoMiddle;
+						color: $text-blue;
 						text-decoration: none;
 						transition: .5s;
 						cursor: pointer;
@@ -186,7 +208,7 @@ body{
 							margin-right: 4px;
 						}
 						&:hover{
-							color: rgba($color: $fondoMiddle, $alpha: .7);
+							color: rgba($color: $text-blue, $alpha: .7);
 						}
 					}
 				}
@@ -203,12 +225,12 @@ body{
 			.cont-table{
 				width: 100%;
 				padding: 20px;
-				background: $textWhite;
+				background: $white-color;
 				border-radius: 4px;
 				.title-header{
 					font-size: 1.5em;
 					text-transform: capitalize;
-					color: $fondoMiddle;
+					color: $text-blue;
 				}
 				.header-tools{
 					display: flex;
@@ -279,7 +301,7 @@ body{
 					th{
 						font-size: 1.3em;
 						padding: 10px;
-						color: $fondoMiddle;
+						color: $text-blue;
 						text-transform: uppercase;
 					}
 					td{
@@ -291,10 +313,10 @@ body{
 					}
 					tbody{
 						tr{
-							border-bottom: 1px solid rgba($color: $fondoMiddle ,$alpha: .7);
+							border-bottom: 1px solid rgba($color: $text-blue, $alpha: .7);
 							font-size: 1.1em;
 							&:hover{
-								background: rgba($color: $textLigth, $alpha: .4);
+								background: rgba($color: $text-light, $alpha: .4);
 							}
 							.opciones{
 								.box-options{
@@ -303,24 +325,24 @@ body{
 									.del{
 										margin-right: 4px;
 										&:hover{
-											color: $danger;
+											color: $danger-color;
 										}
 									}
 									.update{
 										&:hover{
-											color: $warning;
+											color: $warning-color;
 										}
 									}
 								}
 							}
 							&:nth-child(even){
-								background: rgba($color: $textLigth, $alpha: .4);
+								background: rgba($color: $text-light, $alpha: .4);
 							}
 						}
 
 						td{
 							&:hover{
-								background: rgba($color: $textLigth, $alpha: .4);
+								background: rgba($color: $text-light, $alpha: .4);
 
 							}
 							
@@ -331,7 +353,7 @@ body{
 			.cont-addSites{
 				width: 300px;
 				.cardHeader{
-					background: $textWhite;
+					background: $white-color;
 					width: 100%;
 					border-radius: 4px;
 					padding: 20px;
@@ -341,7 +363,7 @@ body{
 					}
 					.formSiteAdd{
 						margin-top: 30px;
-						background: $textWhite;
+						background: $white-color;
 						.box-input{
 							position: relative;
 							width: 100%;
@@ -350,7 +372,7 @@ body{
 								top: 10px;
 								left: 5px;
 								.fa-solid{
-									color: $textDarkLight	;
+									color: $text-dark;
 									font-size: 1.2em;
 								}
 							}
@@ -359,32 +381,32 @@ body{
 								margin-bottom: 5px;
 								border: none;
 								outline: none;
-								border: 1px solid $textDark;
+								border: 1px solid $text-dark;
 								border-radius: 4px;
 								padding: 6px 0;
 								padding-left: 30px;
-								color: $textDark;
+								color: $text-dark;
 								font-size: 1em;
 							}
 						}
 						.box-button{
 							.btn-addSite{
-								background-color: $fondoMiddle;
+								background-color: $text-blue;
 								&:hover{
-									background: rgba($color: $fondoMiddle, $alpha: .8);
+									background: rgba($color: $text-blue, $alpha: .8);
 								}
 							}
 							.btn-updateSite{
 								display: none;
-								background: #1B1464;
+								background: $info-color;
 								&:hover{
-									background: rgba($color :#1B1464, $alpha: 0.8);
+									background: $info-hover;
 								}
 							}
 							.btn{
 								position: relative;
 								padding: 5px 10px;
-								color: $textWhite;
+								color: $white-color;
 								border: none;
 								padding: 6px 12px;
 								border-radius: 6px;
@@ -508,7 +530,7 @@ body{
 					}
 					.box-close{
 						display: block;
-						color: $textLigth;
+						color: $text-light;
 						cursor: pointer;
 						.fa-solid{
 							font-size: 2.1em;

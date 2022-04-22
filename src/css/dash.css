@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +14,12 @@ body {
 .container {
   width: 96%;
   margin: 100px auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
 }
 
 .container-main {
@@ -35,12 +42,12 @@ body {
 
 .container-main .navigation .cont-menu .box-head {
   padding: 20px 0px;
-  border-bottom: 1px solid rgba(193, 193, 193, 0.5);
+  border-bottom: 1px solid rgba(189, 189, 189, 0.3);
 }
 
 .container-main .navigation .cont-menu .box-head .box-version {
   text-align: center;
-  color: white;
+  color: #fefefe;
 }
 
 .container-main .navigation .cont-menu .box-head .box-close {
@@ -78,12 +85,12 @@ body {
 }
 
 .container-main .navigation .cont-menu .nav .list .list__item .nav__link.active {
-  color: white;
+  color: #fefefe;
 }
 
 .container-main .navigation .cont-menu .nav .list .list__item .nav__link:hover {
   background: rgba(193, 193, 193, 0.5);
-  color: white;
+  color: #fefefe;
 }
 
 .container-main .navigation .cont-menu .nav .list .list__item .listShow {
@@ -111,7 +118,7 @@ body {
 }
 
 .container-main .navigation .cont-menu .nav .list .list__item .listShow .listInside .linkInside:hover {
-  color: white;
+  color: #fefefe;
 }
 
 .container-main .box-main {
@@ -119,7 +126,7 @@ body {
   left: 220px;
   top: 0;
   width: calc(100% - 220px);
-  background: #f5f7ff;
+  background: #E2E0CD;
   transition: 0.5s;
 }
 
@@ -128,7 +135,7 @@ body {
   top: 0;
   width: calc(100% - 220px);
   height: 70px;
-  background: white;
+  background: #fefefe;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -148,7 +155,7 @@ body {
 }
 
 .container-main .box-main .topbar .box-menu .toggle:hover {
-  color: #eb2f06;
+  color: #ff0000;
 }
 
 .container-main .box-main .topbar .info-user {
@@ -167,7 +174,7 @@ body {
 .container-main .box-main .box-card .card {
   width: 250px;
   padding: 20px;
-  background: #ffc100;
+  background: #ffdd00;
   border-radius: 4px;
 }
 
@@ -196,7 +203,7 @@ body {
 .container-main .box-main .box-cont .cont-table {
   width: 100%;
   padding: 20px;
-  background: white;
+  background: #fefefe;
   border-radius: 4px;
 }
 
@@ -243,7 +250,7 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: 3px solid #1B1464;
+  border: 3px solid #111827;
   display: block;
   position: absolute;
   top: 0;
@@ -254,7 +261,7 @@ body {
   content: "";
   width: 5px;
   height: 5px;
-  background: #1B1464;
+  background: #111827;
   display: block;
   position: absolute;
   left: 50%;
@@ -311,11 +318,11 @@ body {
 }
 
 .container-main .box-main .box-cont .cont-table .table tbody tr .opciones .box-options .del:hover {
-  color: #eb2f06;
+  color: #ff0000;
 }
 
 .container-main .box-main .box-cont .cont-table .table tbody tr .opciones .box-options .update:hover {
-  color: #ffc100;
+  color: #ffdd00;
 }
 
 .container-main .box-main .box-cont .cont-table .table tbody tr:nth-child(even) {
@@ -331,7 +338,7 @@ body {
 }
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader {
-  background: white;
+  background: #fefefe;
   width: 100%;
   border-radius: 4px;
   padding: 20px;
@@ -344,7 +351,7 @@ body {
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd {
   margin-top: 30px;
-  background: white;
+  background: #fefefe;
 }
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input {
@@ -359,7 +366,7 @@ body {
 }
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input label .fa-solid {
-  color: rgba(52, 58, 64, 0.5);
+  color: #343a40;
   font-size: 1.2em;
 }
 
@@ -386,17 +393,17 @@ body {
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite {
   display: none;
-  background: #1B1464;
+  background: #013ca6;
 }
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
-  background: rgba(27, 20, 100, 0.8);
+  background: rgba(1, 60, 166, 0.7);
 }
 
 .container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn {
   position: relative;
   padding: 5px 10px;
-  color: white;
+  color: #fefefe;
   border: none;
   padding: 6px 12px;
   border-radius: 6px;
