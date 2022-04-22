@@ -10,6 +10,11 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.container {
+  width: 96%;
+  margin: 100px auto;
+}
+
 .container-main {
   position: relative;
 }
@@ -155,23 +160,18 @@ body {
   width: 100%;
 }
 
-.container-main .box-main .container {
-  width: 96%;
-  margin: 100px auto;
-}
-
-.container-main .box-main .container .box-card {
+.container-main .box-main .box-card {
   margin-bottom: 20px;
 }
 
-.container-main .box-main .container .box-card .card {
+.container-main .box-main .box-card .card {
   width: 250px;
   padding: 20px;
   background: #ffc100;
   border-radius: 4px;
 }
 
-.container-main .box-main .container .box-card .card .card-body .text-card {
+.container-main .box-main .box-card .card .card-body .text-card {
   font-size: 1.2em;
   color: #192a56;
   text-decoration: none;
@@ -179,34 +179,34 @@ body {
   cursor: pointer;
 }
 
-.container-main .box-main .container .box-card .card .card-body .text-card .numbers {
+.container-main .box-main .box-card .card .card-body .text-card .numbers {
   font-size: 1.3em;
   margin-right: 4px;
 }
 
-.container-main .box-main .container .box-card .card .card-body .text-card:hover {
+.container-main .box-main .box-card .card .card-body .text-card:hover {
   color: rgba(25, 42, 86, 0.7);
 }
 
-.container-main .box-main .container .box-cont {
+.container-main .box-main .box-cont {
   display: flex;
   gap: 10px;
 }
 
-.container-main .box-main .container .box-cont .cont-table {
+.container-main .box-main .box-cont .cont-table {
   width: 100%;
   padding: 20px;
   background: white;
   border-radius: 4px;
 }
 
-.container-main .box-main .container .box-cont .cont-table .title-header {
+.container-main .box-main .box-cont .cont-table .title-header {
   font-size: 1.5em;
   text-transform: capitalize;
   color: #192a56;
 }
 
-.container-main .box-main .container .box-cont .cont-table .header-tools {
+.container-main .box-main .box-cont .cont-table .header-tools {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -216,7 +216,7 @@ body {
   border: 1px solid;
 }
 
-.container-main .box-main .container .box-cont .cont-table .header-tools .tools .radio {
+.container-main .box-main .box-cont .cont-table .header-tools .tools .radio {
   font-size: 14px;
   font-weight: 500;
   text-transform: capitalize;
@@ -227,19 +227,19 @@ body {
   cursor: pointer;
 }
 
-.container-main .box-main .container .box-cont .cont-table .header-tools .tools .radio + .radio {
+.container-main .box-main .box-cont .cont-table .header-tools .tools .radio + .radio {
   margin-left: 20px;
 }
 
-.container-main .box-main .container .box-cont .cont-table .header-tools .tools .radio input[type="radio"] {
+.container-main .box-main .box-cont .cont-table .header-tools .tools .radio input[type="radio"] {
   display: none;
 }
 
-.container-main .box-main .container .box-cont .cont-table .header-tools .tools .radio input[type="radio"]:checked ~ span::after {
+.container-main .box-main .box-cont .cont-table .header-tools .tools .radio input[type="radio"]:checked ~ span::after {
   transform: translate(-50%, -50%) scale(1);
 }
 
-.container-main .box-main .container .box-cont .cont-table .header-tools .tools .radio span {
+.container-main .box-main .box-cont .cont-table .header-tools .tools .radio span {
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -250,7 +250,7 @@ body {
   left: 7px;
 }
 
-.container-main .box-main .container .box-cont .cont-table .header-tools .tools .radio span::after {
+.container-main .box-main .box-cont .cont-table .header-tools .tools .radio span::after {
   content: "";
   width: 5px;
   height: 5px;
@@ -264,7 +264,7 @@ body {
   transition: 300ms ease-in-out 0s;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table {
+.container-main .box-main .box-cont .cont-table .table {
   width: 100%;
   border-collapse: collapse;
   margin: 0;
@@ -272,65 +272,65 @@ body {
   margin-top: 20px;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table thead tr {
+.container-main .box-main .box-cont .cont-table .table thead tr {
   text-align: left;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table th {
+.container-main .box-main .box-cont .cont-table .table th {
   font-size: 1.3em;
   padding: 10px;
   color: #192a56;
   text-transform: uppercase;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table td {
+.container-main .box-main .box-cont .cont-table .table td {
   padding: 8px;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table td:last-child {
+.container-main .box-main .box-cont .cont-table .table td:last-child {
   width: 10px;
   text-align: center;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody tr {
+.container-main .box-main .box-cont .cont-table .table tbody tr {
   border-bottom: 1px solid rgba(25, 42, 86, 0.7);
   font-size: 1.1em;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody tr:hover {
+.container-main .box-main .box-cont .cont-table .table tbody tr:hover {
   background: rgba(193, 193, 193, 0.4);
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody tr .opciones .box-options {
+.container-main .box-main .box-cont .cont-table .table tbody tr .opciones .box-options {
   font-size: 1.2em;
   cursor: pointer;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody tr .opciones .box-options .del {
+.container-main .box-main .box-cont .cont-table .table tbody tr .opciones .box-options .del {
   margin-right: 4px;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody tr .opciones .box-options .del:hover {
+.container-main .box-main .box-cont .cont-table .table tbody tr .opciones .box-options .del:hover {
   color: #eb2f06;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody tr .opciones .box-options .update:hover {
+.container-main .box-main .box-cont .cont-table .table tbody tr .opciones .box-options .update:hover {
   color: #ffc100;
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody tr:nth-child(even) {
+.container-main .box-main .box-cont .cont-table .table tbody tr:nth-child(even) {
   background: rgba(193, 193, 193, 0.4);
 }
 
-.container-main .box-main .container .box-cont .cont-table .table tbody td:hover {
+.container-main .box-main .box-cont .cont-table .table tbody td:hover {
   background: rgba(193, 193, 193, 0.4);
 }
 
-.container-main .box-main .container .box-cont .cont-addSites {
+.container-main .box-main .box-cont .cont-addSites {
   width: 300px;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader {
+.container-main .box-main .box-cont .cont-addSites .cardHeader {
   background: white;
   width: 100%;
   border-radius: 4px;
@@ -338,32 +338,32 @@ body {
   margin-bottom: 10px;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader h2 {
+.container-main .box-main .box-cont .cont-addSites .cardHeader h2 {
   font-size: 1.2em;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd {
   margin-top: 30px;
   background: white;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input {
   position: relative;
   width: 100%;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input label {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input label {
   position: absolute;
   top: 10px;
   left: 5px;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input label .fa-solid {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input label .fa-solid {
   color: rgba(52, 58, 64, 0.5);
   font-size: 1.2em;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input input {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-input input {
   width: 100%;
   margin-bottom: 5px;
   border: none;
@@ -376,24 +376,24 @@ body {
   font-size: 1em;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-addSite {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-addSite {
   background-color: #192a56;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-addSite:hover {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-addSite:hover {
   background: rgba(25, 42, 86, 0.8);
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite {
   display: none;
   background: #1B1464;
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
   background: rgba(27, 20, 100, 0.8);
 }
 
-.container-main .box-main .container .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn {
+.container-main .box-main .box-cont .cont-addSites .cardHeader .formSiteAdd .box-button .btn {
   position: relative;
   padding: 5px 10px;
   color: white;
