@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// getStitios()
 	getSites()
 }, false)
-
+notifi('hola','error')
 function getStitios() {
 	// let intSite = 1
 	/************************************************* 

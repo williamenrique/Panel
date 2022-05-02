@@ -1,3 +1,57 @@
+/**************************************
+ * Funciones de notificacion y alerta *
+ * ***********************************/
+var toastMixin = Swal.mixin({
+		toast: true,
+		iconColor: 'white',
+		position: 'top-right',
+		showConfirmButton: false,
+		timer: 2000,
+		customClass: {
+			popup: 'colored-toast'
+		},
+		didOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+		}
+	})
+const notifi = (data, icon) => {
+		toastMixin.fire({
+			title: data,
+			icon: icon
+		})
+	}
+const alertC = (icon,title,text) => {
+	Swal.fire({
+		icon: icon,
+		title: title,
+		text: text
+	})
+}
+const alerta = (text) =>{
+	Swal.fire(
+		{title : text}
+	)
+}
+
+const cancel = (titulo, textButton) => {
+	Swal.fire({
+		title: titulo,
+		showCancelButton: true,
+		confirmButtonText: textButton,
+	}).then((result) => {
+		/* Read more about isConfirmed, isDenied below */
+		if (result.isConfirmed) {
+			notifi('Eliminado', 'success')
+		} else {
+			notifi('Se a cancelado', 'info')
+		}
+	})
+}
+
+/*********************************
+ * Funciones de letras y numeros *
+ * *******************************/
 function soloNumeros(e) {
 	key = e.keyCode || e.which;
 	tecla = String.fromCharCode(key).toLowerCase();
@@ -34,34 +88,30 @@ function soloLetras(e) {
 		return false;
 	}
 }
-/****
- * funcion para la notificacion
- */
-notifi = (data, icon) => {
-	var Toast = Swal.mixin({
-		toast: true,
-		position: 'top-end',
-		showConfirmButton: false,
-		timer: 3000
-	})
-	Toast.fire({
-		icon: icon,
-		title: data
-	})
-}
-// alerta
-const alerta = (title, data, icon) => {
-	Swal.fire({
-		icon: icon,
-		title: title,
-		text: data,
-		footer: '<a href="">Why do I have this issue?</a>'
-	})
-}
+/*********************************
+ * Funciones desplegable         *
+ * *******************************/
+let listElements = document.querySelectorAll('.click')
 
+listElements.forEach(listElement => {
+	listElement.addEventListener('click', () => {
+		listElement.classList.toggle('arrow')
+		let height = 0
+		let menu = listElement.nextElementSibling //obtener el hermano adyacente
+		// evaluamos el alto de los submenu dinamicamnete
+		if (menu.clientHeight == 0) {
+			height = menu.scrollHeight
+		}
+		// cambiar el valor del height
+		menu.style.height = `${height}px`
+	})
+})
+/*********************************
+ * Funciones topbar y lateral    *
+ * *******************************/
 let toggle = document.querySelector('.toggle')
 let navigation = document.querySelector('.navigation')
-let main = document.querySelector('.main')
+let main = document.querySelector('.box-main')
 let topbar = document.querySelector('.topbar')
 let close = document.querySelector('.close')
 
