@@ -34,10 +34,11 @@
 				
 				</div>
 				<div class="search">
-					<input type="text" class="search-input">
+					<input type="text" class="search-input" id='search'>
 				</div>
 			</div>
-			<table class="table">
+			<div class="listSitios"></div>
+			<!-- <table class="table">
 				<thead>
 					<tr>
 						<th>Sitio</th>
@@ -81,7 +82,7 @@
 						</td>
 					</tr>
 				</tbody>
-			</table>
+			</table> -->
 		</div>
 		<div class="cont-addSites">
 			<div class="cardHeader">

@@ -161,18 +161,19 @@ function editSite(intSite) {
 	}
 }
 // obtener sitios con status y sitio
-// let strSite = document.querySelector('#searchSite').value
-let intSite = $('input:radio[name=prioridad]:checked').val()
+// let strSite = document.querySelector('#search').value
 const getSites = (intSite, strSite) => {
-	if (intSite == "" || strSite == "") {
-		var intSite = 1;
-		var strSite = '';
+	let search = document.querySelector('#search').value
+	let intCheck = $('input:radio[name=prioridad]:checked').val()
+	if (intCheck == "" || search == "") {
+		let intCheck = 1;
+		let search = '';
 	} else {
-		var intSite = intSite;
-		var strSite = strSite;
+		let intCheck = intSite;
+		let search = strSite;
 	}
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	let ajaxUrl = base_url + 'Site/getSites/?intSite='+intSite+'&strSite='+strSite
+	let ajaxUrl = base_url + 'Site/getSites/?intSite='+intCheck+'&strSite='+search
 	
 	request.open("GET", ajaxUrl, true)
 	//forma en como se enviara
@@ -187,14 +188,15 @@ const getSites = (intSite, strSite) => {
 }
 // obtener el valor del status
 $('input[type=radio]').change(function () {
-	let strSite = document.querySelector('#searchSite').value
+	let strSite = document.querySelector('#search').value
 	let intSite = $('input:radio[name=prioridad]:checked').val()
+	console.log('search '+ strSite + 'check ' + intSite)
 	getSites(intSite, strSite)
 })
 // obtener el valo de la caja de busqueda
-let strSite = document.querySelector('#searchSite')
-strSite.addEventListener('keyup', () => {
-	let strSite = document.querySelector('#searchSite').value
-	let intSite = $('input:radio[name=prioridad]:checked').val()
-	getSites(intSite, strSite)
-})
+// let strSite = document.querySelector('#search').value
+// strSite.addEventListener('keyup', () => {
+// 	let strSite = document.querySelector('#search').value
+// 	let intSite = $('input:radio[name=prioridad]:checked').val()
+// 	getSites(intSite, strSite)
+// })

@@ -18,7 +18,7 @@
 	<script src="<?= PLUGINS?>sweetalert/sweetalert2@10.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="<?= JS.$data['page_function']?>"></script>
-	<!-- <script src="<?= JS?>function.main.js"></script> -->
+	<script src="<?= JS?>site.js"></script>
 </body>
 
 </html>

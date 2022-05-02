@@ -16,38 +16,8 @@ class Site extends Controllers{
 		$data['page_title'] = "Pagina Principal";
 		$data['page_name'] = "site";
 		$data['page_link'] = "site";
-		$data['page_function'] = "site.js";
+		$data['page_function'] = "function.site.js";
 		$this->views->getViews($this, "site", $data);
-	}
-	// obtener todos los sitios
-	public function getSitios(){
-		$arrData = $this->model->getSitios();
-		$htmlOptions = "";
-		if(empty($arrData)){
-			$htmlOptions .= '
-				<div class="alert-table">No se encontraron resultados</div>
-						';
-		}else{
-			$htmlOptions .= '
-				<div class="table__header">Sitio</div>
-				<div class="table__header">Usuario</div>
-				<div class="table__header">Password</div>
-				<div class="table__header">Opciones</div>
-			';
-			for ($i=0; $i < count($arrData) ; $i++) {
-				$htmlOptions .= '
-					<div class="table__item"><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></div>
-					<div class="table__item">'.$arrData[$i]['usuario'].'</div>
-					<div class="table__item">'.$arrData[$i]['pass'].'</div>
-					<div class="table__item accion">
-						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
-						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-					</div>
-						';
-			}
-		}
-		echo $htmlOptions;
-		die();
 	}
 	// function agregar sitios
 	public function setSitios(){
@@ -85,6 +55,8 @@ class Site extends Controllers{
 			$intSite = 1;
 		}
 		$arrData = $this->model->getSites($intSite,$strSite);
+		dep($arrData);
+		die();
 		$htmlOptions = "";
 		if(empty($arrData)){
 			$htmlOptions .= '
@@ -92,22 +64,35 @@ class Site extends Controllers{
 						';
 		}else{
 			$htmlOptions .= '
-				<div class="table__header">Sitio</div>
-				<div class="table__header">Usuario</div>
-				<div class="table__header">Password</div>
-				<div class="table__header">Opciones</div>
+				<table class="table">
+				<thead>
+					<tr>
+						<th>Sitio</th>
+						<th>Usuario</th>
+						<th>Clave</th>
+						<th>Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
 			';
 			for ($i=0; $i < count($arrData) ; $i++) {
 				$htmlOptions .= '
-					<div class="table__item"><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></div>
-					<div class="table__item">'.$arrData[$i]['usuario'].'</div>
-					<div class="table__item">'.$arrData[$i]['pass'].'</div>
-					<div class="table__item accion">
-						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
-						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-					</div>
+				<tr>
+						<td data-label="sitio">'.$arrData[$i]['sitio'].'</td>
+						<td data-label="usurio">'.$arrData[$i]['usuario'].'</td>
+						<td data-label="clave">'.$arrData[$i]['pass'].'</td>
+						<td data-label="opciones" class="opciones">
+							<div class="box-options">
+								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
+								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+							</div>
+						</td>
+					</tr>
 						';
 			}
+			$htmlOptions .= 
+			'</tbody>
+			</table>';
 		}
 		echo $htmlOptions;
 		die();
@@ -126,7 +111,7 @@ class Site extends Controllers{
 		}
 		die();
 	}
-	// edit site
+	// llamar un site para editarlo
 	public function getSite(int $intSite){
 		$intSite = intval($intSite);
 		if($intSite > 0 ){
@@ -177,3 +162,36 @@ class Site extends Controllers{
 		}
 	}
 }
+
+
+/*
+	public function getSitios(){
+		$arrData = $this->model->getSitios();
+		$htmlOptions = "";
+		if(empty($arrData)){
+			$htmlOptions .= '
+				<div class="alert-table">No se encontraron resultados</div>
+						';
+		}else{
+			$htmlOptions .= '
+				<div class="table__header">Sitio</div>
+				<div class="table__header">Usuario</div>
+				<div class="table__header">Password</div>
+				<div class="table__header">Opciones</div>
+			';
+			for ($i=0; $i < count($arrData) ; $i++) {
+				$htmlOptions .= '
+					<div class="table__item"><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></div>
+					<div class="table__item">'.$arrData[$i]['usuario'].'</div>
+					<div class="table__item">'.$arrData[$i]['pass'].'</div>
+					<div class="table__item accion">
+						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
+						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+					</div>
+						';
+			}
+		}
+		echo $htmlOptions;
+		die();
+	}
+	*/
