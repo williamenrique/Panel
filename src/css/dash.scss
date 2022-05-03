@@ -289,68 +289,7 @@ body{
 				.listSitios{
 					width: 100%;
 					overflow-x: auto;
-					.table{
-						width: 100%;
-						border-collapse: collapse;
-						margin: 0;
-						padding: 0;
-						margin-top: 20px;
-						thead{
-							tr{
-								text-align: left;
-							}
-						}
-						th{
-							font-size: 1.3em;
-							padding: 10px;
-							color: $text-blue;
-							text-transform: uppercase;
-						}
-						td{
-							padding: 8px;
-							&:last-child{
-								width: 10px;
-								text-align: center;
-							}
-						}
-						tbody{
-							tr{
-								border-bottom: 1px solid rgba($color: $text-blue, $alpha: .7);
-								font-size: 1.1em;
-								&:hover{
-									background: rgba($color: $text-light, $alpha: .4);
-								}
-								.opciones{
-									.box-options{
-										font-size: 1.2em;
-										cursor: pointer;
-										.del{
-											margin-right: 4px;
-											&:hover{
-												color: $danger-color;
-											}
-										}
-										.update{
-											&:hover{
-												color: $warning-color;
-											}
-										}
-									}
-								}
-								&:nth-child(even){
-									background: rgba($color: $text-light, $alpha: .4);
-								}
-							}
 
-							td{
-								&:hover{
-									background: rgba($color: $text-light, $alpha: .4);
-
-								}
-								
-							}
-						}
-					}
 				}
 			}
 			.cont-addSites{

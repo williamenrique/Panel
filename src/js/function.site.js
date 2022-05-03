@@ -1,8 +1,33 @@
+let tablaSitio;
 document.addEventListener('DOMContentLoaded', function () {
 	// getStitios()
-	getSites()
+	// getSites()
+	let strSite = document.querySelector('#search').value
+	let intCheck = $('input:radio[name=prioridad]:checked').val()
+	tablaSitio = $('#tablaSitio').DataTable({
+		"responsive": {
+			"name": "medium",
+			"width": "1188"
+		},
+		"ajax": {
+			"url": ' ' +base_url + 'Site/getSites/?intSite='+intCheck+'&strSite='+strSite,
+			"dataSrc": ''
+		},
+		"columns": [
+			{ 'data': 'sitio' },
+			{ 'data': 'usuario' },
+			{ 'data': 'pass' },
+			{ 'data': 'opciones' }
+		],
+		"resonsieve": "true",
+		"bDestroy": true,
+		"iDisplayLength": 10,
+		"order": [[0, "asc"]]
+	});
+
+	$('#tablaSitio').DataTable();
 }, false)
-notifi('hola','error')
+
 function getStitios() {
 	// let intSite = 1
 	/************************************************* 
@@ -44,8 +69,11 @@ addSite.addEventListener('click', () => {
 			if (objData.status) {
 					notifi(objData.msg, "info");
 					formSiteAdd.reset();
-					//recargamos la tabla 
-					getStitios()
+					//recargamos la tabla
+					// getStitios()
+				let tablaSitio = $('#tablaSitio').DataTable()
+						tablaSitio.ajax.reload(function () {
+						})
 			} else {
 				notifi(objData.msg, "error");
 			}
@@ -71,8 +99,11 @@ updateSite.addEventListener('click', () => {
 			if (objData.status) {
 					notifi(objData.msg, "info");
 					formSiteAdd.reset();
-					//recargamos la tabla 
-					getStitios()
+					//recargamos la tabla
+					// getStitios()
+				let tablaSitio = $('#tablaSitio').DataTable()
+						tablaSitio.ajax.reload(function () {
+						})
 			} else {
 				notifi(objData.msg, "error");
 			}
@@ -122,7 +153,11 @@ function delSite(intSite) {
 								title: objData.msg
 							})
 						})
-						getStitios()
+						// getStitios()
+						
+						let tablaSitio = $('#tablaSitio').DataTable()
+						tablaSitio.ajax.reload(function () {
+						})
 					} else {
 						Swal.fire('Atencion!', objData.msg, 'error');
 					}
@@ -191,7 +226,7 @@ $('input[type=radio]').change(function () {
 	let strSite = document.querySelector('#search').value
 	let intSite = $('input:radio[name=prioridad]:checked').val()
 	console.log('search '+ strSite + 'check ' + intSite)
-	getSites(intSite, strSite)
+	// getSites(intSite, strSite)
 })
 // obtener el valo de la caja de busqueda
 // let strSite = document.querySelector('#search').value

@@ -1,0 +1,9 @@
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-options .delSite{
+  color: #ff0000;
+	margin: 0 10px;
+	cursor: pointer;
+}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-options .aditSite{
+  color: #ffdd00;
+	cursor: pointer;
+}

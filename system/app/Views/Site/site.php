@@ -37,7 +37,22 @@
 					<input type="text" class="search-input" id='search'>
 				</div>
 			</div>
-			<div class="listSitios"></div>
+			<div class="listSitios">
+
+			<table id="tablaSitio" class="display compact nowrap" style="width:100%">
+				<thead>
+					<tr>
+							<th>sitio</th>
+							<th>user</th>
+							<th>password</th>
+							<th>opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+			</div>
 			<!-- <table class="table">
 				<thead>
 					<tr>

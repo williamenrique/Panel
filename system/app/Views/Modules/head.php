@@ -6,11 +6,14 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title><?= $data['page_tag']?></title>
-		<!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700&display=swap" rel="stylesheet">-->
-		<link href="<?= PLUGINS?>sweetalert/sweetcolor.css">
-		<link href="<?= PLUGINS?>DataTable/css/jquery.dataTables.min.css">
-		<link href="<?= PLUGINS?>DataTable/css/responsive.dataTables.min.css">
+
+		<link rel="stylesheet" href="<?= CSS?>sweetcolor.css">
 		<link rel="stylesheet" href="<?= CSS?>dash.css">
+		<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> -->
+		<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+		<link rel="stylesheet" href="<?= CSS?>tabla.css">
+		<link rel="stylesheet" href="<?= CSS?>dataTableCustom.css">
+		
 	</head>
 
 	<body>

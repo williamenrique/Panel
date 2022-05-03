@@ -55,46 +55,14 @@ class Site extends Controllers{
 			$intSite = 1;
 		}
 		$arrData = $this->model->getSites($intSite,$strSite);
-		dep($arrData);
-		die();
-		$htmlOptions = "";
-		if(empty($arrData)){
-			$htmlOptions .= '
-				<div class="alert-table">No se encontraron resultados</div>
-						';
-		}else{
-			$htmlOptions .= '
-				<table class="table">
-				<thead>
-					<tr>
-						<th>Sitio</th>
-						<th>Usuario</th>
-						<th>Clave</th>
-						<th>Opciones</th>
-					</tr>
-				</thead>
-				<tbody>
-			';
-			for ($i=0; $i < count($arrData) ; $i++) {
-				$htmlOptions .= '
-				<tr>
-						<td data-label="sitio">'.$arrData[$i]['sitio'].'</td>
-						<td data-label="usurio">'.$arrData[$i]['usuario'].'</td>
-						<td data-label="clave">'.$arrData[$i]['pass'].'</td>
-						<td data-label="opciones" class="opciones">
-							<div class="box-options">
+		for ($i=0; $i < count($arrData) ; $i++) {
+			$arrData[$i]['opciones'] = '
+						<div class="box-options">	
 								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
 								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-							</div>
-						</td>
-					</tr>
-						';
-			}
-			$htmlOptions .= 
-			'</tbody>
-			</table>';
+						</div>';
 		}
-		echo $htmlOptions;
+		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 		die();
 	}
 	// delete site
@@ -165,6 +133,57 @@ class Site extends Controllers{
 
 
 /*
+
+public function getSites(){
+		$intSite = $_GET['intSite'];
+		$strSite = $_GET['strSite'];
+		if($intSite == ''){
+			$intSite = 1;
+		}
+		$arrData = $this->model->getSites($intSite,$strSite);
+		$htmlOptions = "";
+		if(empty($arrData)){
+			$htmlOptions .= '
+				<div class="alert-table">No se encontraron resultados</div>
+						';
+		}else{
+			$htmlOptions .= '
+				<table class="table">
+				<thead>
+					<tr>
+						<th>Sitio</th>
+						<th>Usuario</th>
+						<th>Clave</th>
+						<th>Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+			';
+			for ($i=0; $i < count($arrData) ; $i++) {
+				$htmlOptions .= '
+				<tr>
+						<td data-label="sitio">'.$arrData[$i]['sitio'].'</td>
+						<td data-label="usurio">'.$arrData[$i]['usuario'].'</td>
+						<td data-label="clave">'.$arrData[$i]['pass'].'</td>
+						<td data-label="opciones" class="opciones">
+							<div class="box-options">
+								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
+								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+							</div>
+						</td>
+					</tr>
+						';
+			}
+			$htmlOptions .= 
+			'</tbody>
+			</table>';
+		}
+		echo $htmlOptions;
+		die();
+	}
+
+
+
 	public function getSitios(){
 		$arrData = $this->model->getSitios();
 		$htmlOptions = "";
