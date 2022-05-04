@@ -56,10 +56,16 @@ class Site extends Controllers{
 		}
 		$arrData = $this->model->getSites($intSite,$strSite);
 		for ($i=0; $i < count($arrData) ; $i++) {
+			if($arrData[$i]['status'] == 1){
+				 $status = '<i class="fa-solid fa-star" onclick="inFfav('.$arrData[$i]['idSitio'].')"></i>';
+			}else{
+				$status = '<i class="fa-regular fa-star" onclick="delFav('.$arrData[$i]['idSitio'].')"></i>';
+			}
 			$arrData[$i]['opciones'] = '
 						<div class="box-options">	
 								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
 								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+								'.$status.'
 						</div>';
 		}
 		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);

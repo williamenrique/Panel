@@ -1,9 +1,22 @@
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-options {
+	display: flex;
+	justify-content: space-between;
+	font-size: 16px;
+}
 table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-options .delSite{
   color: #ff0000;
-	margin: 0 10px;
 	cursor: pointer;
 }
 table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-options .aditSite{
   color: #ffdd00;
 	cursor: pointer;
+}
+table.dataTable>tbody>tr.child ul.dtr-details>li:last-child{
+	display: flex;
+	align-items: center;
+}
+table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options{
+	justify-content: space-between;
+	width: 80px;
+	
 }

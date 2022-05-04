@@ -36,44 +36,35 @@
 									<i class="fa-solid fa-house icon"></i>
 									Inicio</a>
 							</li>
+
+							<!-- item solo -->
+							<li class="list__item">
+								<a href="<?= base_url()?>site" class="nav__link active">
+									<i class="fa-solid fa-globe icon"></i>
+									Sitios web</a>
+							</li>
 							<!-- desplegable -->
 							<li class="list__item list__item--click ">
 								<a href="#" class="nav__link click">
 									<i class="fa-solid fa-house icon"></i>
-									Servicios
+									Cuentas
 									<i class="fa-solid fa-arrow-right list__arrow"></i>
 								</a>
-							<!-- la lista que se desplegara -->
-							<ul class="listShow">
+								<!-- la lista que se desplegara -->
+								<ul class="listShow">
 									<li class="listInside">
-
 										<a href="#" class="linkInside">
 											<i class="fa-solid fa-circle-minus"></i>
-											Item 1
+										Propias
 										</a>
 									</li>
 									<li class="listInside">
-
 										<a href="#" class="linkInside">
 											<i class="fa-solid fa-circle-minus"></i>
-											Item 1
-										</a>
-									</li>
-									<li class="listInside">
-
-										<a href="#" class="linkInside">
-											<i class="fa-solid fa-circle-minus"></i>
-											Item 1
+											Terceros
 										</a>
 									</li>
 								</ul> 
-							
-							</li>
-							<!-- item solo -->
-							<li class="list__item">
-								<a href="#" class="nav__link active">
-									<i class="fa-solid fa-globe icon"></i>
-									Sitios web</a>
 							</li>
 						</ul>
 					</nav>

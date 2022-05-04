@@ -2,8 +2,16 @@ let tablaSitio;
 document.addEventListener('DOMContentLoaded', function () {
 	// getStitios()
 	// getSites()
-	let strSite = document.querySelector('#search').value
+	// let strSite = document.querySelector('#search').value
 	let intCheck = $('input:radio[name=prioridad]:checked').val()
+	
+obtenerSitios()
+	// $('#tablaSitio').DataTable();
+}, false)
+
+const obtenerSitios = () => {
+	let strSite = ''
+	let intCheck = 1
 	tablaSitio = $('#tablaSitio').DataTable({
 		"responsive": {
 			"name": "medium",
@@ -17,16 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
 			{ 'data': 'sitio' },
 			{ 'data': 'usuario' },
 			{ 'data': 'pass' },
-			{ 'data': 'opciones' }
+			{ 'data': 'opciones'}
 		],
 		"resonsieve": "true",
 		"bDestroy": true,
 		"iDisplayLength": 10,
 		"order": [[0, "asc"]]
-	});
+	})
+}
 
-	$('#tablaSitio').DataTable();
-}, false)
 
 function getStitios() {
 	// let intSite = 1
@@ -227,6 +234,7 @@ $('input[type=radio]').change(function () {
 	let intSite = $('input:radio[name=prioridad]:checked').val()
 	console.log('search '+ strSite + 'check ' + intSite)
 	// getSites(intSite, strSite)
+	$('#tablaSitio').DataTable(intSite);
 })
 // obtener el valo de la caja de busqueda
 // let strSite = document.querySelector('#search').value
