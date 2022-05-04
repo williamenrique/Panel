@@ -14,7 +14,7 @@ class Home extends Controllers{
 		$data['page_tag'] = "Dashboard - Personal";
 		$data['page_title'] = "Pagina Principal";
 		$data['page_name'] = "home";
-		$data['page_link'] = "dashboard";
+		$data['page_link'] = "home";
 		$data['page_function'] = "function.home.js";
 		$this->views->getViews($this, "home", $data);
 	}

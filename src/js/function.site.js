@@ -1,24 +1,21 @@
 let tablaSitio;
 document.addEventListener('DOMContentLoaded', function () {
-	// getStitios()
-	// getSites()
-	// let strSite = document.querySelector('#search').value
 	let intCheck = $('input:radio[name=prioridad]:checked').val()
-	
-obtenerSitios()
-	// $('#tablaSitio').DataTable();
+	obtenerSitios(intCheck)
 }, false)
 
-const obtenerSitios = () => {
-	let strSite = ''
-	let intCheck = 1
+/************************************
+funcion para obtener todos los sitios 
+y mostrarlos en la tabla
+************************************/
+const obtenerSitios = (intCheck) => {
 	tablaSitio = $('#tablaSitio').DataTable({
 		"responsive": {
 			"name": "medium",
 			"width": "1188"
 		},
 		"ajax": {
-			"url": ' ' +base_url + 'Site/getSites/?intSite='+intCheck+'&strSite='+strSite,
+			"url": ' ' +base_url + 'Site/getSites/?intSite='+intCheck,
 			"dataSrc": ''
 		},
 		"columns": [
@@ -33,30 +30,10 @@ const obtenerSitios = () => {
 		"order": [[0, "asc"]]
 	})
 }
-
-
-function getStitios() {
-	// let intSite = 1
-	/************************************************* 
-	 * creamos el objeto de envio para tipo de navegador
-	 * hacer una validacion para diferentes navegadores y crear el formato de lectura
-	 * y hacemos la peticion mediante ajax
-	 * usando un if reducido creamos un objeto del contenido en(request)
-	 *****************************************************/
-	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	let ajaxUrl = base_url + 'Site/getSitios';
-	//prepara los datos por ajax preparando el dom
-	request.open('GET', ajaxUrl, true);
-	//hacemos el envio al servidor
-	request.send();
-	//obtenemos los resultados y evaluamos
-	request.onreadystatechange = function () { 
-		if (request.readyState == 4 && request.status == 200) {
-			document.querySelector('.listSitios').innerHTML = request.responseText;
-		}
-	}
-}
-// agregar nuevo sitio
+/************************************
+Agregar nuevos  sitios 
+y mostrarlos en la tabla
+************************************/
 let addSite = document.querySelector('.btn-addSite')
 let formSiteAdd = document.querySelector('.formSiteAdd')
 addSite.addEventListener('click', () => {
@@ -87,7 +64,10 @@ addSite.addEventListener('click', () => {
 		}
 	}
 })
-// actualizar un sitio
+/************************************
+funcion para actualizar un sitios 
+y mostrarlos en la tabla
+************************************/
 let updateSite = document.querySelector('.btn-updateSite')
 updateSite.addEventListener('click', () => {
 	var request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
@@ -117,7 +97,50 @@ updateSite.addEventListener('click', () => {
 		}
 	}
 })
-// eliminar sitio
+/************************************
+funcion para obtener un sitio para actualizarlo
+y mostrarlos en la tabla
+************************************/
+function editSite(intSite) {
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	let ajaxUrl = base_url + 'Site/getSite/' + intSite
+	//id del atributo lr que obtuvimos enla variable
+	let strData = "intSite=" + intSite
+	request.open("POST", ajaxUrl, true)
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	//enviamos
+	// request.send(strData);
+	request.send()
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) { 
+			let objData = JSON.parse(request.responseText)
+			if (objData.status) { 
+				document.querySelector('#txtSite').value = objData.data.sitio
+				document.querySelector('#txtUrl').value = objData.data.URL
+				document.querySelector('#txtUser').value = objData.data.usuario
+				document.querySelector('#txtPass').value = objData.data.password
+				document.querySelector('#txtIntSite').value = objData.data.idSitio
+				let btn_addSite = document.querySelector('.btn-addSite')
+				let btn_updateSite = document.querySelector('.btn-updateSite')
+				btn_addSite.style.display = 'none'
+				btn_updateSite.style.display = 'block'
+			}else {
+				notifi(objData.msg, "error")
+			}
+		}
+	}
+}
+/************************************
+funcion favorito
+************************************/
+const addFav = () => {
+
+}
+/************************************
+funcion para eliminar un sitios 
+y mostrarlos en la tabla
+************************************/
 function delSite(intSite) {
 	//obtenemos el valor del atributo individual
 	var intSite = intSite;
@@ -160,8 +183,6 @@ function delSite(intSite) {
 								title: objData.msg
 							})
 						})
-						// getStitios()
-						
 						let tablaSitio = $('#tablaSitio').DataTable()
 						tablaSitio.ajax.reload(function () {
 						})
@@ -173,73 +194,26 @@ function delSite(intSite) {
 		}
 	})
 }
-// editar sitio
-function editSite(intSite) {
-	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	let ajaxUrl = base_url + 'Site/getSite/' + intSite
-	//id del atributo lr que obtuvimos enla variable
-	let strData = "intSite=" + intSite
-	request.open("POST", ajaxUrl, true)
-	//forma en como se enviara
-	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-	//enviamos
-	// request.send(strData);
-	request.send()
-	request.onreadystatechange = function () {
-		let objData = JSON.parse(request.responseText)
-		if (objData.status) { 
-			document.querySelector('#txtSite').value = objData.data.sitio
-			document.querySelector('#txtUrl').value = objData.data.URL
-			document.querySelector('#txtUser').value = objData.data.usuario
-			document.querySelector('#txtPass').value = objData.data.password
-			document.querySelector('#txtIntSite').value = objData.data.idSitio
-			let btn_addSite = document.querySelector('.btn-addSite')
-			let btn_updateSite = document.querySelector('.btn-updateSite')
-			btn_addSite.style.display = 'none'
-			btn_updateSite.style.display = 'block'
-		}else {
-			notifi(objData.msg, "error")
-		}
-	}
-}
-// obtener sitios con status y sitio
-// let strSite = document.querySelector('#search').value
-const getSites = (intSite, strSite) => {
-	let search = document.querySelector('#search').value
-	let intCheck = $('input:radio[name=prioridad]:checked').val()
-	if (intCheck == "" || search == "") {
-		let intCheck = 1;
-		let search = '';
-	} else {
-		let intCheck = intSite;
-		let search = strSite;
-	}
-	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	let ajaxUrl = base_url + 'Site/getSites/?intSite='+intCheck+'&strSite='+search
-	
-	request.open("GET", ajaxUrl, true)
-	//forma en como se enviara
-	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-	//enviamos
-	request.send()
-	request.onreadystatechange = function () { 
-		if (request.readyState == 4 && request.status == 200) {
-			document.querySelector('.listSitios').innerHTML = request.responseText;
-		}
-	}
-}
-// obtener el valor del status
+/************************************
+obtener el tipo de status y cargar 
+ la tabla para mostrar
+************************************/
 $('input[type=radio]').change(function () {
-	let strSite = document.querySelector('#search').value
 	let intSite = $('input:radio[name=prioridad]:checked').val()
-	console.log('search '+ strSite + 'check ' + intSite)
-	// getSites(intSite, strSite)
-	$('#tablaSitio').DataTable(intSite);
+	// llamamos la funcion para que cargue la tabla con el nuevo valor
+	obtenerSitios(intSite);
 })
-// obtener el valo de la caja de busqueda
-// let strSite = document.querySelector('#search').value
-// strSite.addEventListener('keyup', () => {
-// 	let strSite = document.querySelector('#search').value
-// 	let intSite = $('input:radio[name=prioridad]:checked').val()
-// 	getSites(intSite, strSite)
-// })
+/************************************
+funcion para agrgar a favorito o quitar de favorito
+************************************/
+const changeState = (intSite, fav) => {
+	if (fav == 0) {
+		console.log('esta deshabilitado')
+	}
+	if (fav == 1) {
+		console.log('')
+	}
+	if (fav == 2) {
+		console.log('es favorito')
+	}
+}

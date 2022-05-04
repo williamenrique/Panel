@@ -5,10 +5,32 @@
   box-sizing: border-box;
 }
 
-body {
-  scroll-behavior: smooth;
+html {
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #111827;
+  border-radius: 20px;
+  border: 2px solid #fefefe;
+}
+
+html::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+html::-webkit-scrollbar:vertical {
+  width: 12px;
 }
 
 .container {
@@ -162,18 +184,18 @@ body {
   width: 100%;
 }
 
-.container-main .box-main .box-card {
+.container .box-card {
   margin-bottom: 20px;
 }
 
-.container-main .box-main .box-card .card {
+.container .box-card .card {
   width: 250px;
   padding: 20px;
   background: #ffdd00;
   border-radius: 4px;
 }
 
-.container-main .box-main .box-card .card .card-body .text-card {
+.container .box-card .card .card-body .text-card {
   font-size: 1.2em;
   color: #192a56;
   text-decoration: none;
@@ -181,30 +203,43 @@ body {
   cursor: pointer;
 }
 
-.container-main .box-main .box-card .card .card-body .text-card .numbers {
+.container .box-card .card .card-body .text-card .numbers {
   font-size: 1.3em;
   margin-right: 4px;
 }
 
-.container-main .box-main .box-card .card .card-body .text-card:hover {
+.container .box-card .card .card-body .text-card:hover {
   color: rgba(25, 42, 86, 0.7);
 }
 
-.container .title-header {
+.container .tools {
+  margin-bottom: 3rem;
+  background: #fefefe;
+  padding: 2rem 1rem;
+  border-radius: 4px;
+}
+
+.container .tools .title-header {
   font-size: 2rem;
-  padding: 2rem 0;
+  padding: 1rem 0;
   color: #111827;
   width: 100%;
   text-transform: capitalize;
 }
 
-.container .tools {
-  width: 200px;
-  margin-bottom: 3rem;
-}
-
 .container .tools label {
   position: relative;
+}
+
+.container .tools label span {
+  margin-right: 1rem;
+  padding: .5rem 1.5rem;
+  background: #013ca6;
+  color: #fefefe;
+  text-transform: uppercase;
+  font-size: .8rem;
+  border-radius: 4px;
+  transition: 0.5s;
   cursor: pointer;
 }
 
@@ -213,31 +248,128 @@ body {
 }
 
 .container .tools label input:checked ~ span {
-  background: #111827;
-  color: #fefefe;
-  transition: 0.5s;
+  background: #ffdd00;
+  color: #111827;
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
 }
 
-.container .tools label span {
-  position: relative;
-  display: inline-block;
-  border-radius: 50px;
-  transition: 0.5s;
-  padding: 2px 10px;
-  width: 100px;
-  height: 50px;
+.container .tools label input:checked ~ span::before {
+  font-family: 'fontawesome';
+  content: '\f00c';
+  position: absolute;
+  top: .13rem;
+  left: .3rem;
+  font-size: 1.1rem;
 }
 
 .box-cont {
-  background: #fefefe;
   border-radius: 4px;
-  padding: .5rem 2rem;
 }
 
 .box {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 10px;
+}
+
+.box .listSitios {
+  grid-column: 1 / 10;
+  background: #fefefe;
+  border-radius: 4px;
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+.box .listSitios::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.box .listSitios::-webkit-scrollbar-thumb {
+  background-color: #111827;
+  border-radius: 20px;
+  border: 2px solid #fefefe;
+}
+
+.box .listSitios::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.box .listSitios::-webkit-scrollbar:horizontal {
+  height: 12px;
+}
+
+.box .listSitios::-webkit-scrollbar:vertical {
+  width: 12px;
+}
+
+.box .addSites {
+  grid-column: 10 / -1;
+}
+
+.box .addSites .cardHeader {
+  background: #fefefe;
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+.box .addSites .cardHeader h2 {
+  color: #111827;
+  padding-bottom: 2rem;
+}
+
+.box .addSites .cardHeader .formSiteAdd {
+  width: 100%;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-input {
+  position: relative;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-input input {
+  width: 100%;
+  padding: .3rem;
+  font-size: 1.1rem;
+  color: #212121;
+  padding-left: 25px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-input i {
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  font-size: 1rem;
+  color: #343a40;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-button .btn {
+  background: none;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-button .btn-addSite {
+  background: #009688;
+  color: #fefefe;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-button .btn-addSite:hover {
+  background: rgba(0, 150, 136, 0.7);
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-button .btn-updateSite {
+  display: none;
+  background: #013ca6;
+  color: #fefefe;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
+  background: rgba(1, 60, 166, 0.7);
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
 }
 
 .container-main .navigation.active {
@@ -277,10 +409,10 @@ body {
     left: 220px;
     width: calc(100% - 220px);
   }
-  .container-main .box-main .box-cont .cont-table {
+  .box .listSitios {
     grid-column: 1 / -1;
   }
-  .container-main .box-main .box-cont .cont-addSites {
+  .box .addSites {
     grid-column: 1 / 7;
   }
 }
@@ -288,6 +420,17 @@ body {
 @media (max-width: 780px) {
   .container .box-cont {
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 600px) {
+  .box .listSitios {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .box .addSites {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }
 

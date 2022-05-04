@@ -18,10 +18,14 @@ class SiteModel extends Mysql {
 		$request = $this->select_all($sql);
 		return $request;
 	}
-	public function getSites(int $intSite, string $strSitio){
-		$this->strSitio = $strSitio;
-		$this->status = $intSite;
-		$sql = "SELECT * FROM table_sitio WHERE sitio LIKE '%$this->strSitio%' AND status = $this->status";
+	public function getSites(int $intSite){
+		$this->priority = $intSite;
+		if($this->priority == 1){
+			$sql = "SELECT * FROM table_sitio WHERE status != 0";
+		}else{
+		 	$sql = "SELECT * FROM table_sitio WHERE favorite = $this->priority";
+		}
+		
 		$request = $this->select_all($sql);
 		return $request;
 	}

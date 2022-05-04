@@ -14,17 +14,19 @@
 	</div>
 	<!-- box-cont  -->
 	<div class="box-cont">
-		<p class="title-header">sitios web</p>
 		<div class="tools">
+			<p class="title-header">sitios web</p>
 			<label>
-				<input type="radio" name="prioridad" id="importante" value="1" checked>
-				<span></span>
-				Importantes
+				<input type="radio" name="prioridad" id="favorite" value="2" checked >
+				<span>favoritos</span>
 			</label>
 			<label >
-				<input type="radio" name="prioridad" id="poco" value="2">
-				<span></span>
-				Poco Uso
+				<input type="radio" name="prioridad" id="all" value="1">
+				<span>todos</span>
+			</label>
+			<label >
+				<input type="radio" name="prioridad" id="deshabilitado" value="0">
+				<span>Deshabilitados</span>
 			</label>
 		</div>
 	
@@ -44,26 +46,26 @@
 					</tbody>
 				</table>
 			</div>
-				<!-- fin tabla de sitios -->
+			<!-- fin tabla de sitios -->
 			<!-- agregar sitios y actualizarlos -->
-			<div class="cont-addSites">
+			<div class="addSites">
 				<div class="cardHeader">
 					<h2>Agregar Sitio</h2>
 					<form  class="formSiteAdd">
 						<input type="hidden" name="txtIntSite" id="txtIntSite">
 						<div class="box-input">
-							<label for=""><i class="fa-solid fa-globe"></i></label>
-							<input id="txtSite" name="txtSite" type="text" placeholder="Nombre del sitio web">
+							<i class="fa-solid fa-globe"></i>
+							<input id="txtSite" name="txtSite" type="text" placeholder="Sitio web">
 						</div>
 						<div class="box-input">
-							<label for=""><i class="fa-solid fa-anchor"></i></label>
+							<i class="fa-solid fa-anchor"></i>
 							<input id="txtUrl" name="txtUrl" type="text" placeholder="URL del sitio"></div>
 						<div class="box-input">
-							<label for=""><i class="fa-solid fa-user"></i></label>
+							<i class="fa-solid fa-user"></i>
 							<input id="txtUser" name="txtUser" type="text" placeholder="Usuario registrado"></div>
 						<div class="box-input">
-							<label for=""><i class="fa-solid fa-lock"></i></label>
-							<input id="txtPass" name="txtPass" type="text" placeholder="Password para ingreso"></div>
+							<i class="fa-solid fa-lock"></i>
+							<input id="txtPass" name="txtPass" type="text" placeholder="Password "></div>
 						<div class="box-button">
 							<button type="button" class="btn btn-addSite"><i class="fa-solid fa-plus"></i>
 							Agregar

@@ -11,12 +11,20 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-optio
   color: #ffdd00;
 	cursor: pointer;
 }
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-options .fa-eye-slash{
+  color: #757575;
+	cursor: pointer;
+}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr .box-options .fa-star{
+  color: #009688;
+	cursor: pointer;
+}
 table.dataTable>tbody>tr.child ul.dtr-details>li:last-child{
 	display: flex;
 	align-items: center;
 }
 table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options{
-	justify-content: space-between;
+	justify-content: space-evenly;
 	width: 80px;
 	
 }

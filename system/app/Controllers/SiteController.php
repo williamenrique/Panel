@@ -47,31 +47,43 @@ class Site extends Controllers{
 		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
-	// obtener sitios pos stadus y sitio
+	// obtener todos los sitios
 	public function getSites(){
 		$intSite = $_GET['intSite'];
-		$strSite = $_GET['strSite'];
-		if($intSite == ''){
-			$intSite = 1;
-		}
-		$arrData = $this->model->getSites($intSite,$strSite);
+		$arrData = $this->model->getSites($intSite);
 		for ($i=0; $i < count($arrData) ; $i++) {
-			if($arrData[$i]['status'] == 1){
-				 $status = '<i class="fa-solid fa-star" onclick="inFfav('.$arrData[$i]['idSitio'].')"></i>';
-			}else{
-				$status = '<i class="fa-regular fa-star" onclick="delFav('.$arrData[$i]['idSitio'].')"></i>';
+			$status0 = '<i class="fa-solid fa-eye-slash"onclick="changeState('.$arrData[$i]['idSitio'].',1)"></i>';
+			$favorite = '<i class="fa-solid fa-star" onclick="changeState('.$arrData[$i]['idSitio'].',1)"></i>';
+			$favorite1 = '<i class="fa-regular fa-star" onclick="changeState('.$arrData[$i]['idSitio'].',2)"></i>';
+			if($intSite == 0){
+				$status = $status0;
+				$del = '<i class="fa-solid fa-trash-can delSite" style="display:none" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>';
+			}else
+			if($intSite == 1){
+					$del = '<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>';
+				if($arrData[$i]['favorite'] == 0 && $arrData[$i]['favorite'] == NULL){
+					$favorite = $favorite1;
+				}else
+				if($arrData[$i]['favorite'] == 2){
+					$favorite = $favorite;
+				}
+			}else
+			if($intSite == 2){
+				$del = '<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>';
+				$favorite = $favorite;
 			}
 			$arrData[$i]['opciones'] = '
-						<div class="box-options">	
-								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
-								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-								'.$status.'
-						</div>';
+				<div class="box-options">	
+					'.$del.
+					'
+					<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+					'.$favorite.'					
+				</div>';
 		}
 		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 		die();
 	}
-	// delete site
+	// eliminar un sitio (deshabilitar)
 	public function delSite(){
 		if($_POST){
 			$idSite = intval($_POST['intSite']);
@@ -136,87 +148,3 @@ class Site extends Controllers{
 		}
 	}
 }
-
-
-/*
-
-public function getSites(){
-		$intSite = $_GET['intSite'];
-		$strSite = $_GET['strSite'];
-		if($intSite == ''){
-			$intSite = 1;
-		}
-		$arrData = $this->model->getSites($intSite,$strSite);
-		$htmlOptions = "";
-		if(empty($arrData)){
-			$htmlOptions .= '
-				<div class="alert-table">No se encontraron resultados</div>
-						';
-		}else{
-			$htmlOptions .= '
-				<table class="table">
-				<thead>
-					<tr>
-						<th>Sitio</th>
-						<th>Usuario</th>
-						<th>Clave</th>
-						<th>Opciones</th>
-					</tr>
-				</thead>
-				<tbody>
-			';
-			for ($i=0; $i < count($arrData) ; $i++) {
-				$htmlOptions .= '
-				<tr>
-						<td data-label="sitio">'.$arrData[$i]['sitio'].'</td>
-						<td data-label="usurio">'.$arrData[$i]['usuario'].'</td>
-						<td data-label="clave">'.$arrData[$i]['pass'].'</td>
-						<td data-label="opciones" class="opciones">
-							<div class="box-options">
-								<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
-								<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-							</div>
-						</td>
-					</tr>
-						';
-			}
-			$htmlOptions .= 
-			'</tbody>
-			</table>';
-		}
-		echo $htmlOptions;
-		die();
-	}
-
-
-
-	public function getSitios(){
-		$arrData = $this->model->getSitios();
-		$htmlOptions = "";
-		if(empty($arrData)){
-			$htmlOptions .= '
-				<div class="alert-table">No se encontraron resultados</div>
-						';
-		}else{
-			$htmlOptions .= '
-				<div class="table__header">Sitio</div>
-				<div class="table__header">Usuario</div>
-				<div class="table__header">Password</div>
-				<div class="table__header">Opciones</div>
-			';
-			for ($i=0; $i < count($arrData) ; $i++) {
-				$htmlOptions .= '
-					<div class="table__item"><a href="'.$arrData[$i]['sitio'].'">'.$arrData[$i]['sitio'].'</a></div>
-					<div class="table__item">'.$arrData[$i]['usuario'].'</div>
-					<div class="table__item">'.$arrData[$i]['pass'].'</div>
-					<div class="table__item accion">
-						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
-						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-					</div>
-						';
-			}
-		}
-		echo $htmlOptions;
-		die();
-	}
-	*/

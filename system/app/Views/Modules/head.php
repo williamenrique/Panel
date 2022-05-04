@@ -32,20 +32,20 @@
 					<nav class="nav">
 						<ul class="list">
 							<li class="list__item ">
-								<a href="#" class="nav__link">
+								<a href="<?= base_url()?>" class="nav__link home">
 									<i class="fa-solid fa-house icon"></i>
 									Inicio</a>
 							</li>
 
 							<!-- item solo -->
 							<li class="list__item">
-								<a href="<?= base_url()?>site" class="nav__link active">
+								<a href="<?= base_url()?>site" class="nav__link site">
 									<i class="fa-solid fa-globe icon"></i>
 									Sitios web</a>
 							</li>
 							<!-- desplegable -->
 							<li class="list__item list__item--click ">
-								<a href="#" class="nav__link click">
+								<a class="nav__link click">
 									<i class="fa-solid fa-house icon"></i>
 									Cuentas
 									<i class="fa-solid fa-arrow-right list__arrow"></i>
@@ -53,15 +53,21 @@
 								<!-- la lista que se desplegara -->
 								<ul class="listShow">
 									<li class="listInside">
-										<a href="#" class="linkInside">
+										<a href="<?= base_url()?>propias" class="linkInside">
 											<i class="fa-solid fa-circle-minus"></i>
 										Propias
 										</a>
 									</li>
 									<li class="listInside">
-										<a href="#" class="linkInside">
+										<a href="<?= base_url()?>propias" class="linkInside">
 											<i class="fa-solid fa-circle-minus"></i>
 											Terceros
+										</a>
+									</li>
+									<li class="listInside">
+										<a href="<?= base_url()?>agregar" class="linkInside">
+											<i class="fa-solid fa-circle-minus"></i>
+											Agregar cuenta
 										</a>
 									</li>
 								</ul> 
