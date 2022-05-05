@@ -39,6 +39,7 @@
 							<th>sitio</th>
 							<th>user</th>
 							<th>password</th>
+							<th>url</th>
 							<th>opciones</th>
 						</tr>
 					</thead>

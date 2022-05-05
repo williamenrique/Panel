@@ -281,6 +281,15 @@ html{
 .box-cont{
 	border-radius: $border-radius;
 	// padding: .5rem 2rem;
+	.link_url{
+		color: $primary-color;
+		&:hover{
+			color: $text-light;
+		}
+		&:visited{
+			color: $info-color;
+		}
+	}
 }
 
 .box{
@@ -288,6 +297,7 @@ html{
 	grid-template-columns: repeat(12,1fr);
 	gap: 10px;
 	.listSitios{
+		width: 100%;
 		grid-column: 1 / 10;
 		background: $white-color;
 		border-radius: $border-radius;

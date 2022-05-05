@@ -18,14 +18,22 @@ class SiteModel extends Mysql {
 		$request = $this->select_all($sql);
 		return $request;
 	}
-	public function getSites(int $intSite){
-		$this->priority = $intSite;
-		if($this->priority == 1){
-			$sql = "SELECT * FROM table_sitio WHERE status != 0";
-		}else{
-		 	$sql = "SELECT * FROM table_sitio WHERE favorite = $this->priority";
+	public function getSites(int $priority, int $favorite){
+		$this->priority = $priority;
+		$this->favorite = $favorite;
+		if($this->priority == 0){
+			// deshabilitados
+			$sql = "SELECT * FROM table_sitio WHERE status = 0";
 		}
-		
+		if($this->priority == 1){
+			// todos los activos
+		 	$sql = "SELECT * FROM table_sitio WHERE status != 0";
+		}
+		if($this->priority == 2){
+			// todos los activos y favoritos
+		 	$sql = "SELECT * FROM table_sitio WHERE favorite = $this->favorite AND status != 0";
+		}
+		// echo $sql;
 		$request = $this->select_all($sql);
 		return $request;
 	}
@@ -46,10 +54,19 @@ class SiteModel extends Mysql {
 		$request = $this->insert($sql,$arrData);
 		return $request;
 	}
-	public function delSite(int $intSitio){
+	public function delSite(int $intSitio, int $status){
 		$this->intSitio = $intSitio;
-		$sql = "UPDATE table_sitio SET status = ? WHERE  idSitio = $this->intSitio";
-		$arrData = array(0);
+		$this->status = $status;
+		$sql = "UPDATE table_sitio SET status = ? , favorite = ? WHERE  idSitio = $this->intSitio";
+		$arrData = array($this->status, 0);
+		$request = $this->update($sql,$arrData);
+		return $request;
+	}
+	public function favoriteSite(int $intSitio, int $fav){
+		$this->intSitio = $intSitio;
+		$this->fav = $fav;
+		$sql = "UPDATE table_sitio SET favorite = ? WHERE  idSitio = $this->intSitio";
+		$arrData = array($this->fav);
 		$request = $this->update($sql,$arrData);
 		return $request;
 	}

@@ -266,6 +266,18 @@ html::-webkit-scrollbar:vertical {
   border-radius: 4px;
 }
 
+.box-cont .link_url {
+  color: #111827;
+}
+
+.box-cont .link_url:hover {
+  color: #c1c1c1;
+}
+
+.box-cont .link_url:visited {
+  color: #013ca6;
+}
+
 .box {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -273,6 +285,7 @@ html::-webkit-scrollbar:vertical {
 }
 
 .box .listSitios {
+  width: 100%;
   grid-column: 1 / 10;
   background: #fefefe;
   border-radius: 4px;

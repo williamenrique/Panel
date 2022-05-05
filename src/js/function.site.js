@@ -10,18 +10,47 @@ y mostrarlos en la tabla
 ************************************/
 const obtenerSitios = (intCheck) => {
 	tablaSitio = $('#tablaSitio').DataTable({
+		"language": {
+			"sProcessing": "Procesando...",
+			"sLengthMenu": "Mostrar _MENU_ registros",
+			"sZeroRecords": "No se encontraron resultados",
+			"sEmptyTable": "Ningún dato disponible",
+			"sInfo": "Total de _TOTAL_ Registros",
+			"sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+			"sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+			"sInfoPostFix": "",
+			"sSearch": "Buscar:",
+			"sUrl": "",
+			"sInfoThousands": ",",
+			"sLoadingRecords": "Cargando...",
+			"oPaginate": {
+				"sFirst": "Primero",
+				"sLast": "Último",
+				"sNext": "Siguiente",
+				"sPrevious": "Anterior"
+			},
+			"oAria": {
+				"sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+				"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+			},
+			"buttons": {
+				"copy": "Copiar",
+				"colvis": "Visibilidad"
+			}
+		},
 		"responsive": {
 			"name": "medium",
-			"width": "1188"
+			"width": "800"
 		},
 		"ajax": {
-			"url": ' ' +base_url + 'Site/getSites/?intSite='+intCheck,
+			"url": ' ' +base_url + 'Site/getSites/?priority='+intCheck,
 			"dataSrc": ''
 		},
 		"columns": [
 			{ 'data': 'sitio' },
 			{ 'data': 'usuario' },
 			{ 'data': 'pass' },
+			{ 'data': 'url' },
 			{ 'data': 'opciones'}
 		],
 		"resonsieve": "true",
@@ -38,7 +67,7 @@ let addSite = document.querySelector('.btn-addSite')
 let formSiteAdd = document.querySelector('.formSiteAdd')
 addSite.addEventListener('click', () => {
 	var request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	var ajaxUrl = base_url + 'Site/setSitios';
+	var ajaxUrl = base_url + 'Site/SetSite';
 	//creamos un objeto del formulario con los datos haciendo referencia a formData
 	var formData = new FormData(formSiteAdd);
 	//prepara los datos por ajax preparando el dom
@@ -131,12 +160,7 @@ function editSite(intSite) {
 		}
 	}
 }
-/************************************
-funcion favorito
-************************************/
-const addFav = () => {
 
-}
 /************************************
 funcion para eliminar un sitios 
 y mostrarlos en la tabla
@@ -156,12 +180,12 @@ function delSite(intSite) {
 		if (result.isConfirmed) {
 			//hacer una validacion para diferentes navegadores y crear el formato de lectura y hacemos la peticion mediante ajax
 			let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-			let ajaxUrl = base_url + 'Site/delSite/' + intSite;
+			let ajaxUrl = base_url + 'Site/statusSite'
 			//id del atributo lr que obtuvimos enla variable
-			let strData = "intSite=" + intSite;
+			let strData = new URLSearchParams("intSite="+intSite+"&status=0")
 			request.open("POST", ajaxUrl, true);
 			//forma en como se enviara
-			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 			//enviamos
 			request.send(strData);
 			// request.send();
@@ -171,23 +195,11 @@ function delSite(intSite) {
 					//convertir en objeto JSON
 					let objData = JSON.parse(request.responseText);
 					if (objData.status) {
-						$(function () {
-							var Toast = Swal.mixin({
-								toast: true,
-								position: 'top-end',
-								showConfirmButton: false,
-								timer: 3000
-							})
-							Toast.fire({
-								icon: 'success',
-								title: objData.msg
-							})
-						})
+						notifi(objData.msg, 'info');
 						let tablaSitio = $('#tablaSitio').DataTable()
-						tablaSitio.ajax.reload(function () {
-						})
+						tablaSitio.ajax.reload(function () {})
 					} else {
-						Swal.fire('Atencion!', objData.msg, 'error');
+						notifi(objData.msg, 'error');
 					}
 				}
 			}
@@ -195,25 +207,86 @@ function delSite(intSite) {
 	})
 }
 /************************************
+funcion para eliminar un sitios 
+y mostrarlos en la tabla
+************************************/
+function showSite(intSite) {
+	//obtenemos el valor del atributo individual
+	// let intSite = intSite;
+	//hacer una validacion para diferentes navegadores y crear el formato de lectura y hacemos la peticion mediante ajax
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	let ajaxUrl = base_url + 'Site/statusSite';
+	//id del atributo lr que obtuvimos enla variable
+	let strData = new URLSearchParams("intSite="+intSite+"&status=1");
+	request.open("POST", ajaxUrl, true);
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//enviamos
+	request.send(strData);
+	// request.send();
+	request.onreadystatechange = function () {
+		//comprobamos la peticion
+		if (request.readyState == 4 && request.status == 200) {
+			//convertir en objeto JSON
+			let objData = JSON.parse(request.responseText);
+			if (objData.status) {
+				notifi(objData.msg, 'info');
+				let tablaSitio = $('#tablaSitio').DataTable()
+				tablaSitio.ajax.reload(function () {})
+			} else {
+				notifi(objData.msg, 'error');
+			}
+		}
+	}
+}
+/************************************
 obtener el tipo de status y cargar 
  la tabla para mostrar
 ************************************/
 $('input[type=radio]').change(function () {
-	let intSite = $('input:radio[name=prioridad]:checked').val()
+	let priority = $('input:radio[name=prioridad]:checked').val()
+	if (priority == 1) {
+	}
 	// llamamos la funcion para que cargue la tabla con el nuevo valor
-	obtenerSitios(intSite);
+	obtenerSitios(priority);
 })
 /************************************
-funcion para agrgar a favorito o quitar de favorito
+funcion para agrgar a favorito 
+o quitar de favorito
 ************************************/
 const changeState = (intSite, fav) => {
-	if (fav == 0) {
-		console.log('esta deshabilitado')
+	if (fav == 0 && fav == '') {
+		favorite(intSite, 1)
 	}
 	if (fav == 1) {
-		console.log('')
+		favorite(intSite, 0)
 	}
 	if (fav == 2) {
-		console.log('es favorito')
+		favorite(intSite, 0)
+	}
+}
+const favorite = (intSite, fav) => {
+	//hacer una validacion para diferentes navegadores y crear el formato de lectura y hacemos la peticion mediante ajax
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	let ajaxUrl = base_url + 'Site/favSite';
+	// let ajaxUrl = base_url + 'Site/favSite/?intSite=' + intSite+'&fav='+fav;
+	//id del atributo lr que obtuvimos enla variable
+	let strData = new URLSearchParams("intSite="+intSite+"&fav="+fav);
+	request.open("POST", ajaxUrl, true);
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//enviamos
+	request.send(strData);
+	request.onreadystatechange = function () { 
+		if (request.readyState == 4 && request.status == 200) {
+			//convertir en objeto JSON
+			let objData = JSON.parse(request.responseText);
+			if (objData.status) { 
+				notifi(objData.msg, 'success');
+				tablaSitio.ajax.reload()
+			} else {
+				notifi(objData.msg, 'error');
+			}
+		}
 	}
 }
