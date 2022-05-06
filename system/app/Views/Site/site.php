@@ -2,20 +2,9 @@
 
 
 <div class="container">
-	<div class="box-card">
-		<div class="card">
-			<div class="card-body">
-				<a href="#" class="text-card">
-					<span class="numbers">150</span>
-					Sitios guardados
-				</a>
-			</div>
-		</div>
-	</div>
-	<!-- box-cont  -->
-	<div class="box-cont">
+	<div class="heading">
+		<h2 class="title"><span>S</span>itios web</h2>
 		<div class="tools">
-			<p class="title-header">sitios web</p>
 			<label>
 				<input type="radio" name="prioridad" id="favorite" value="2" checked >
 				<span>favoritos</span>
@@ -29,6 +18,23 @@
 				<span>Deshabilitados</span>
 			</label>
 		</div>
+	</div>
+	<div class="box-cont">
+		<!-- <div class="tools">
+			<p class="title-header">sitios web</p>
+			<label>
+				<input type="radio" name="prioridad" id="favorite" value="2" checked >
+				<span>favoritos</span>
+			</label>
+			<label >
+				<input type="radio" name="prioridad" id="all" value="1">
+				<span>todos</span>
+			</label>
+			<label >
+				<input type="radio" name="prioridad" id="deshabilitado" value="0">
+				<span>Deshabilitados</span>
+			</label>
+		</div> -->
 	
 		<section class="box">
 			<!-- tabla de sitios -->

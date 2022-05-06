@@ -89,6 +89,7 @@ html::-webkit-scrollbar:vertical {
   padding: 5px 20px 5px 20px;
   margin-bottom: 4px;
   transition: .5s;
+  cursor: pointer;
 }
 
 .container-main .navigation .cont-menu .nav .list .list__item .nav__link .icon {
@@ -134,6 +135,10 @@ html::-webkit-scrollbar:vertical {
 }
 
 .container-main .navigation .cont-menu .nav .list .list__item .listShow .listInside .linkInside:hover {
+  color: #fefefe;
+}
+
+.container-main .navigation .cont-menu .nav .list .list__item .listShow .listInside .linkInside.active {
   color: #fefefe;
 }
 
@@ -212,19 +217,30 @@ html::-webkit-scrollbar:vertical {
   color: rgba(25, 42, 86, 0.7);
 }
 
-.container .tools {
+.heading {
   margin-bottom: 3rem;
   background: #fefefe;
   padding: 2rem 1rem;
   border-radius: 4px;
 }
 
-.container .tools .title-header {
+.heading .title {
   font-size: 2rem;
-  padding: 1rem 0;
   color: #111827;
-  width: 100%;
+  font-weight: 300;
   text-transform: capitalize;
+}
+
+.heading .title span {
+  color: #ff0000;
+  font-size: 2.3rem;
+  font-weight: 400;
+}
+
+.container .tools {
+  background: #fefefe;
+  padding-top: 2rem;
+  border-radius: 4px;
 }
 
 .container .tools label {
@@ -383,6 +399,171 @@ html::-webkit-scrollbar:vertical {
 .box .addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
   background: rgba(1, 60, 166, 0.7);
   box-shadow: 0px 11px 10px -9px #c1c1c1;
+}
+
+.box-form {
+  padding: 2rem 1rem;
+  background: #fefefe;
+  border-radius: 4px;
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
+}
+
+.box-form .title-box {
+  font-size: 1.8rem;
+  color: #111827;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+input, select {
+  width: 100%;
+}
+
+.form-add-cuenta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.box-medio {
+  display: flex;
+  gap: 10px;
+}
+
+.box-medio .box-radio {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+.box-medio .box-radio label .span {
+  padding: 3px 8px;
+  background: #757575;
+  color: #111827;
+  text-transform: uppercase;
+  font-size: .8rem;
+  border-radius: 4px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.box-medio .box-radio label input {
+  display: none;
+}
+
+.box-medio .box-radio label input:checked ~ .span {
+  background: #111827;
+  color: #fefefe;
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
+}
+
+.form-add-cuenta .label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #c1c1c1;
+}
+
+.form-add-cuenta .label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #013ca6;
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+.form-add-cuenta .label .span {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  color: #111827;
+  transition: 0.5s;
+  text-transform: capitalize;
+}
+
+.form-add-cuenta .box-input {
+  width: 100%;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-add-cuenta .box-input input[type=text] {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #111827;
+  padding-top: 10px;
+  border: none;
+  outline: 0px;
+}
+
+.form-add-cuenta .box-input input[type=text]:focus + .label .span,
+.form-add-cuenta .box-input input[type=text]:valid + .label .span {
+  transform: translateY(-60%);
+  font-size: 11px;
+  color: #c1c1c1;
+}
+
+.form-add-cuenta .box-input input[type=text]:focus + .label::after,
+.form-add-cuenta .box-input input[type=text]:valid + .label::after {
+  transform: translateX(0%);
+}
+
+.form-add-cuenta .box-pregunta {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: .625rem;
+  border-top: 2px dotted #c1c1c1;
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.form-add-cuenta .box-pregunta .box-input {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.form-add-cuenta .btnAddC {
+  background: #111827;
+  color: #fefefe;
+  padding: 8px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.form-add-cuenta .btnAddC:hover {
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
+}
+
+.box-cuenta {
+  width: 100%;
+  background: #fefefe;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.box-cuenta .listCuenta {
+  width: 100%;
+  background: #fefefe;
+  border-radius: 4px;
+  padding: 2rem;
+  overflow-x: auto;
 }
 
 .container-main .navigation.active {

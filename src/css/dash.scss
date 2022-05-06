@@ -107,6 +107,7 @@ html{
 							padding: 5px 20px 5px 20px;
 							margin-bottom: 4px;
 							transition: .5s;
+							cursor: pointer;
 							.icon{
 								margin-right: 20px;
 							}
@@ -141,6 +142,9 @@ html{
 									text-decoration: none;
 									color: rgba($color: $text-light, $alpha: .5);
 									&:hover{
+										color: $white-color;
+									}
+									&.active{
 										color: $white-color;
 									}
 								}
@@ -232,20 +236,29 @@ html{
 	
 }
 // contenido
+.heading{
+	margin-bottom: 3rem;
+	background: $white-color;
+	padding: 2rem 1rem;
+	border-radius: $border-radius;
+	.title{
+		font-size: 2rem;
+		color: $primary-color;
+		font-weight: 300;
+		text-transform: capitalize;
+		span{
+			color: $danger-color;
+			font-size: 2.3rem;
+			font-weight: 400;
+		}
+	}
+}
+// radio
 .container{
 	.tools{
-		// width: 100%;
-		margin-bottom: 3rem;
 		background: $white-color;
-		padding: 2rem 1rem;
+		padding-top: 2rem;
 		border-radius: $border-radius;
-		.title-header{
-			font-size: 2rem;
-			padding: 1rem 0;
-			color: $primary-color;
-			width: 100%;
-			text-transform: capitalize;
-		}
 		label{
 			position: relative;
 			span{
@@ -278,6 +291,7 @@ html{
 		}
 	}
 }
+
 .box-cont{
 	border-radius: $border-radius;
 	// padding: .5rem 2rem;
@@ -291,7 +305,7 @@ html{
 		}
 	}
 }
-
+// tabla de sitios
 .box{
 	display: grid;
 	grid-template-columns: repeat(12,1fr);
@@ -366,7 +380,176 @@ html{
 		}
 	}
 }
+// formulario de agregar cuenta 
 
+.box-form{
+	padding: 2rem 1rem;
+	background: $white-color;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+	.title-box{
+		font-size: 1.8rem;
+		color: $primary-color;
+		font-weight: 300;
+		margin-bottom: 1rem;
+	}
+}
+input,select{
+	width: 100%;
+}
+.form-add-cuenta{
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+	gap: 10px;
+	padding: 20px 0;
+	
+}
+.box-medio{
+	display: flex;
+	gap: 10px;
+	.box-radio{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		position: relative;
+		label{
+			.span{
+				padding: 3px 8px;
+				background: $text-secondary-light;
+				color: $primary-color;
+				text-transform: uppercase;
+				font-size: .8rem;
+				border-radius: $border-radius;
+				transition: $transition;
+				cursor: pointer;
+			}
+			input{
+				display: none;
+					&:checked~ .span{
+					background: $primary-color;
+					color: $white-color;
+					box-shadow:$box-shadow;
+				}
+			}
+		}
+	}
+}
+.form-add-cuenta{
+	.label{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		border-bottom: 1px solid $text-light;
+		&::after{
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -1px;
+			width: 100%;
+			height: 100%;
+			border-bottom: 2px solid $info-color;
+			transform: translateX(-100%);
+			transition: $transition;
+		}
+		.span{
+			position: absolute;
+			bottom: 5px;
+			left: 0;
+			color: $primary-color;
+			transition: $transition;
+			text-transform: capitalize;
+		}
+	}
+	.box-input{
+		width: 100%;
+		height: 30px;
+		position: relative;
+		overflow: hidden;
+		input[type=text]{
+			width: 100%;
+			height: 100%;
+			background: none;
+			color: $primary-color;
+			padding-top: 10px;
+			border: none;
+			outline: 0px;
+			&:focus + .label .span,
+			&:valid + .label .span{
+				transform: translateY(-60%);
+				font-size: 11px;
+				color: $text-light;
+			}
+			&:focus + .label::after,
+			&:valid + .label::after{
+				transform: translateX(0%);
+			}
+			
+		}
+	}
+}
+.form-add-cuenta{
+	.box-pregunta{
+		grid-column: 1 / -1;
+		width: 100%;
+		margin-top: .625rem;
+		border-top: 2px dotted $text-light;
+		padding: 2rem 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+		gap: 20px;
+		.box-input{
+			margin-bottom: 10px;
+			width: 100%;
+		}
+	}
+	.btnAddC{
+		background: $primary-color;
+		color: $white-color;
+		padding: 8px 10px;
+		text-align: center;
+		text-transform: uppercase;
+		border: none;
+		border-radius: $border-radius;
+		width: 150px;
+		cursor: pointer;
+		&:hover{
+			box-shadow: $box-shadow;
+		}
+	}
+}
+// listar cuentas
+.box-cuenta{
+	width: 100%;
+	background: #fefefe;
+	display: grid;
+	grid-template-columns: repeat(1,1fr);
+	.listCuenta{
+		// border-radius: 4px;
+		// padding: 2rem;
+		// overflow-x: auto;
+		width: 100%;
+    background: #fefefe;
+    border-radius: 4px;
+    padding: 2rem;
+    overflow-x: auto;
+	}
+}
+// @media (max-width: 600px){
+// 	.box-form {
+// 		.form-add-cuenta{
+// 			.box-input{
+// 				width: 100%;	
+// 			}
+// 			.box-ccv,
+// 			.box-passCajero{
+// 				width: 47%;
+// 			}
+// 		}
+// 	}
+// }
 
 // active de navegacion
 .container-main{

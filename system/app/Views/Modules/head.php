@@ -45,7 +45,7 @@
 							</li>
 							<!-- desplegable -->
 							<li class="list__item list__item--click ">
-								<a class="nav__link click">
+								<a class="nav__link click cuenta">
 									<i class="fa-solid fa-house icon"></i>
 									Cuentas
 									<i class="fa-solid fa-arrow-right list__arrow"></i>
@@ -53,19 +53,19 @@
 								<!-- la lista que se desplegara -->
 								<ul class="listShow">
 									<li class="listInside">
-										<a href="<?= base_url()?>propias" class="linkInside">
+										<a href="<?= base_url()?>cuenta" class="linkInside propia">
 											<i class="fa-solid fa-circle-minus"></i>
-										Propias
+										Cuentas
 										</a>
 									</li>
-									<li class="listInside">
-										<a href="<?= base_url()?>propias" class="linkInside">
+									<!-- <li class="listInside">
+										<a href="<?= base_url()?>cuenta/tercero" class="linkInside tercero">
 											<i class="fa-solid fa-circle-minus"></i>
 											Terceros
 										</a>
-									</li>
+									</li> -->
 									<li class="listInside">
-										<a href="<?= base_url()?>agregar" class="linkInside">
+										<a href="<?= base_url()?>cuenta/agregar" class="linkInside agregar">
 											<i class="fa-solid fa-circle-minus"></i>
 											Agregar cuenta
 										</a>

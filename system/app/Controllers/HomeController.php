@@ -13,7 +13,7 @@ class Home extends Controllers{
 		//incluimos un arreglo que contendra toda la informacion que se enviara al home
 		$data['page_tag'] = "Dashboard - Personal";
 		$data['page_title'] = "Pagina Principal";
-		$data['page_name'] = "home";
+		$data['page_menu_open'] = "empty";
 		$data['page_link'] = "home";
 		$data['page_function'] = "function.home.js";
 		$this->views->getViews($this, "home", $data);

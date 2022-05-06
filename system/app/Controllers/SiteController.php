@@ -14,7 +14,7 @@ class Site extends Controllers{
 		//incluimos un arreglo que contendra toda la informacion que se enviara al home
 		$data['page_tag'] = "Site - Personal";
 		$data['page_title'] = "Pagina Principal";
-		$data['page_name'] = "site";
+		$data['page_menu_open'] = "empty";
 		$data['page_link'] = "site";
 		$data['page_function'] = "function.site.js";
 		$this->views->getViews($this, "site", $data);

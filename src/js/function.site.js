@@ -160,7 +160,6 @@ function editSite(intSite) {
 		}
 	}
 }
-
 /************************************
 funcion para eliminar un sitios 
 y mostrarlos en la tabla
