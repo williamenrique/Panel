@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container .header .title {
+  font-size: 2rem;
+}
+
+.tabs {
+  width: 600px;
+  max-width: 120em;
+  margin-top: 3rem;
+  padding: 1em;
+}
+
+.tabs .box-tabs {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tabs .tab {
+  padding: 1em;
+  margin: 0 1em 0 0;
+  border-radius: 4px;
+  list-style: none;
+  transition: all .5s ease;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.tabs .tab.active {
+  color: #013ca6;
+  font-weight: bolder;
+}
+
+.tabs .box-tabs-cont {
+  position: relative;
+}
+
+.tabs .box-tab {
+  margin: 1em;
+  padding: 1em;
+  position: absolute;
+  top: 1em;
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all .5s ease;
+}
+
+.tabs .box-tab.active {
+  opacity: 1;
+  transform: translateY(0%);
+  z-index: 1;
+}
+
+.tabs .box-tab .heading {
+  text-align: center;
+}
+
+.tabs .box-tab .heading .title {
+  color: #013ca6;
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
+.tabs .box-tab .heading .title span {
+  color: #ff0000;
+  font-size: 2.3rem;
+}
+
+.tabs .box-tab .heading .text {
+  font-size: 1.1rem;
+  color: #757575;
+  margin-bottom: 17.6px;
+}
+
+form {
+  border: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form .label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #c1c1c1;
+}
+
+form .label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #013ca6;
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+form .label .span {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  color: #111827;
+  transition: 0.5s;
+  text-transform: capitalize;
+}
+
+form .box-input {
+  width: 400px;
+  height: 30px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+form .box-input input[type=text] {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #111827;
+  padding-top: 20px;
+  border: none;
+  outline: 0px;
+}
+
+form .box-input input[type=text]:focus + .label .span,
+form .box-input input[type=text]:valid + .label .span {
+  transform: translateY(-100%);
+  font-size: 11px;
+  color: #c1c1c1;
+}
+
+form .box-input input[type=text]:focus + .label::after,
+form .box-input input[type=text]:valid + .label::after {
+  transform: translateX(0%);
+}
+
+form .btn {
+  margin-right: auto;
+}
+/*# sourceMappingURL=styleLogin.css.map */
