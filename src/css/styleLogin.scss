@@ -55,7 +55,7 @@ $transition : .5s;
 		align-items: center;
 	}
 	.tab{
-		padding: 1em;
+		padding: 8px 15px;
 		margin: 0 1em 0 0;
 		border-radius: 4px;
 		list-style: none;
@@ -63,7 +63,8 @@ $transition : .5s;
 		font-size: 1.3em;
 		cursor: pointer;
 		&.active{
-			color: $info-color;
+			background: $info-color;
+			color: #fff;
 			font-weight: bolder;
 		}
 	}
@@ -103,7 +104,7 @@ $transition : .5s;
 	}
 }
 form{
-	border: 1px solid;
+	padding: 2rem 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -138,7 +139,7 @@ form{
 	}
 	.box-input{
 		width: 400px;
-		height: 30px;
+		height: 40px;
 		margin-bottom: 15px;
 		position: relative;
 		overflow: hidden;
@@ -148,11 +149,12 @@ form{
 			background: none;
 			color: $primary-color;
 			padding-top: 20px;
+			font-size: 1.2rem;
 			border: none;
 			outline: 0px;
 			&:focus + .label .span,
 			&:valid + .label .span{
-				transform: translateY(-100%);
+				transform: translateY(-150%);
 				font-size: 11px;
 				color: $text-light;
 			}
@@ -165,6 +167,16 @@ form{
 	}
 	.btn{
 		margin-right: auto;
-		
+		padding: 8px 20px;
+		border: none;
+		border-radius: 4px;
+		background: $primary-color;
+		color: #fff;
+		text-transform: uppercase;
+		transition: $transition;
+		cursor: pointer;
+		&:hover{
+			box-shadow: 1px 1px 10px $text-secondary-light;
+		}
 	}
 }

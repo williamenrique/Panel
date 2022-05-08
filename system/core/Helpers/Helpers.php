@@ -58,6 +58,13 @@ function formatear_fecha($fecha){
 	$salida = $dias[$dia-1].', '.date("d", strtotime($fecha)).' de '.$meses[$mes-1].' · '.$ano;
 	return $salida;
 }
+function sessionUser(int $idUser){
+	require_once ("system/app/Models/LoginModel.php");
+	$objLogin = new LoginModel();
+	$request = $objLogin->sessionLogin($idUser);
+	return $request;
+}
+
 function strClean($srtCadena){
 	$string = preg_replace(['/\s+/','/^\s|\s$/'],[' ',''],$srtCadena);
 	$string = trim($srtCadena);
