@@ -56,9 +56,18 @@ html::-webkit-scrollbar:vertical {
   transition: 0.5s;
 }
 
+.container-main .navigation .cont-menu {
+  position: relative;
+}
+
 .container-main .navigation .cont-menu .box-head {
   padding: 20px 0px;
   border-bottom: 1px solid rgba(189, 189, 189, 0.3);
+}
+
+.container-main .navigation .cont-menu .box-head .box-logo {
+  width: 100%;
+  text-align: center;
 }
 
 .container-main .navigation .cont-menu .box-head .box-version {
@@ -140,6 +149,27 @@ html::-webkit-scrollbar:vertical {
 
 .container-main .navigation .cont-menu .nav .list .list__item .listShow .listInside .linkInside.active {
   color: #fefefe;
+}
+
+.container-main .navigation .cont-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  background: rgba(17, 24, 39, 0.7);
+  color: #c1c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.3rem;
+}
+
+.container-main .navigation .cont-footer a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #c1c1c1;
 }
 
 .container-main .box-main {

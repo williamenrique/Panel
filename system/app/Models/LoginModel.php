@@ -37,13 +37,14 @@ class LoginModel extends Mysql {
 		return $request;
 	}
 	
-	public function userBlock(int $intUserId,int $intStatus, string $strToken){
+	public function userBlock(int $intUserId,int $intStatus, string $strToken,int $intIntentos){
 		$this->intUserId = $intUserId;
 		$this->strToken = $strToken;
 		$this->intStatus = $intStatus;
+		$this->intIntentos = $intIntentos;
 		$sql = "UPDATE table_user INNER JOIN table_block ON table_block.user_id = table_user.user_id 
-		SET table_block.token = ? , table_user.status = ? WHERE table_user.user_id = $this->intUserId";
-		$arrData = array($this->strToken, $this->intStatus);
+		SET table_block.token = ? , table_user.status = ? , table_block.intentos = ? WHERE table_user.user_id = $this->intUserId";
+		$arrData = array($this->strToken, $this->intStatus, $this->intIntentos);
 		$request = $this->update($sql,$arrData);
 		return $request;
 	}

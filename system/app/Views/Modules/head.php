@@ -9,7 +9,6 @@
 		<link rel="shortcut icon" href="<?= IMG?>favicon(2).png" type="image/x-icon">
 		<link rel="stylesheet" href="<?= CSS?>sweetcolor.css">
 		<link rel="stylesheet" href="<?= CSS?>dash.css">
-		<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"> -->
 		<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 		<link rel="stylesheet" href="<?= CSS?>tabla.css">
 		<link rel="stylesheet" href="<?= CSS?>dataTableCustom.css">
@@ -21,6 +20,9 @@
 			<div class="navigation">
 				<div class="cont-menu">
 					<div class="box-head">
+						<div class="box-logo">
+							<img src="<?= IMG?>favicon(2).png" alt="">
+						</div>
 						<div class="box-version">
 							<p>V-1.0</p>
 							<p>Dashboard Admin</p>
@@ -74,7 +76,13 @@
 							</li>
 						</ul>
 					</nav>
-
+					<!-- logout -->
+				</div>
+				<div class="cont-footer">
+					<i class="fa-solid fa-user-gear"></i>
+					<a href="<?= base_url()?>login/logout">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>	
+					</a>
 				</div>
 			</div>
 			<div class="box-main">
@@ -85,7 +93,15 @@
 					</div>
 					<div class=" info-user">
 						<div class="cont-img">
+							<?php
+								if($_SESSION['imagen'] == ""):
+							?>
 							<img src="./src/images/default.png" alt="">
+							<?php
+								else:
+							?>
+							<img src="<?= $_SESSION['ruta']?>/<?= $_SESSION['imagen']?>" alt="">
+							<?php endif?>
 						</div>
 					</div>
 				</div>

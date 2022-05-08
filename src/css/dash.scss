@@ -80,9 +80,17 @@ html{
 		background: $primary-color;
 		transition: $transition;
 		.cont-menu{
+			position: relative;
 			.box-head{
 				padding: 20px 0px;
 				border-bottom: 1px solid $border;
+				.box-logo{
+					width: 100%;
+					text-align: center;
+					img{
+
+					}
+				}
 				.box-version{
 					text-align: center;
 					color: $white-color;
@@ -152,6 +160,25 @@ html{
 						}
 					}
 				}
+			}
+		}
+		.cont-footer{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			padding: 10px 0;
+			background: rgba($color : $primary-color, $alpha : $alphaT);
+			color: $text-light;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+			font-size: 1.3rem;
+			a{
+				text-decoration: none;
+				cursor: pointer;
+				color: $text-light;
 			}
 		}
 	}

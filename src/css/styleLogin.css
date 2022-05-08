@@ -1,7 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -90,7 +97,7 @@
 }
 
 form {
-  padding: 2rem 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -126,11 +133,12 @@ form .label .span {
   color: #111827;
   transition: 0.5s;
   text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
 }
 
 form .box-input {
   width: 400px;
-  height: 40px;
+  height: 50px;
   margin-bottom: 15px;
   position: relative;
   overflow: hidden;

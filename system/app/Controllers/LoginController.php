@@ -42,7 +42,7 @@ class Login extends Controllers{
 							$this->model->updateIntento($arrData['user_id'],$intentos);
 							if($arrData['intentos'] >= 3){
 								$arrResponse = array('status' => false, 'msg' => 'Usuario Bloqueado');
-								$bloqueoUser = $this->model->userBlock($arrData['user_id'],0,token());
+								$bloqueoUser = $this->model->userBlock($arrData['user_id'],0,token(),4);
 							}
 						}else{
 							// creamos la sesion y las variables
@@ -51,9 +51,13 @@ class Login extends Controllers{
 							$arrData = $this->model->sessionLogin($_SESSION['idUser']);
 							//creamos la variable de sesion mediante un helper
 							sessionUser($_SESSION['idUser']);
-							// $strCodigo = "biCod-".$_SESSION['userData']['user_id']."-".codGenerator();
-							// $_SESSION['strCodigo'] = $strCodigo;
+							$_SESSION['email'] = $arrData['email'];
+							$_SESSION['nombre'] = $arrData['nombre'];
+							$_SESSION['ruta'] = $arrData['ruta'];
+							$_SESSION['imagen'] = $arrData['img'];
 							$arrResponse = array('status' => true, 'msg' => 'ok');
+							// reiniciamos los intentos
+							$bloqueoUser = $this->model->userBlock($arrData['user_id'],1,0,0);
 						}
 					}
 				}
