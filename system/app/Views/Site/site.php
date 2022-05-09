@@ -46,6 +46,7 @@
 							<th>user</th>
 							<th>password</th>
 							<th>url</th>
+							<th>fecha actualizacion</th>
 							<th>opciones</th>
 						</tr>
 					</thead>

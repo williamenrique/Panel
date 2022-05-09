@@ -51,6 +51,7 @@ const obtenerSitios = (intCheck) => {
 			{ 'data': 'usuario' },
 			{ 'data': 'pass' },
 			{ 'data': 'url' },
+			{ 'data': 'fechaUpdate' },
 			{ 'data': 'opciones'}
 		],
 		"resonsieve": "true",

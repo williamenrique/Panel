@@ -33,11 +33,7 @@ class Site extends Controllers{
 			// $strPass = strClean(encryption($_POST['txtPass']));
 			$strUrl = strClean($_POST['txtUrl']);
 			// $strUrl = strClean(encryption($_POST['txtUrl']));
-			$request = $this->model->setSitio(
-				$strSitio,
-				$strUsuario,
-				$strPass,
-				$strUrl);
+			$request = $this->model->setSitio($strSitio,$strUsuario,$strPass,$strUrl,$_SESSION['idUser']);
 			if($request > 0){
 				$arrResponse = array("status" => true, "msg" => "Sitio agregada");
 			}else{
@@ -47,18 +43,17 @@ class Site extends Controllers{
 		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
-	// obtener todos los sitios
+	/*
+	* obtener los asitios segun prioridad
+	* y favorito
+	*/
 	public function getSites(){
 		$priority = intval($_GET['priority']);
 		if($priority == 0){$fav = 0;}
 		if($priority == 1){$fav = 0;}
 		if($priority == 2){$fav = 1;}
-		$status = "hola";
-		$del = "chao";
-		$edit = "aja";
-		$favorite = "oll";
-		$favorite0 = "";
-		$arrData = $this->model->getSites($priority,$fav);
+		$intUserId = $_SESSION['idUser'];
+		$arrData = $this->model->getSites($priority,$fav,$intUserId);
 		for ($i=0; $i < count($arrData) ; $i++) {
 			$arrData[$i]['url'] = '<a href="'.$arrData[$i]['url'].'" class="link_url" target="_blank">'.$arrData[$i]['url'].'</a>';
 			$status = '<i class="fa-solid fa-eye-slash"onclick="showSite('.$arrData[$i]['idSitio'].',2)"></i>';
@@ -66,7 +61,7 @@ class Site extends Controllers{
 			$edit = '<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>';
 			$favorite = '<i class="fa-solid fa-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
 			$favorite1 = '<i class="fa-regular fa-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
-			
+			$arrData[$i]['fechaUpdate'] = formatear_fecha($arrData[$i]['fecha_update']);
 			if($priority == 0){
 				$arrData[$i]['opciones'] =
 				'<div class="box-options">	
