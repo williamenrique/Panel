@@ -65,7 +65,8 @@ class Login extends Controllers{
 							$_SESSION['nombre'] = $arrData['nombre'];
 							$_SESSION['ruta'] = $arrData['ruta'];
 							$_SESSION['imagen'] = $arrData['img'];
-							$_SESSION['imgUser'] = $_SESSION['ruta'].'/'.$arrData['img'];
+							// TODO: Revisar la ruta
+							$_SESSION['imgUser'] = $_SESSION['ruta'].$arrData['img'];
 							$arrResponse = array('status' => true, 'msg' => 'ok');
 							// reiniciamos los intentos
 							$bloqueoUser = $this->model->userBlock($arrData['user_id'],1,0,0);
