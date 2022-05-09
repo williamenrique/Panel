@@ -73,6 +73,13 @@
 										</a>
 									</li>
 								</ul> 
+								<!-- item solo -->
+								<li class="list__item">
+									<a href="<?= base_url()?>nota" class="nav__link nota">
+										<i class="fa-solid fa-globe icon"></i>
+										Notas
+									</a>
+								</li>
 							</li>
 						</ul>
 					</nav>

@@ -68,12 +68,12 @@ class Site extends Controllers{
 				'.$status.'
 				</div>';
 			}
-			if($priority == 1){
+			if($priority == 1):
 				$arrData[$i]['opciones'] =
 				'<div class="box-options">
 					'.$del.'
 					'.$edit;
-				switch ($arrData[$i]['favorite']) {
+				switch ($arrData[$i]['favorite']):
 					case '1':
 						$arrData[$i]['opciones'] .= $favorite;
 						break;
@@ -83,17 +83,18 @@ class Site extends Controllers{
 					case NULL:
 						$arrData[$i]['opciones'] .= $favorite1;
 						break;
-				}
+				endswitch;
 				'</div>';
-			}
-			if($priority == 2){
+			endif;
+			// if ternario abreviado
+			if($priority == 2):
 					$arrData[$i]['opciones'] =
 					'<div class="box-options">
 						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
 						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
 						<i class="fa-solid fa-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
 					'</div>';
-			}
+			endif;
 		}
 		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 		die();
