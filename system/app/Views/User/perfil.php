@@ -12,11 +12,13 @@
 				<span class="search">
 					<i class="fa-solid fa-camera"></i>
 				</span>
-					<div id="preview-images"></div>
-				<?php if($_SESSION['imagen'] != '' && $_SESSION['imagen'] != NULL){?>
+					
+				<?php if($_SESSION['imagen'] != ''){?>
 				<div id="preview-images">
-					<div class="thumbnail 0" data-id="0" style="background-image : url('<?= $_SESSION['imgUser']?>')"><div class="close-button">x</div></div>
+					<div class="thumbnail 0" data-id="0" style="background-image : url('<?= $_SESSION['imgUser']?>')"></div>
 				</div>
+				<?php }else{?>
+					<div id="preview-images"></div>
 				<?php }?>
 			</form>
 			<!-- <span class="msj">aqui el msj</span> -->
