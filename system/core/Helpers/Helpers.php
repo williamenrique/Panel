@@ -65,6 +65,7 @@ function sessionUser(int $idUser){
 	return $request;
 }
 
+
 function strClean($srtCadena){
 	$string = preg_replace(['/\s+/','/^\s|\s$/'],[' ',''],$srtCadena);
 	$string = trim($srtCadena);

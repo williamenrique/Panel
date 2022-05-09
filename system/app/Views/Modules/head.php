@@ -79,7 +79,9 @@
 					<!-- logout -->
 				</div>
 				<div class="cont-footer">
-					<i class="fa-solid fa-user-gear"></i>
+					<a href="<?= base_url()?>user/perfil">
+						<i class="fa-solid fa-user-gear"></i>
+					</a>
 					<a href="<?= base_url()?>login/logout">
 						<i class="fa-solid fa-arrow-right-from-bracket"></i>	
 					</a>
@@ -93,15 +95,11 @@
 					</div>
 					<div class=" info-user">
 						<div class="cont-img">
-							<?php
-								if($_SESSION['imagen'] == ""):
-							?>
-							<img src="./src/images/default.png" alt="">
-							<?php
-								else:
-							?>
+						<?php if($_SESSION['imagen'] == "" && $_SESSION['imagen'] == NULL){?>
+							<img src="<?= IMG?>default.png" alt="">
+						<?php	}else{?>
 							<img src="<?= $_SESSION['ruta']?>/<?= $_SESSION['imagen']?>" alt="">
-							<?php endif?>
+						<?php }?>
 						</div>
 					</div>
 				</div>
