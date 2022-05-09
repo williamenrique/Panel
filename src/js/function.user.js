@@ -86,8 +86,8 @@ btnUpImg.addEventListener('click', () => {
 				if (objData.status) {
 					notifi(objData.msg, 'info');
 					// formImg.reset()
-					file.value = ""
-					createClearFormData()
+					// file.value = ""
+					// createClearFormData()
 				} else {
 					notifi(objData.msg, 'error');
 				}

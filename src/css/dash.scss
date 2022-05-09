@@ -224,7 +224,11 @@ html{
 				width: 50px;
 				height: 50px;
 				border-radius: 50px;
-    		overflow: hidden;
+				overflow: hidden;
+				object-fit: cover;
+				background-position: center;
+				background-size: cover;
+				background-repeat: no-repeat;
 				img{
 					width: 100%;
 				}

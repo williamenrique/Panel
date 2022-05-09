@@ -51,22 +51,6 @@ class Login extends Controllers{
 							$arrData = $this->model->sessionLogin($_SESSION['idUser']);
 							//creamos la variable de sesion mediante un helper
 							sessionUser($_SESSION['idUser']);
-							$_SESSION['nick'] = $arrData['nick'];
-							$_SESSION['user'] = $arrData['user'];
-							$_SESSION['pass'] = $arrData['pass'];
-							$_SESSION['apellido'] = $arrData['apellido'];
-							$_SESSION['telefono'] = $arrData['telefono'];
-							$_SESSION['direccion'] = $arrData['direccion'];
-							$_SESSION['status'] = $arrData['status'];
-							$_SESSION['fecha_reg'] = $arrData['fecha_reg'];
-							$_SESSION['estado'] = $arrData['estado'];
-							$_SESSION['ciudad'] = $arrData['ciudad'];
-							$_SESSION['email'] = $arrData['email'];
-							$_SESSION['nombre'] = $arrData['nombre'];
-							$_SESSION['ruta'] = $arrData['ruta'];
-							$_SESSION['imagen'] = $arrData['img'];
-							// TODO: Revisar la ruta
-							$_SESSION['imgUser'] = $_SESSION['ruta'].$arrData['img'];
 							$arrResponse = array('status' => true, 'msg' => 'ok');
 							// reiniciamos los intentos
 							$bloqueoUser = $this->model->userBlock($arrData['user_id'],1,0,0);
@@ -96,7 +80,7 @@ class Login extends Controllers{
 					$requestUser = $this->model->registerUser($txtNombRegister,$txtEmailRegister, $txtPassRegister,1);
 					if($requestUser > 0){
 						$userNIck =  strtoupper(substr($txtNombRegister,0,4)) .'-0'.$requestUser;
-						$fileBase = "system/app/Views/Docs/". $userNIck . "/";
+						$fileBase = "src/Docs/". $userNIck . "/";
 						$fileHash = substr(md5($fileBase . uniqid(microtime() . mt_rand())), 0, 8);
 						if (!file_exists($fileBase))
 						mkdir($fileBase, 0777, true);

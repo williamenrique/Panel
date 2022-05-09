@@ -1,8 +1,7 @@
-<?php head($data)?>
+<?php head($data);$dataUser = data($_SESSION['idUser']);?>
 <div class="container">
 		<div class="heading">
 		<h2 class="title"><span>D</span>atos personales</h2>
-		<?php echo $_SESSION['status']?>
 	</div>
 
 	<div class="box-perfil">
@@ -13,9 +12,9 @@
 					<i class="fa-solid fa-camera"></i>
 				</span>
 					
-				<?php if($_SESSION['imagen'] != ''){?>
+				<?php if($dataUser['imagen'] != ''){?>
 				<div id="preview-images">
-					<div class="thumbnail 0" data-id="0" style="background-image : url('<?= $_SESSION['imgUser']?>')"></div>
+					<div class="thumbnail 0" data-id="0" style="background-image : url('<?= $dataUser['imgUser']?>')"></div>
 				</div>
 				<?php }else{?>
 					<div id="preview-images"></div>

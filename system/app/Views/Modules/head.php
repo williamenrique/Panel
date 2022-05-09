@@ -1,3 +1,4 @@
+<?php $dataUser = data($_SESSION['idUser'])?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -93,13 +94,10 @@
 						<i class="fa-solid fa-bars toggle"></i>
 						<!-- <img src="./src/images/stats.svg" class="toggle"> -->
 					</div>
-					<div class=" info-user">
-						<div class="cont-img">
-						<?php if($_SESSION['imagen'] == "" && $_SESSION['imagen'] == NULL){?>
-							<img src="<?= IMG?>default.png" alt="">
-						<?php	}else{?>
-							<img src="<?= $_SESSION['ruta']?>/<?= $_SESSION['imagen']?>" alt="">
-						<?php }?>
-						</div>
+					<?php if($dataUser['imagen'] == "" && $dataUser['imagen'] == NULL){?>
+					<div class=" info-user" style="background-image: url('<?php echo IMG?>default.png')">
+					<?php	}else{?>
+					<div class=" info-user" style="background-image: url('<?php echo $dataUser['imgUser']?>')">
+					<?php }?>
 					</div>
 				</div>

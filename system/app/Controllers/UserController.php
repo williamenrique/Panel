@@ -33,16 +33,19 @@ class User extends Controllers{
 				$arrResponse = ["status" => true, "msg" => "Hasta aqui bien"];
 				$fileBase =  $_SESSION['ruta'];
 	 			$fileHash = substr(md5($fileBase . uniqid(microtime() . mt_rand())), 0, 8);
-				 if (!file_exists($fileBase))
-					mkdir($fileBase, 0777, true);
-					$namFile = 'Profile-'. $fileHash . "." . $fileExtension;
-					$filePath = $fileBase . $namFile;
-					// TODO: preguntar si la imagen actual existe para eliminarla antes de subir una nueva
+				if (!file_exists($fileBase))
+				mkdir($fileBase, 0777, true);
+				$namFile = 'Profile-'. $fileHash . "." . $fileExtension;
+				$filePath = $fileBase . $namFile;
+				// TODO: preguntar si la imagen actual existe para eliminarla antes de subir una nueva
+				$imgProfile = $this->model->userData($_SESSION['idUser']);
+				$rutaImg= $imgProfile['ruta'].$imgProfile['img'];
 				if(move_uploaded_file($_FILES['file']['tmp_name'], $filePath)){
+					unlink($rutaImg);
 					$requestUpdate = $this->model->imgProfile($_SESSION['idUser'],$namFile);
 					if($requestUpdate){
 						$arrResponse = ["status" => true, "msg" => "Archivo guardado con exito"];
-						sessionUser($_SESSION['idUser']);
+						$dataUser = data($_SESSION['idUser']);
 					}
 				}else{
 					$arrResponse = ["status" => false, "msg" => "Ah ocurrido un error al guardar"];

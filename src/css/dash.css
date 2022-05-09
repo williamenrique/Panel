@@ -215,6 +215,10 @@ html::-webkit-scrollbar:vertical {
   height: 50px;
   border-radius: 50px;
   overflow: hidden;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container-main .box-main .topbar .info-user img {
