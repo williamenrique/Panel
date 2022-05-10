@@ -31,7 +31,8 @@ class User extends Controllers{
 				$arrResponse = ["status" => false, "msg" => "Imagen demasiado grande"];
 			}else{
 				$arrResponse = ["status" => true, "msg" => "Hasta aqui bien"];
-				$fileBase =  $_SESSION['ruta'];
+				$dataUser = data($_SESSION['idUser']);
+				$fileBase = $dataUser['ruta'];
 	 			$fileHash = substr(md5($fileBase . uniqid(microtime() . mt_rand())), 0, 8);
 				if (!file_exists($fileBase))
 				mkdir($fileBase, 0777, true);

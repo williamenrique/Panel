@@ -32,7 +32,7 @@
 				<h5 class="title-box">Formulario de actualizacion de datos</h5>
 				<form class="form-profile">
 					<input type="hidden" value="<?= $_SESSION['idUser']?>" name="intUserId" id="intUserId">
-					<section class="box-perfil data1">
+					<!-- <section class="box-perfil data1"> -->
 						<div class="box-input">
 							<input type="text" id="txtCiProfile" name="txtCiProfile" required>
 							<label class="label" for="txtCiProfile">
@@ -69,8 +69,8 @@
 								<span class="span"> codigo postal</span>
 							</label>
 						</div>
-					</section>
-					<section class="box-perfil data2">
+					<!-- </section> -->
+					<!-- <section class="box-perfil data2"> -->
 						<select name="listState" id="listState" class="listState">
 							<option value="0">Estado</option>
 						</select>
@@ -83,7 +83,7 @@
 								<span class="span"> Direccion</span>
 							</label>
 						</div>
-					</section>
+					<!-- </section> -->
 
 				</form>
 				<button type="button" class="btn btnPerfil">
