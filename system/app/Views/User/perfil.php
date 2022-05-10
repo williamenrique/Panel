@@ -31,42 +31,55 @@
 			<section class="box-form">
 				<h5 class="title-box">Formulario de actualizacion de datos</h5>
 				<form class="form-profile">
+					<input type="hidden" value="<?= $_SESSION['idUser']?>" name="intUserId" id="intUserId">
 					<section class="box-perfil data1">
 						<div class="box-input">
-							<input type="text" id="txtNombre" name="txtNombre" required>
-							<label class="label" for="txtNombre">
+							<input type="text" id="txtCiProfile" name="txtCiProfile" required>
+							<label class="label" for="txtCiProfile">
 								<span class="span">C.I</span>
 							</label>
 						</div>
 						<div class="box-input">
-							<input type="text" id="txtNombre" name="txtNombre" required>
-							<label class="label" for="txtNombre">
+							<input type="text" id="txtEmailProfile" name="txtEmailProfile" required>
+							<label class="label" for="txtEmailProfile">
 								<span class="span"> Email</span>
 							</label>
 						</div>
 						<div class="box-input">
-							<input type="text" id="txtNombre" name="txtNombre" required>
-							<label class="label" for="txtNombre">
+							<input type="text" id="txtNombreProfile" name="txtNombreProfile" required>
+							<label class="label" for="txtNombreProfile">
+								<span class="span">Nombre</span>
+							</label>
+						</div>
+						<div class="box-input">
+							<input type="text" id="txtApellidoProfile" name="txtApellidoProfile" required>
+							<label class="label" for="txtApellidoProfile">
+								<span class="span"> Apelido</span>
+							</label>
+						</div>
+						<div class="box-input">
+							<input type="text" id="txtTlfProfile" name="txtTlfProfile" required>
+							<label class="label" for="txtTlfProfile">
 								<span class="span"> Telefono</span>
 							</label>
 						</div>
 						<div class="box-input">
-							<input type="text" id="txtNombre" name="txtNombre" required>
-							<label class="label" for="txtNombre">
+							<input type="text" id="txtCdPostal" name="txtCdPostal" required>
+							<label class="label" for="txtCdPostal">
 								<span class="span"> codigo postal</span>
 							</label>
 						</div>
 					</section>
 					<section class="box-perfil data2">
-						<select name="listBank" id="listBank" class="listBank">
+						<select name="listState" id="listState" class="listState">
 							<option value="0">Estado</option>
 						</select>
-						<select name="listBank" id="listBank" class="listBank">
+						<select name="listCiudad" id="listCiudad" class="listCiudad">
 							<option value="0">Ciudad</option>
 						</select>
 						<div class="box-input direc">
-							<input type="text" id="txtNCuenta" name="txtNCuenta" required>
-							<label class="label" for="txtNCuenta">
+							<input type="text" id="txtDireccion" name="txtDireccion" required>
+							<label class="label" for="txtDireccion">
 								<span class="span"> Direccion</span>
 							</label>
 						</div>

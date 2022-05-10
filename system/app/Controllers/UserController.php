@@ -57,4 +57,57 @@ class User extends Controllers{
 		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
+
+	public function getUser(){
+		if($_POST){
+			$intUser = intval($_POST['intUser']);
+			$requestUser = $this->model->Data($intUser);
+			// $requestUser = estados();
+			echo json_encode($requestUser,JSON_UNESCAPED_UNICODE);
+			die();
+		}
+	}
+	public function updateProfile(){
+		$intUserId =  $_POST['intUserId'];
+		$txtCiProfile = $_POST['txtCiProfile'];
+		$txtEmailProfile =  $_POST['txtEmailProfile'];
+		$txtNombreProfile =  $_POST['txtNombreProfile'];
+		$txtApellidoProfile = $_POST['txtApellidoProfile'];
+		$txtTlfProfile = $_POST['txtTlfProfile'];
+		$txtCdPostal = $_POST['txtCdPostal'];
+		$listCiudad =  $_POST['listCiudad'];
+		$listState =  $_POST['listState'];
+		$txtDireccion = $_POST['txtDireccion'];
+		$requestUpdate = $this->model->updateProfile($intUserId,$txtCiProfile,$txtEmailProfile,$txtNombreProfile,$txtApellidoProfile,$txtTlfProfile,$txtCdPostal,$listCiudad,$listState,$txtDireccion);
+		if($requestUpdate){
+			$arrResponse = ["status" => true, "msg" => "Seactualizo con exito"];
+		}else{
+			$arrResponse = ["status" => false, "msg" => "Ah ocurrido un error"];
+		}
+		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+		die();
+	}
+	public function getState(){
+		$htmlOptions = "";
+		$arrData = $this->model->selectState();
+		if(count($arrData) > 0){
+			for ($i=0; $i < count($arrData); $i++) { 
+				$htmlOptions .= '<option value="'.$arrData[$i]['id_estado'].'">'.$arrData[$i]['estado'].'</option>';
+			}
+		}
+		echo $htmlOptions;
+		die();
+	}
+	public function getCiudad(){
+		$intState = $_POST['intState'];
+		$htmlOptions = "";
+		$arrData = $this->model->selectCiudad($intState);
+		if(count($arrData) > 0){
+			for ($i=0; $i < count($arrData); $i++) { 
+				$htmlOptions .= '<option value="'.$arrData[$i]['id_ciudad'].'">'.$arrData[$i]['ciudad'].'</option>';
+			}
+		}
+		echo $htmlOptions;
+		die();
+	}
 }

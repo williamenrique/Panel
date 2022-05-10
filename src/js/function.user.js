@@ -1,3 +1,6 @@
+window.addEventListener('load', function () {
+	listState()
+}, false)
 let msj = document.querySelector('.msj')
 let file = document.querySelector('#file')
 let formData = new FormData()
@@ -95,9 +98,102 @@ btnUpImg.addEventListener('click', () => {
 		}
 	} 
 })
-if (document.querySelector('.formImg')) {
-	formImg.onsubmit = function (e) {
-		e.preventDefault();
-		
+/***********************
+ * cargar los datos del usuario
+ **********************/
+
+if (document.querySelector('.form-profile')) {
+	let intUser = document.querySelector('#intUserId').value
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	// let ajaxUrl = base_url + 'User/getUser/' + intUser
+	let ajaxUrl = base_url + 'User/getUser'
+	//id del atributo lr que obtuvimos enla variable
+	let strData = "intUser=" + intUser
+	request.open("POST", ajaxUrl, true)
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	//enviamos
+	request.send(strData);
+	// request.send()
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) { 
+			let objData = JSON.parse(request.responseText)
+			if (objData.status) { 
+				document.querySelector('#txtCiProfile').value = objData.ci
+				document.querySelector('#txtNombreProfile').value = objData.nombre
+				document.querySelector('#txtApellidoProfile').value = objData.apellido
+				document.querySelector('#txtEmailProfile').value = objData.email
+				document.querySelector('#txtTlfProfile').value = objData.telefono
+				document.querySelector('#txtCdPostal').value = objData.codPostal
+				document.querySelector('#txtDireccion').value = objData.direccion
+				document.querySelector('#listState').innerHTML = request.responseText
+				// document.querySelector('#listState').value = 1
+				// document.querySelector('#listCiudad').innerHTML = objData.id_ciudad
+			}else {
+				notifi(objData.msg, "error")
+			}
+		}
 	}
 }
+/***********************
+ * enviar los datos para 
+ * la actualizacion
+ **********************/
+let btnPerfil = document.querySelector('.btnPerfil')
+let formProfile = document.querySelector('.form-profile')
+btnPerfil.addEventListener('click', () => {
+	let formData = new FormData(formProfile )
+	let ajaxUrl = base_url + "User/updateProfile"
+	//creamos el objeto para os navegadores
+	var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	//abrimos la conexion y enviamos los parametros para la peticion
+	request.open("POST", ajaxUrl, true);
+	request.send(formData)
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) {
+			let objData = JSON.parse(request.responseText)
+			if (objData.status) {
+				notifi(objData.msg, 'info');
+			} else {
+				notifi(objData.msg, 'error');
+			}
+		}
+	}
+})
+/***********************
+ * cargar los estados y ciudades
+ **********************/
+
+const listState = () => {
+	if (document.querySelector('#listState')) {
+		let ajaxUrl = base_url + 'User/getState'
+		//creamos el objeto para os navegadores
+		var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+		//abrimos la conexion y enviamos los parametros para la peticion
+		request.open("GET", ajaxUrl, true);
+		request.send();
+		request.onreadystatechange = function () {
+			if (request.readyState == 4 && request.status == 200) {
+				//option obtenidos del controlador
+				document.querySelector('#listState').innerHTML = request.responseText;
+			}
+		}
+	}
+}
+document.querySelector('#listState').addEventListener('change', function () {
+	let intState = document.querySelector('#listState').value
+	console.log(listState)
+	let ajaxUrl = base_url + 'User/getCiudad'
+	//creamos el objeto para os navegadores
+	var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	//abrimos la conexion y enviamos los parametros para la peticion
+	request.open("POST", ajaxUrl, true);
+	let strData = new URLSearchParams("intState="+intState)
+	request.send(strData);
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) {
+			//option obtenidos del controlador
+			document.querySelector('#listCiudad').innerHTML = request.responseText;
+		}
+	}
+})

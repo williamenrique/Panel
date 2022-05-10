@@ -147,3 +147,17 @@ function token(){
 	$token = $sr1 .'-'.$sr2.'-'.$sr3.'-'.$sr4;
 	return $token;
 }
+
+function estados(){
+	require_once ("system/app/Models/DataModel.php");
+	$objData = new DataModel();
+	$request = $objData->selectState();
+	$htmlOptions ="";
+	if(count($request) > 0){
+		for ($i=0; $i < count($request); $i++) { 
+			$htmlOptions .= '<option value="'.$request[$i]['id_estado'].'">'.$request[$i]['estado'].'</option>';
+		}
+	}
+	echo $htmlOptions;
+	die();
+}
