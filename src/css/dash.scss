@@ -55,6 +55,25 @@ $ancho : calc(100% - 225px);
     width: 12px;
 	}
 }
+@mixin btn {
+	position: relative;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	padding: 8px 12px;
+	text-transform: uppercase;
+	background: none;
+	border: none;
+	border-radius: $border-radius;
+	background: $success-color;
+	color: $white-color;
+	&:hover{
+		background: $success-hover;
+		box-shadow:$box-shadow;
+	}
+}
 html{
 	font-size: 14px;
 	font-family: 'Poppins', sans-serif;
@@ -363,12 +382,14 @@ html{
 				width: 100%;
 				.box-input{
 					position: relative;
+					margin-bottom: 5px;
 					input{
 						width: 100%;
 						padding: .3rem;
 						font-size: 1.1rem;
 						color: $text-primary-light;
 						padding-left: 25px;
+						border: 1px solid $text-secondary-light;
 						border-radius: $border-radius;
 						margin-bottom: 5px;
 					}
@@ -381,22 +402,11 @@ html{
 					}
 				}
 				.box-button{
-					.btn{
-						background: none;
-						padding: 8px 12px;
-						border: none;
-						border-radius: $border-radius;
-						cursor: pointer;
-					}
 					.btn-addSite{
-						background: $success-color;
-						color: $white-color;
-						&:hover{
-							background: $success-hover;
-							box-shadow:$box-shadow;
-						}
+						@include btn();
 					}
 					.btn-updateSite{
+						@include btn();
 						display: none;
 						background: $info-color;
 						color: $white-color;
@@ -424,7 +434,13 @@ html{
 	}
 }
 input,select{
-	width: 100%;
+	width: 96%;
+	border-radius: $border-radius;
+	border-color: $text-secondary-light;
+	color: $text-primary-light;
+	font-size: 11px;
+	padding: 5px;
+	outline: none;
 }
 .form-add-cuenta{
 	display: grid;
@@ -441,9 +457,10 @@ input,select{
 		display: flex;
 		justify-content: space-around;
 		position: relative;
+		gap: 5px;
 		label{
 			.span{
-				padding: 3px 8px;
+				padding: 5px 10px;
 				background: $text-secondary-light;
 				color: $primary-color;
 				text-transform: uppercase;
@@ -451,6 +468,7 @@ input,select{
 				border-radius: $border-radius;
 				transition: $transition;
 				cursor: pointer;
+				position: relative;
 			}
 			input{
 				display: none;
@@ -458,12 +476,22 @@ input,select{
 					background: $primary-color;
 					color: $white-color;
 					box-shadow:$box-shadow;
+					padding-left: 25px;
+					&::before{
+						font-family: 'fontawesome';
+						content: '\f00c';
+						position: absolute;
+						left: 4px;
+						top: 6px;
+						font-size: 14px;
+					}
 				}
 			}
 		}
 	}
 }
-.form-add-cuenta{
+//formularios con input label flotantes
+form{
 	.label{
 		position: absolute;
 		bottom: 0;
@@ -519,6 +547,7 @@ input,select{
 		}
 	}
 }
+// agregar cuenta
 .form-add-cuenta{
 	.box-pregunta{
 		grid-column: 1 / -1;
@@ -535,18 +564,8 @@ input,select{
 		}
 	}
 	.btnAddC{
-		background: $primary-color;
-		color: $white-color;
-		padding: 8px 10px;
-		text-align: center;
-		text-transform: uppercase;
-		border: none;
-		border-radius: $border-radius;
+		@include btn();
 		width: 150px;
-		cursor: pointer;
-		&:hover{
-			box-shadow: $box-shadow;
-		}
 	}
 }
 // listar cuentas
@@ -566,94 +585,131 @@ input,select{
     overflow-x: auto;
 	}
 }
-
+// 
 .box-perfil{
 	width: 100%;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 4fr;
 	gap: 20px;
-	.box-img{
-		width: 200px;
-		background: $white-color;
-		border-radius: $border-radius;
-		box-shadow: $box-shadow;
-		padding: 2rem;
-		.formImg{
-			height: 100px;
-			border-radius: 50px;
-			background-image: url(../../src/images/default.png);
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: contain;
-			position: relative;
-			#file{
-				display: none;
-			}
-			.search{
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				color: rgba($color : $text-secondary-light, $alpha : $alphaT);
-				transform: translate(-50%, -50%);
-				cursor: pointer;
-				font-size: 2rem;
-				z-index: 1000;
+}
 
-			}
+.box-img-profile{
+	width: 200px;
+	background: $white-color;
+	border-radius: $border-radius;
+	box-shadow: $box-shadow;
+	padding: 2rem;
+	h5{
+		text-align: center;
+		font-size: 16px;
+		margin-bottom: 30px;
+		color: $primary-color;
+		font-weight: 300;
+	}
+	.formImg{
+		height: 100px;
+		border-radius: 50px;
+		background-image: url(../../src/images/default.png);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		position: relative;
+		#file{
+			display: none;
 		}
-		#preview-images{
+		.search{
 			position: absolute;
 			top: 50%;
 			left: 50%;
+			color: rgba($color : $text-secondary-light, $alpha : $alphaT);
 			transform: translate(-50%, -50%);
+			cursor: pointer;
+			font-size: 2rem;
+			z-index: 1000;
+
+		}
+	}
+	#preview-images{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100px;
+		height: 100px;
+		// border-radius: 50%;
+		// border: 1px solid rgba($color : $text-secondary-light, $alpha : $alphaT);
+		z-index: 0;
+		.thumbnail {
 			width: 100px;
 			height: 100px;
-			// border-radius: 50%;
-			// border: 1px solid rgba($color : $text-secondary-light, $alpha : $alphaT);
-			z-index: 0;
-			.thumbnail {
-				width: 100px;
-				height: 100px;
-				border-radius: 50px;
-				display: inline-block;
-				vertical-align: middle;
-				// border: solid 2px #CCC;
-				background-size: cover;
-				position: relative;
-				.close-button {
-					width: 20px;
-					height: 20px;
-					background-color: black;
-					color: white;
-					text-align: center;
-					position: absolute;
-					top: 5px;
-					right: 5px;
-					border-radius: 100px;
-					cursor: pointer;
-				}
-			}
-		}
-		.btn{
-			margin-top: 10px;
-			width: 100%;
-			padding: 8px 12px;
-			text-transform: uppercase;
-			background: $info-color;
-			color: $white-color;
-			border: none;
-			border-radius: $border-radius;
-			cursor: pointer;
-			transition: $transition;
-			&:hover{
-				box-shadow: $box-shadow;
+			border-radius: 50px;
+			display: inline-block;
+			vertical-align: middle;
+			// border: solid 2px #CCC;
+			background-size: cover;
+			position: relative;
+			.close-button {
+				width: 20px;
+				height: 20px;
+				background-color: black;
+				color: white;
+				text-align: center;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				border-radius: 100px;
+				cursor: pointer;
 			}
 		}
 	}
-	.box-datos{
+	.btnUpImg{
+		@include btn();
 		width: 100%;
-		border: 1px solid blue;
+		margin-top: 10px;
 	}
 }
+.box-datos{
+	width: 100%;
+}
+.title-profile{
+	text-align: center;
+	font-size: 16px;
+	margin-bottom: 30px;
+	color: $primary-color;
+	font-weight: 300;
+}
+.form-profile{
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+	margin-top: 30px;
+	gap: 10px;
+	
+}
+.data1{
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+	gap: 10px;
+	.box-input{
+		margin: 5px 0;
+	}
+}
+.data2{
+	display: flex;
+	flex-wrap: wrap;
+	select{
+		width: 170px;
+		height: 30px;
+	}
+	.direccion{
+		width: 100%;
+	}
+}
+.btnPerfil{
+	@include btn();
+	// width: 120px;
+	margin-top: 20px;
+}
+
 
 
 

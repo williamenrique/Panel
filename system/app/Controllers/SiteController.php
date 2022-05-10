@@ -119,7 +119,7 @@ class Site extends Controllers{
 	public function getSite(int $intSite){
 		$intSite = intval($intSite);
 		if($intSite > 0 ){
-			$arrData = $this->model->getSite($intSite);
+			$arrData = $this->model->getSite($intSite, $_SESSION['idUser']);
 			if(empty($arrData)){
 				$arrResponse = array('status' => false, 'msg' => 'Datos no encontrados');
 			}else{

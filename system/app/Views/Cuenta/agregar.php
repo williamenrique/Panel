@@ -141,7 +141,9 @@
 					</div>
 				</div>
 			</div>
-			<button type="button" class="btnAddC">Agregar</button>
+			<button type="button" class="btnAddC">	
+				<i class="fa-solid fa-plus"></i>Agregar
+			</button>
 		</form>
 	</section>
 </div>

@@ -388,6 +388,7 @@ html::-webkit-scrollbar:vertical {
 
 .box .addSites .cardHeader .formSiteAdd .box-input {
   position: relative;
+  margin-bottom: 5px;
 }
 
 .box .addSites .cardHeader .formSiteAdd .box-input input {
@@ -396,6 +397,7 @@ html::-webkit-scrollbar:vertical {
   font-size: 1.1rem;
   color: #212121;
   padding-left: 25px;
+  border: 1px solid #757575;
   border-radius: 4px;
   margin-bottom: 5px;
 }
@@ -408,15 +410,18 @@ html::-webkit-scrollbar:vertical {
   color: #343a40;
 }
 
-.box .addSites .cardHeader .formSiteAdd .box-button .btn {
-  background: none;
+.box .addSites .cardHeader .formSiteAdd .box-button .btn-addSite {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   padding: 8px 12px;
+  text-transform: uppercase;
+  background: none;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
-}
-
-.box .addSites .cardHeader .formSiteAdd .box-button .btn-addSite {
   background: #009688;
   color: #fefefe;
 }
@@ -427,9 +432,27 @@ html::-webkit-scrollbar:vertical {
 }
 
 .box .addSites .cardHeader .formSiteAdd .box-button .btn-updateSite {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  background: #009688;
+  color: #fefefe;
   display: none;
   background: #013ca6;
   color: #fefefe;
+}
+
+.box .addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
+  background: rgba(0, 150, 136, 0.7);
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
 }
 
 .box .addSites .cardHeader .formSiteAdd .box-button .btn-updateSite:hover {
@@ -452,7 +475,13 @@ html::-webkit-scrollbar:vertical {
 }
 
 input, select {
-  width: 100%;
+  width: 96%;
+  border-radius: 4px;
+  border-color: #757575;
+  color: #212121;
+  font-size: 11px;
+  padding: 5px;
+  outline: none;
 }
 
 .form-add-cuenta {
@@ -472,10 +501,11 @@ input, select {
   display: flex;
   justify-content: space-around;
   position: relative;
+  gap: 5px;
 }
 
 .box-medio .box-radio label .span {
-  padding: 3px 8px;
+  padding: 5px 10px;
   background: #757575;
   color: #111827;
   text-transform: uppercase;
@@ -483,6 +513,7 @@ input, select {
   border-radius: 4px;
   transition: 0.5s;
   cursor: pointer;
+  position: relative;
 }
 
 .box-medio .box-radio label input {
@@ -493,9 +524,19 @@ input, select {
   background: #111827;
   color: #fefefe;
   box-shadow: 0px 11px 10px -9px #c1c1c1;
+  padding-left: 25px;
 }
 
-.form-add-cuenta .label {
+.box-medio .box-radio label input:checked ~ .span::before {
+  font-family: 'fontawesome';
+  content: '\f00c';
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  font-size: 14px;
+}
+
+form .label {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -505,7 +546,7 @@ input, select {
   border-bottom: 1px solid #c1c1c1;
 }
 
-.form-add-cuenta .label::after {
+form .label::after {
   content: '';
   position: absolute;
   left: 0;
@@ -517,7 +558,7 @@ input, select {
   transition: 0.5s;
 }
 
-.form-add-cuenta .label .span {
+form .label .span {
   position: absolute;
   bottom: 5px;
   left: 0;
@@ -526,14 +567,14 @@ input, select {
   text-transform: capitalize;
 }
 
-.form-add-cuenta .box-input {
+form .box-input {
   width: 100%;
   height: 30px;
   position: relative;
   overflow: hidden;
 }
 
-.form-add-cuenta .box-input input[type=text] {
+form .box-input input[type=text] {
   width: 100%;
   height: 100%;
   background: none;
@@ -543,15 +584,15 @@ input, select {
   outline: 0px;
 }
 
-.form-add-cuenta .box-input input[type=text]:focus + .label .span,
-.form-add-cuenta .box-input input[type=text]:valid + .label .span {
+form .box-input input[type=text]:focus + .label .span,
+form .box-input input[type=text]:valid + .label .span {
   transform: translateY(-60%);
   font-size: 11px;
   color: #c1c1c1;
 }
 
-.form-add-cuenta .box-input input[type=text]:focus + .label::after,
-.form-add-cuenta .box-input input[type=text]:valid + .label::after {
+form .box-input input[type=text]:focus + .label::after,
+form .box-input input[type=text]:valid + .label::after {
   transform: translateX(0%);
 }
 
@@ -572,18 +613,24 @@ input, select {
 }
 
 .form-add-cuenta .btnAddC {
-  background: #111827;
-  color: #fefefe;
-  padding: 8px 10px;
-  text-align: center;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
   text-transform: uppercase;
+  background: none;
   border: none;
   border-radius: 4px;
+  background: #009688;
+  color: #fefefe;
   width: 150px;
-  cursor: pointer;
 }
 
 .form-add-cuenta .btnAddC:hover {
+  background: rgba(0, 150, 136, 0.7);
   box-shadow: 0px 11px 10px -9px #c1c1c1;
 }
 
@@ -604,11 +651,12 @@ input, select {
 
 .box-perfil {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
   gap: 20px;
 }
 
-.box-perfil .box-img {
+.box-img-profile {
   width: 200px;
   background: #fefefe;
   border-radius: 4px;
@@ -616,7 +664,15 @@ input, select {
   padding: 2rem;
 }
 
-.box-perfil .box-img .formImg {
+.box-img-profile h5 {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #111827;
+  font-weight: 300;
+}
+
+.box-img-profile .formImg {
   height: 100px;
   border-radius: 50px;
   background-image: url(../../src/images/default.png);
@@ -626,11 +682,11 @@ input, select {
   position: relative;
 }
 
-.box-perfil .box-img .formImg #file {
+.box-img-profile .formImg #file {
   display: none;
 }
 
-.box-perfil .box-img .formImg .search {
+.box-img-profile .formImg .search {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -641,7 +697,7 @@ input, select {
   z-index: 1000;
 }
 
-.box-perfil .box-img #preview-images {
+.box-img-profile #preview-images {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -651,7 +707,7 @@ input, select {
   z-index: 0;
 }
 
-.box-perfil .box-img #preview-images .thumbnail {
+.box-img-profile #preview-images .thumbnail {
   width: 100px;
   height: 100px;
   border-radius: 50px;
@@ -661,7 +717,7 @@ input, select {
   position: relative;
 }
 
-.box-perfil .box-img #preview-images .thumbnail .close-button {
+.box-img-profile #preview-images .thumbnail .close-button {
   width: 20px;
   height: 20px;
   background-color: black;
@@ -674,26 +730,92 @@ input, select {
   cursor: pointer;
 }
 
-.box-perfil .box-img .btn {
-  margin-top: 10px;
-  width: 100%;
+.box-img-profile .btnUpImg {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   padding: 8px 12px;
   text-transform: uppercase;
-  background: #013ca6;
-  color: #fefefe;
+  background: none;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
-  transition: 0.5s;
+  background: #009688;
+  color: #fefefe;
+  width: 100%;
+  margin-top: 10px;
 }
 
-.box-perfil .box-img .btn:hover {
+.box-img-profile .btnUpImg:hover {
+  background: rgba(0, 150, 136, 0.7);
   box-shadow: 0px 11px 10px -9px #c1c1c1;
 }
 
-.box-perfil .box-datos {
+.box-datos {
   width: 100%;
-  border: 1px solid blue;
+}
+
+.title-profile {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: #111827;
+  font-weight: 300;
+}
+
+.form-profile {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.data1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.data1 .box-input {
+  margin: 5px 0;
+}
+
+.data2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.data2 select {
+  width: 170px;
+  height: 30px;
+}
+
+.data2 .direccion {
+  width: 100%;
+}
+
+.btnPerfil {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  background: #009688;
+  color: #fefefe;
+  margin-top: 20px;
+}
+
+.btnPerfil:hover {
+  background: rgba(0, 150, 136, 0.7);
+  box-shadow: 0px 11px 10px -9px #c1c1c1;
 }
 
 .container-main .navigation.active {
