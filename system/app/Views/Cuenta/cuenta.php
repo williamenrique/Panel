@@ -1,6 +1,9 @@
-<?php head($data)?>
+<?php head($data);
+$dataUser = data($_SESSION['idUser']);
+?>
 
-<div class="container">
+<div class="box">
+
 	<div class="heading">
 		<h2 class="title"><span>C</span>uentas</h2>
 		<div class="tools">
@@ -44,7 +47,5 @@
 			</table>
 		</div>
 	</section>
-	
 </div>
-
 <?php footer($data)?>

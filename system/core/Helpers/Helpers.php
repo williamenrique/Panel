@@ -62,6 +62,22 @@ function sessionUser(int $idUser){
 	require_once ("system/app/Models/LoginModel.php");
 	$objLogin = new LoginModel();
 	$request = $objLogin->sessionLogin($idUser);
+		$_SESSION['img'] =        $request['img'];
+		$_SESSION['nick'] =		   $request['nick'];
+		$_SESSION['user'] = 		   $request['user'];
+		$_SESSION['pass'] = 		   $request['pass'];
+		$_SESSION['apellido'] =   $request['apellido'];
+		$_SESSION['telefono'] =   $request['telefono'];
+		$_SESSION['direccion'] =  $request['direccion'];
+		$_SESSION['status'] = 	   $request['status'];
+		$_SESSION['fecha_reg'] =  $request['fecha_reg'];
+		$_SESSION['estado'] = 		 $request['estado'];
+		$_SESSION['ciudad'] = 		 $request['ciudad'];
+		$_SESSION['email'] = 		 $request['email'];
+		$_SESSION['nombre'] = 		 $request['nombre'];
+		$_SESSION['ruta'] =	   $request['ruta'];
+		$_SESSION['imagen'] = 		 $request['img'];
+		$_SESSION['imgUser'] = base_url().$request['ruta'].$request['img'];
 	return $request;
 }
 // TODO: cambiar a variables de sesion
