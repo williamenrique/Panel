@@ -64,6 +64,7 @@ function sessionUser(int $idUser){
 	$request = $objLogin->sessionLogin($idUser);
 	return $request;
 }
+// TODO: cambiar a variables de sesion
 function data(int $idUser){
 	require_once ("system/app/Models/UserModel.php");
 	$objUser = new UserModel();
