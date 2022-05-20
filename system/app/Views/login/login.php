@@ -1,94 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
-	<link rel="stylesheet" href="../../../src/css/styleLogin.css">
-		<link rel="shortcut icon" href="<?= IMG?>favicon(2).png" type="image/x-icon">
-		<link rel="stylesheet" href="<?= CSS?>sweetcolor.css">
-</head>
-<body>
-	
 
-	<div class="container">
-		<div class="tabs">
-			<ul class="box-tabs">
-				<li class="tab active">Login</li>
-				<li class="tab">Registro</li>
-			</ul>
-			<section class="box-tabs-cont">
-				<div class="box-tab active">
-					<div class="heading">
-						<h3 class="title">
-							<span>B</span>ienvenido de vuelta
-						</h3>
-						<h6 class="text">Introduzca sus credenciales para ingresar al sistema</h6>
-						<div class="separate"></div>
-					</div>
+<?php headAcceso($data)?>
+		<main class="main">
+			<div class="col1">
+				<div class="box-img">
+					<img src="<?= IMG ?>login-v2-dark.svg" alt="">
+				</div>
+			</div>
+			<div class="col2">
+				<div class="box-form-login">
+					<h1 class="title">¡Bienvenido de vuelta!</h1>
+					<p class="sub-title">
+						Inicia sesión en tu cuenta y comienza la aventura.
+					</p>
 					<form class="formLogin">
 						<div class="box-input">
-							<input type="text" name="txtUserLogin" id="txtUserLogin" required>
-							<label class="label">
-								<span class="span">Usuario</span>
-							</label>
+							<label for="txtEmailLogin">email</label>
+							<input type="text" placeholder="Usuario" id="txtUserLogin" name="txtUserLogin">
 						</div>
 						<div class="box-input">
-							<input type="text" name="txtPassLogin" id="txtPassLogin" required>
-							<label class="label">
-								<span class="span">Password</span>
-							</label>
+							<label for="txtEmailLogin">password</label>
+							<input type="password" placeholder="Password" id="txtPassLogin" name="txtPassLogin">
 						</div>
-						<button type="submit" class="btn btnLogin">ingresar</button>
+						<div class="box-input">
+							<input type="checkbox" name="txtCheckRemember" id="txtCheckRemember">
+							<label for="txtCheckRemember" id="txtCheckRemember">Recuerdame</label>
+						</div>
+						<div class="box-input">
+							<button type="submit" class="btn btnLogin">Iniciar</button>
+						</div>
 					</form>
-				</div>
-				<div class="box-tab">
-					<div class="heading">
-							<h3 class="title">
-							<span>B</span>ienvenido al sistema
-						</h3>
-						<h6 class="text">llene los campos para registrarse en el sistema</h6>
-						<div class="separate"></div>
+					<span class="text">
+						¿Nuevo en nuestra plataforma? <a href="<?= base_url()?>register">Crea una cuenta</a>
+					</span>
+					<div class="divider">
+						<span></span>
+						<i class='bx bx-radio-circle'></i>
+						<span></span>
 					</div>
-					<form class="formRegister">
-						<div class="box-input">
-							<input type="text" name="txtNombRegister" id="txtNombRegister" required>
-							<label class="label">
-								<span class="span">Nombre</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" name="txtEmailRegister" id="txtEmailRegister" required>
-							<label class="label">
-								<span class="span">Email</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" name="txtPassRegister" id="txtPassRegister" required>
-							<label class="label">
-								<span class="span">Password</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" name="txtPassRegisterConfirm" id="txtPassRegisterConfirm" required>
-							<label class="label">
-								<span class="span">Confirme Password</span>
-							</label>
-						</div>
-						<button type="submit" class="btn btnRegister">crear cuenta</button>
-					</form>
 				</div>
-			</section>
-		</div>
-	</div>
+			</div>
+		</main>
 
-	<script>
-		const base_url = "<?= base_url()?>";
-	</script>
-	<script src="https://kit.fontawesome.com/0edefeb486.js" crossorigin="anonymous"></script>
-	<script src="<?= PLUGINS?>sweetalert/sweetalert2@10.js"></script>
-<script src="<?= JS?>function.main.js"></script>
-	<script src="../../../src/js/function.login.js"></script>
-</body>
-</html>
+<?php footerAcceso($data)?>

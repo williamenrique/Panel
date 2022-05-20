@@ -17,7 +17,7 @@ class Login extends Controllers{
 		$data['page_userNomb'] = "William Enrique";
 		$data['page_userRol'] = "Administrador";
 		$data['page_name'] = "login";
-		$data['page_functions'] = "function.login.js";
+		$data['page_function'] = "function.login.js";
 		$this->views->getViews($this, "login", $data);
 	}
 
@@ -63,6 +63,7 @@ class Login extends Controllers{
 	}
 	public function registerUser(){
 		if($_POST){
+
 			$txtNombRegister = $_POST['txtNombRegister'];
 			$txtEmailRegister = $_POST['txtEmailRegister'];
 			$txtPassRegister = $_POST['txtPassRegister'];
@@ -104,5 +105,21 @@ class Login extends Controllers{
 		//incluimos un arreglo que contendra toda la informacion que se enviara al home
 
 		$this->views->getViews($this, "logout", $data);
+		session_start();
+		session_unset();
+		session_destroy();
+	}
+
+
+	public function register(){
+		//invocar la vista con views y usamos getViews y pasamos parametros esta clase y la vista
+		//incluimos un arreglo que contendra toda la informacion que se enviara al home
+		$data['page_title'] = "Login";
+		$data['page_userImg'] = "usuario/default.png";
+		$data['page_userNomb'] = "William Enrique";
+		$data['page_userRol'] = "Administrador";
+		$data['page_name'] = "login";
+		$data['page_function'] = "function.login.js";
+		$this->views->getViews($this, "register", $data);
 	}
 }
