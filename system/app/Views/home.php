@@ -1,6 +1,4 @@
-<?php head($data);
-$dataUser = data($_SESSION['idUser']);
-?>
+<?php head($data);?>
 <!-- calendario -->
 	<div class="box-calendar">
 		<div class="calendar" id="calendar"></div>
@@ -9,7 +7,7 @@ $dataUser = data($_SESSION['idUser']);
 				<input type="hidden" name="idEvent" id="idEvent">
 				<div class="container">
 					<h3 class="title-box text-center">
-						Agregar evento
+						Agregar evento 
 					</h3>
 					<div class="divider"></div>
 					<div class="row">

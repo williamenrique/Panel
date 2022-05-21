@@ -89,31 +89,6 @@ function sessionUser(int $idUser){
 		$_SESSION['imgUser'] = base_url().$request['ruta'].$request['img'];
 	return $request;
 }
-// TODO: cambiar a variables de sesion
-// function data(int $idUser){
-// 	require_once ("system/app/Models/UserModel.php");
-// 	$objUser = new UserModel();
-// 	$request = $objUser->userData($idUser);
-// 	$data = [
-// 		'img'       => $request['img'],
-// 		'nick' 		  => $request['nick'],
-// 		'user' 		  => $request['user'],
-// 		'pass' 		  => $request['pass'],
-// 		'apellido'  => $request['apellido'],
-// 		'telefono'  => $request['telefono'],
-// 		'direccion' => $request['direccion'],
-// 		'status' 	  => $request['status'],
-// 		'fecha_reg' => $request['fecha_reg'],
-// 		'estado' 		=> $request['estado'],
-// 		'ciudad' 		=> $request['ciudad'],
-// 		'email' 		=> $request['email'],
-// 		'nombre' 		=> $request['nombre'],
-// 		'ruta' 		  => $request['ruta'],
-// 		'imagen' 		=> $request['img'],
-// 		'imgUser' => base_url().$request['ruta'].$request['img'],
-// 	];
-// 	return $data;
-// }
 function strClean($srtCadena){
 	$string = preg_replace(['/\s+/','/^\s|\s$/'],[' ',''],$srtCadena);
 	$string = trim($srtCadena);

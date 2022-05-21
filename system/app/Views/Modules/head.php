@@ -1,4 +1,3 @@
-<?php $dataUser = data($_SESSION['idUser'])?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -50,10 +49,11 @@
 							<a href="<?= base_url()?>" class="nav__link home">Inicio</a>
 						</div>
 					</li>
+					<!-- item solo -->
 					<li class="list__item item_active">
 						<div class="list__button">
 							<i class='bx bx-world list_icon'></i>
-							<a href="<?= base_url()?>" class="nav__link site">Sitio web</a>
+							<a href="<?= base_url()?>site" class="nav__link site">Sitio web</a>
 						</div>
 					</li>
 					<!-- desplegable -->
@@ -76,6 +76,13 @@
 							</li>
 						</ul>
 					</li>
+					<!-- item solo -->
+					<li class="list__item item_active">
+						<div class="list__button">
+							<i class='bx bx-home list_icon'></i>
+							<a href="<?= base_url()?>file" class="nav__link home">Administrador de archivos</a>
+						</div>
+					</li>
 					<!-- desplegable -->
 					<li class="list__item list__item--click">
 						<div class="list__button button_click">
@@ -91,7 +98,8 @@
 							</li>
 						</ul>
 					</li>
-
+					<!-- item solo -->
+					
 				</ul>
 			</nav>
 			<div class="footer-nav">

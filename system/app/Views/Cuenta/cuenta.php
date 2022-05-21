@@ -1,6 +1,4 @@
-<?php head($data);
-$dataUser = data($_SESSION['idUser']);
-?>
+<?php head($data)?>
 
 <div class="box">
 

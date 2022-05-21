@@ -46,11 +46,28 @@ class Login extends Controllers{
 							}
 						}else{
 							// creamos la sesion y las variables
+							// echo "id de usuario es ".$arrData['user_id'];
 							$_SESSION['idUser'] = $arrData['user_id'];
 							$_SESSION['login'] = true;
 							$arrData = $this->model->sessionLogin($_SESSION['idUser']);
 							//creamos la variable de sesion mediante un helper
 							sessionUser($_SESSION['idUser']);
+							$_SESSION['img'] =        $arrData['img'];
+							$_SESSION['nick'] =		   $arrData['nick'];
+							$_SESSION['user'] = 		   $arrData['user'];
+							$_SESSION['pass'] = 		   $arrData['pass'];
+							$_SESSION['apellido'] =   $arrData['apellido'];
+							$_SESSION['telefono'] =   $arrData['telefono'];
+							$_SESSION['direccion'] =  $arrData['direccion'];
+							$_SESSION['status'] = 	   $arrData['status'];
+							$_SESSION['fecha_reg'] =  $arrData['fecha_reg'];
+							$_SESSION['estado'] = 		 $arrData['estado'];
+							$_SESSION['ciudad'] = 		 $arrData['ciudad'];
+							$_SESSION['email'] = 		 $arrData['email'];
+							$_SESSION['nombre'] = 		 $arrData['nombre'];
+							$_SESSION['ruta'] =	   $arrData['ruta'];
+							$_SESSION['imagen'] = 		 $arrData['img'];
+							$_SESSION['imgUser'] = base_url().$arrData['ruta'].$arrData['img'];
 							$arrResponse = array('status' => true, 'msg' => 'ok');
 							// reiniciamos los intentos
 							$bloqueoUser = $this->model->userBlock($arrData['user_id'],1,0,0);
