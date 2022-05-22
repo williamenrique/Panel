@@ -14,7 +14,7 @@ class File extends Controllers{
 		$data['page_tag'] = "Dashboard - Personal";
 		$data['page_title'] = "Pagina Principal";
 		$data['page_menu_open'] = "empty";
-		$data['page_link'] = "file";
+		$data['page_link'] = "files";
 		$data['page_function'] = "function.files.js";
 		$this->views->getViews($this, "file", $data);
 	}

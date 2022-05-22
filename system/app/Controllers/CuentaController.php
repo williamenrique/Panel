@@ -14,8 +14,8 @@ class Cuenta extends Controllers{
 		//incluimos un arreglo que contendra toda la informacion que se enviara al home
 		$data['page_tag'] = "Cuenta Propia - Personal";
 		$data['page_title'] = "Pagina Principal";
-		$data['page_menu_open'] = "cuenta";
-		$data['page_link'] = "propia";
+		$data['page_menu_open'] = "cuenta_active";
+		$data['page_link'] = "cuenta";
 		$data['page_function'] = "function.cuenta.js";
 		$this->views->getViews($this, "cuenta", $data);
 	}

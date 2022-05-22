@@ -4,7 +4,29 @@
 		</div>
 </div>
 
-		<script>const base_url = "<?= base_url()?>";</script>
+		<script>
+		const base_url = "<?= base_url()?>";
+		let page_link = "<?= $data['page_link']?>"
+		if (document.querySelector("." + page_link)) {
+			let activar = document.querySelector("." + page_link)
+			// let page_menu_open = document.querySelector("." + page_menu_open)
+			activar.classList.add('item_active')
+		}
+		if(document.querySelector("."+"<?= $data['page_menu_open']?>")){
+			
+			let link_menu = document.querySelector("."+"<?= $data['page_menu_open']?>")
+			link_menu.classList.add('arrow')
+			link_menu.classList.add('item_active')
+			let height = 0
+			let menu = link_menu.nextElementSibling //obtener el hermano adyacente
+			// evaluamos el alto de los submenu dinamicamnete
+			if (menu.clientHeight == 0) {
+				height = menu.scrollHeight
+			}
+			// cambiar el valor del height
+			menu.style.height = `${height}px`
+		}
+		</script>
 		<script src="<?= PLUGINS ?>jquery/jquery-3.5.1.js"></script>
 		<!-- <script src="<?= PLUGINS ?>dataTable/jquery.dataTables.min.js"></script>-->
 		<script src="<?= PLUGINS ?>dataTable/datatables.min.js"></script>

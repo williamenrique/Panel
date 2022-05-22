@@ -43,22 +43,22 @@
 			<nav class="nav">
 				<ul class="list">
 					<!-- item solo -->
-					<li class="list__item item_active">
+					<li class="list__item home">
 						<div class="list__button">
 							<i class='bx bx-home list_icon'></i>
 							<a href="<?= base_url()?>" class="nav__link home">Inicio</a>
 						</div>
 					</li>
 					<!-- item solo -->
-					<li class="list__item item_active">
+					<li class="list__item sitio">
 						<div class="list__button">
 							<i class='bx bx-world list_icon'></i>
 							<a href="<?= base_url()?>site" class="nav__link site">Sitio web</a>
 						</div>
 					</li>
 					<!-- desplegable -->
-					<li class="list__item list__item--click">
-						<div class="list__button button_click">
+					<li class="list__item list__item--click cuenta">
+						<div class="list__button button_click cuenta_active">
 							<i class='bx bx-key list_icon'></i>
 							<a href="#" class="nav__link">Cuentas</a>
 							<i class='bx bx-chevron-right list__arrow'></i>
@@ -77,7 +77,7 @@
 						</ul>
 					</li>
 					<!-- item solo -->
-					<li class="list__item item_active">
+					<li class="list__item files">
 						<div class="list__button">
 							<i class='bx bx-home list_icon'></i>
 							<a href="<?= base_url()?>file" class="nav__link home">Administrador de archivos</a>
