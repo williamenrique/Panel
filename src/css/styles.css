@@ -286,6 +286,43 @@ html {
   opacity: 1;
 }
 
+.titleSpan {
+  display: block;
+  width: 100%;
+}
+
+.box-input {
+  border: 1px solid;
+}
+
+.radiogroup {
+  margin-top: 5px;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.radio_input {
+  display: none;
+}
+
+.radio_label {
+  padding: 8px 14px;
+  font-size: 14px;
+  color: #fff;
+  background: #009578;
+  cursor: pointer;
+  transition: background .1s;
+}
+
+.radio_label:not(:last-of-type) {
+  border-right: 1px solid #006B56;
+}
+
+.radio_input:checked + .radio_label {
+  background: #006B56;
+}
+
 /************************
 *	header navegacion superior
 *************************/

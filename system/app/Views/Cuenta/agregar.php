@@ -1,151 +1,75 @@
 <?php head($data)?>
-<div class="container">
-	<div class="heading">
-		<h2 class="title"><span>A</span>gregar cuentas</h2>
-	</div>
-
-	<section class="box-form">
-		<h6 class="title-box">Formulario para el ingreso de los datos de la cuenta</h6>
+<div class="box">
+	<div class="box-add-cuenta">
 		<form class="form-add-cuenta">
-
-			<div class="box-input">
-				<input type="text" id="txtNombre" name="txtNombre" required>
-				<label class="label" for="txtNombre">
-					<span class="span"> nombre de cuenta</span>
-				</label>
-			</div>
-
-			<div class="box-medio">
-				<div class="box-radio">
-					<label>
-						<input type="radio" name="cuentaAut"  value="1" checked>
-						<p class="span">propia</p>
-					</label>
-					<label>
-						<input type="radio" name="cuentaAut"  value="0">
-						<p class="span">tercero</p>
-					</label>
+			<div class="row">
+				<div class="box-input">
+					<label class="label" for="txtNombre"> nombre de cuenta</label>
+					<input type="text" id="txtNombre" name="txtNombre">
 				</div>
-				<div class="box-radio">
-					<label>
-						<input type="radio" name="tipoCuenta"  value="1" checked>
-						<p class="span">corriente</p>
-					</label>
-					<label>
-						<input type="radio" name="tipoCuenta"  value="0">
-						<p class="span">ahorro</p>
-					</label>
+				<div class="box-input">
+					<label class="label" for="txtNombre">Seleccione banco</label>
+					<select name="listBank" id="listBank" class="listBank">
+						<option value="0">Seleccione</option>
+					</select>
+				</div>
+				<div class="box-input">
+					<label class="label" for="txtNCuenta">numero de cuenta	</label>
+					<input type="text" id="txtNCuenta" name="txtNCuenta">
+				</div>
+				<div class="box-input">
+					<label class="label" for="txtNTarjeta">numero de tarjeta</label>
+					<input type="text" id="txtNTarjeta" name="txtNTarjeta">
 				</div>
 			</div>
-
-			<div class="box-select">
-				<select name="listBank" id="listBank" class="listBank">
-					<option value="0">Seleccione</option>
-				</select>
-			</div>
-			
-			<div class="box-input">
-				<input type="text" id="txtNCuenta" name="txtNCuenta" required>
-				<label class="label" for="txtNCuenta">
-					<span class="span"> numero de cuenta</span>
-				</label>
-			</div>
-			<div class="box-input">
-				<input type="text" id="txtNTarjeta" name="txtNTarjeta" required>
-				<label class="label" for="txtNTarjeta">
-					<span class="span">numero de tarjeta</span>
-				</label>
-			</div>
-
-			<div class="box-medio">
-				<div class="box-input box-ccv">
+			<div class="row">
+				<div class="box-input">
+					<label class="label" for="txtNTarjeta">Fecha de vencimiento</label>
+					<input type="text" id="txtNTarjeta" name="txtNTarjeta">
+				</div>
+				<div class="box-input">
+					<label class="label" for="txtNTarjeta">ccv</label>
 					<input type="text" id="txtCcv" name="txtCcv" required>
-					<label class="label">
-						<span class="span">ccv</span>
-					</label>
 				</div>
-				<div class="box-input box-passCajero">
+				<div class="box-input">
+					<label class="label" for="txtNTarjeta">clave de cajero</label>
 					<input type="text" id="txtPassCajero" name="txtPassCajero" required>
-					<label class="label">
-						<span class="span">clave cajero</span>
-					</label>
 				</div>
-			</div>
+				<div class="box-input">
+					<label class="label">usuario</label>
+					<input type="text" id="txtUsuario" name="txtUsuario" required>
+				</div>
+				<div class="box-input">
+					<label class="label">clave internet</label>
+					<input type="text" id="txtPassInt" name="txtPassInt" required>
+				</div>
+				<div class="box-input">
+					<label class="label">clave especial</label>
+					<input type="text" id="txtPasssSpecial" name="txtPasssSpecial" required>
+				</div>
+				<div class="box-input">
+					<label class="label">clave TLF</label>
+					<input type="text" id="txtPassTlf" name="txtPassTlf" required >
+				</div>
 
-			<div class="box-input">
-				<input type="text" id="txtUsuario" name="txtUsuario" required>
-				<label class="label">
-					<span class="span">usuario</span>
-				</label>
+					<!-- <span class="titleSpan">clave TLF</span> -->
+					<div class="box-input">
+						<div class="radiogroup">
+						<input type="radio" class="radio_input" name="radio1" id="radio1">
+						<label for="radio1" class="radio_label">Corriente</label>
+						<input type="radio" class="radio_input" name="radio1" id="radio2">
+						<label for="radio2" class="radio_label">ahorro</label>
+					</div>
+					<div class="radiogroup">
+						<input type="radio" class="radio_input" name="radio1" id="radio1">
+						<label for="radio1" class="radio_label">propia</label>
+						<input type="radio" class="radio_input" name="radio1" id="radio2">
+						<label for="radio2" class="radio_label">tercero</label>
+					</div>
+					</div>
 			</div>
-			<div class="box-input">
-				<input type="text" id="txtPassInt" name="txtPassInt" required>
-				<label class="label">
-					<span class="span">clave internet</span>
-				</label>
-			</div>
-			<div class="box-input">
-				<input type="text" id="txtPasssSpecial" name="txtPasssSpecial" required>
-				<label class="label">
-					<span class="span">clave especial</span>
-				</label>
-			</div>
-			<div class="box-input">
-				<input type="text" id="txtPassTlf" name="txtPassTlf" required >
-				<label class="label">
-					<span class="span">clave TLF</span>
-				</label>
-			</div>
-
-			<div class="box-pregunta">
-				<div class="box-1">
-					<div class="box-input">
-						<input type="text" id="txtP1" name="txtP1" required>
-						<label class="label" for="p1">
-							<span class="span">pregunta 1</span>
-						</label>
-					</div>
-					<div class="box-input">
-						<input type="text"id="txtR1" name="txtR1"  required>
-						<label class="label">
-							<span class="span">respuesta 1</span>
-						</label>
-					</div>
-				</div>
-				<div class="box-2">
-					<div class="box-input">
-						<input type="text" id="txtP2" name="txtP2" required>
-						<label class="label" for="p1">
-							<span class="span">pregunta 2</span>
-						</label>
-					</div>
-					<div class="box-input">
-						<input type="text" id="txtR2" name="txtR2" required>
-						<label class="label">
-							<span class="span">respuesta 2</span>
-						</label>
-					</div>
-				</div>
-				<div class="box-3">
-					<div class="box-input">
-						<input type="text" id="txtP3" name="txtP3" required>
-						<label class="label" for="p1">
-							<span class="span">pregunta 3</span>
-						</label>
-					</div>
-					<div class="box-input">
-						<input type="text" id="txtR3" name="txtR3" required>
-						<label class="label">
-							<span class="span">respuesta 3</span>
-						</label>
-					</div>
-				</div>
-			</div>
-			<button type="button" class="btnAddC">	
-				<i class="fa-solid fa-plus"></i>Agregar
-			</button>
 		</form>
-	</section>
+	</div>
 </div>
 
 <?php footer($data)?>

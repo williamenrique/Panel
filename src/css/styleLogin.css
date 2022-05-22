@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container .header .title {
+  font-size: 2rem;
+}
+
+.tabs {
+  width: 600px;
+  max-width: 120em;
+  margin-top: 3rem;
+  padding: 1em;
+}
+
+.tabs .box-tabs {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tabs .tab {
+  padding: 8px 15px;
+  margin: 0 1em 0 0;
+  border-radius: 4px;
+  list-style: none;
+  transition: all .5s ease;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.tabs .tab.active {
+  background: #013ca6;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.tabs .box-tabs-cont {
+  position: relative;
+}
+
+.tabs .box-tab {
+  margin: 1em;
+  padding: 1em;
+  position: absolute;
+  top: 1em;
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all .5s ease;
+}
+
+.tabs .box-tab.active {
+  opacity: 1;
+  transform: translateY(0%);
+  z-index: 1;
+}
+
+.tabs .box-tab .heading {
+  text-align: center;
+}
+
+.tabs .box-tab .heading .title {
+  color: #013ca6;
+  font-size: 2rem;
+  padding: 1rem 0;
+}
+
+.tabs .box-tab .heading .title span {
+  color: #ff0000;
+  font-size: 2.3rem;
+}
+
+.tabs .box-tab .heading .text {
+  font-size: 1.1rem;
+  color: #757575;
+  margin-bottom: 17.6px;
+}
+
+form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form .label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #c1c1c1;
+}
+
+form .label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #013ca6;
+  transform: translateX(-100%);
+  transition: 0.5s;
+}
+
+form .label .span {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  color: #111827;
+  transition: 0.5s;
+  text-transform: capitalize;
+  font-family: 'Poppins', sans-serif;
+}
+
+form .box-input {
+  width: 400px;
+  height: 50px;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+form .box-input input[type=text] {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #111827;
+  padding-top: 20px;
+  font-size: 1.2rem;
+  border: none;
+  outline: 0px;
+}
+
+form .box-input input[type=text]:focus + .label .span,
+form .box-input input[type=text]:valid + .label .span {
+  transform: translateY(-150%);
+  font-size: 11px;
+  color: #c1c1c1;
+}
+
+form .box-input input[type=text]:focus + .label::after,
+form .box-input input[type=text]:valid + .label::after {
+  transform: translateX(0%);
+}
+
+form .btn {
+  margin-right: auto;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  background: #111827;
+  color: #fff;
+  text-transform: uppercase;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+form .btn:hover {
+  box-shadow: 1px 1px 10px #757575;
+}
+/*# sourceMappingURL=styleLogin.css.map */
