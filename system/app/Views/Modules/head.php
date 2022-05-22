@@ -57,7 +57,7 @@
 						</div>
 					</li>
 					<!-- desplegable -->
-					<li class="list__item list__item--click ">
+					<li class="list__item list__item--click cuenta_link">
 						<div class="list__button button_click cuenta">
 							<i class='bx bx-key list_icon'></i>
 							<a href="#" class="nav__link">Cuentas</a>
@@ -66,7 +66,7 @@
 						<!-- la lista que se desplegara -->
 
 						<ul class="list__show">
-							<li class="list__inside cuenta_link">
+							<li class="list__inside ">
 								<i class='bx bx-radio-circle-marked'></i>
 								<a href="<?= base_url()?>cuenta" class="nav__link nav__link--inside ">Cuentas</a>
 							</li>

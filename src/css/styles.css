@@ -567,6 +567,11 @@ html {
   font-weight: 600;
 }
 
+.nav .list__item .list__show.link_active {
+  font-weight: 600;
+  color: #fff;
+}
+
 /*********************************
 * contenido principal 	 *
 *********************************/
