@@ -15,6 +15,7 @@ class Site extends Controllers{
 		$data['page_tag'] = "Site - Personal";
 		$data['page_title'] = "Pagina Principal";
 		$data['page_menu_open'] = "empty";
+		$data['page_link_active'] = "empty";
 		$data['page_link'] = "sitio";
 		$data['page_function'] = "function.site.js";
 		$this->views->getViews($this, "site", $data);

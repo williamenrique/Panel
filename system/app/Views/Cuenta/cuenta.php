@@ -1,19 +1,11 @@
 <?php head($data)?>
 
 <div class="box">
-
-	<div class="heading">
-		<h2 class="title"><span>C</span>uentas</h2>
-		<div class="tools">
-			<label>
-				<input type="radio" name="prioridad" id="favorite" value="1" checked >
-				<span>Propias</span>
-			</label>
-			<label >
-				<input type="radio" name="prioridad" id="all" value="0">
-				<span>Terceros</span>
-			</label>
-		</div>
+	<div class="radiogroup my">
+		<input type="radio" class="radio_input" name="prioridad" id="favorite" checked value="1">
+		<label for="favorite" class="radio_label">propias</label>
+		<input type="radio" class="radio_input" name="prioridad" id="all" value="0">
+		<label for="all" class="radio_label">Todos</label>
 	</div>
 	<section class="box-cuenta">
 		<!-- tabla de sitios -->

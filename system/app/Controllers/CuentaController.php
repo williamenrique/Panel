@@ -15,6 +15,7 @@ class Cuenta extends Controllers{
 		$data['page_tag'] = "Cuenta Propia - Personal";
 		$data['page_title'] = "Pagina Principal";
 		$data['page_menu_open'] = "cuenta_active";
+		$data['page_link_active'] = "cuenta_link";
 		$data['page_link'] = "cuenta";
 		$data['page_function'] = "function.cuenta.js";
 		$this->views->getViews($this, "cuenta", $data);
@@ -49,18 +50,6 @@ class Cuenta extends Controllers{
 		}
 		die();
 	}
-	/****************************************************************************************
-	****************************************************************************************/
-	public function tercero(){
-		//invocar la vista con views y usamos getView y pasamos parametros esta clase y la vista
-		//incluimos un arreglo que contendra toda la informacion que se enviara al home
-		$data['page_tag'] = "Cuenta tercero - Personal";
-		$data['page_title'] = "Pagina Principal";
-		$data['page_menu_open'] = "cuenta";
-		$data['page_link'] = "tercero";
-		$data['page_function'] = "function.cuenta.js";
-		$this->views->getViews($this, "tercero", $data);
-	}
 		/****************************************************************************************
 	****************************************************************************************/
 	public function agregar(){
@@ -70,6 +59,7 @@ class Cuenta extends Controllers{
 		$data['page_title'] = "Pagina Principal";
 		$data['page_menu_open'] = "cuenta";
 		$data['page_link'] = "agregar";
+		$data['page_link_active'] = "agregar_link";
 		$data['page_function'] = "function.cuenta.js";
 		$this->views->getViews($this, "agregar", $data);	
 	}
@@ -91,6 +81,7 @@ class Cuenta extends Controllers{
 		$strListBank = $_POST['listBank'];
 		$strNTarjeta = $_POST['txtNTarjeta'];
 		$strNCuenta = $_POST['txtNCuenta'];
+		$strFechaVenc = $_POST['txtFechaVenc'];
 		$strPassCajero = $_POST['txtPassCajero'];
 		$strUsuario = $_POST['txtUsuario'];
 		$strPassInt = $_POST['txtPassInt'];
@@ -108,7 +99,7 @@ class Cuenta extends Controllers{
 		$intCuentaAut = $_POST['cuentaAut'];
 		$intCcv = $_POST['txtCcv'];
 		
-		$request = $this->model->insertCuenta($intListBank,$intTipoCuenta,$intCuentaAut,$intCcv,$strNombre,$strListBank,$strNTarjeta,$strNCuenta,$strPassCajero,$strUsuario,$strPassInt,$strPasssSpecial,$strPassTlf,$strP1,$strR1,$strP2,$strR2,$strP3,$strR3);
+		$request = $this->model->insertCuenta($intListBank,$intTipoCuenta,$intCuentaAut,$intCcv,$strNombre,$strListBank,$strNTarjeta,$strNCuenta,$strPassCajero,$strUsuario,$strPassInt,$strPasssSpecial,$strPassTlf,$strP1,$strR1,$strP2,$strR2,$strP3,$strR3,$strFechaVenc);
 		if($request > 0){
 			$arrResponse = array("status" => true, "msg" => "Cuenta agregada");
 		}else{

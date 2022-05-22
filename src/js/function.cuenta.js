@@ -12,7 +12,7 @@ const getCuentaP = (intCheck) => {
 	tablaCuentaP = $('#tablaCuentaP').DataTable({
 		"language": {
 			"sProcessing": "Procesando...",
-			"sLengthMenu": "Mostrar _MENU_ registros",
+			"sLengthMenu": "Mostrar _MENU_ ",
 			"sZeroRecords": "No se encontraron resultados",
 			"sEmptyTable": "Ningún dato disponible",
 			"sInfo": "Total de _TOTAL_ Registros",
@@ -96,7 +96,8 @@ funcion para agregar una cuenta
 ************************************/
 if (document.querySelector('.btnAddC')) {
 	const btnAddC = document.querySelector('.btnAddC')
-	btnAddC.addEventListener('click', () => {
+	btnAddC.addEventListener('click', (e) => {
+		e.preventDefault()
 		let formCuenta = document.querySelector('.form-add-cuenta')
 		let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 		let ajaxUrl = base_url + 'Cuenta/addCuent'

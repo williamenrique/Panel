@@ -15,8 +15,10 @@
 		if(document.querySelector("."+"<?= $data['page_menu_open']?>")){
 			
 			let link_menu = document.querySelector("."+"<?= $data['page_menu_open']?>")
+			let link_activo = document.querySelector("."+"<?= $data['page_link_active']?>")
 			link_menu.classList.add('arrow')
 			link_menu.classList.add('item_active')
+			link_activo.classList.add('item_active')
 			let height = 0
 			let menu = link_menu.nextElementSibling //obtener el hermano adyacente
 			// evaluamos el alto de los submenu dinamicamnete

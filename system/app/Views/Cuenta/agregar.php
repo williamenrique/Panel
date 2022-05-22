@@ -22,52 +22,94 @@
 					<input type="text" id="txtNTarjeta" name="txtNTarjeta">
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="box-input">
-					<label class="label" for="txtNTarjeta">Fecha de vencimiento</label>
-					<input type="text" id="txtNTarjeta" name="txtNTarjeta">
+					<label class="label" for="txtFechaVenc">Fecha de vencimiento</label>
+					<input type="text" id="txtFechaVenc" name="txtFechaVenc">
 				</div>
 				<div class="box-input">
-					<label class="label" for="txtNTarjeta">ccv</label>
-					<input type="text" id="txtCcv" name="txtCcv" required>
+					<label class="label" for="txtCcv">ccv</label>
+					<input type="text" id="txtCcv" name="txtCcv">
 				</div>
 				<div class="box-input">
-					<label class="label" for="txtNTarjeta">clave de cajero</label>
-					<input type="text" id="txtPassCajero" name="txtPassCajero" required>
+					<label class="label" for="txtPassCajero">clave de cajero</label>
+					<input type="text" id="txtPassCajero" name="txtPassCajero">
 				</div>
 				<div class="box-input">
 					<label class="label">usuario</label>
-					<input type="text" id="txtUsuario" name="txtUsuario" required>
+					<input type="text" id="txtUsuario" name="txtUsuario">
 				</div>
 				<div class="box-input">
 					<label class="label">clave internet</label>
-					<input type="text" id="txtPassInt" name="txtPassInt" required>
+					<input type="text" id="txtPassInt" name="txtPassInt">
 				</div>
 				<div class="box-input">
 					<label class="label">clave especial</label>
-					<input type="text" id="txtPasssSpecial" name="txtPasssSpecial" required>
+					<input type="text" id="txtPasssSpecial" name="txtPasssSpecial">
 				</div>
 				<div class="box-input">
 					<label class="label">clave TLF</label>
-					<input type="text" id="txtPassTlf" name="txtPassTlf" required >
+					<input type="text" id="txtPassTlf" name="txtPassTlf" >
 				</div>
-
+			
 					<!-- <span class="titleSpan">clave TLF</span> -->
-					<div class="box-input">
-						<div class="radiogroup">
-						<input type="radio" class="radio_input" name="radio1" id="radio1">
-						<label for="radio1" class="radio_label">Corriente</label>
-						<input type="radio" class="radio_input" name="radio1" id="radio2">
-						<label for="radio2" class="radio_label">ahorro</label>
-					</div>
+				<div class="box-input">
+					<label class="label">Tipo cuenta</label>
 					<div class="radiogroup">
-						<input type="radio" class="radio_input" name="radio1" id="radio1">
-						<label for="radio1" class="radio_label">propia</label>
-						<input type="radio" class="radio_input" name="radio1" id="radio2">
-						<label for="radio2" class="radio_label">tercero</label>
+						<input type="radio" class="radio_input" name="tipoCuenta" id="corriente" checked value="1">
+						<label for="corriente" class="radio_label">Corriente</label>
+						<input type="radio" class="radio_input" name="tipoCuenta" id="ahorro" value="0">
+						<label for="ahorro" class="radio_label">ahorro</label>
 					</div>
+				</div>
+				<div class="box-input">
+					<label class="label">Titular cuenta</label>
+					<div class="radiogroup">
+						<input type="radio" class="radio_input" name="cuentaAut" id="propia" checked value="1">
+						<label for="propia" class="radio_label">propia</label>
+						<input type="radio" class="radio_input" name="cuentaAut" id="tercero" value="0">
+						<label for="tercero" class="radio_label">tercero</label>
 					</div>
+				</div>
 			</div>
+			<div class="divider"></div>
+
+			<div class="row">
+				<div class="box-1">
+					<div class="box-input">
+						<label class="label" >pregunta 1</label>
+						<input type="text" id="txtP1" name="txtP1">
+					</div>
+					<div class="box-input">
+						<label class="label">respuesta 1</label>
+						<input type="text"id="txtR1" name="txtR1" >
+					</div>
+				</div>
+				<div class="box-1">
+					<div class="box-input">
+						<label class="label" >pregunta 2</label>
+						<input type="text" id="txtP2" name="txtP2">
+					</div>
+					<div class="box-input">
+						<label class="label">respuesta 2</label>
+						<input type="text" id="txtR2" name="txtR2">
+					</div>
+				</div>
+				<div class="box-1">
+					<div class="box-input">
+						<label class="label" >pregunta 3</label>
+						<input type="text" id="txtP3" name="txtP3">
+					</div>
+					<div class="box-input">
+						<label class="label">respuesta 3</label>
+						<input type="text" id="txtR3" name="txtR3">
+					</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btnAddC">
+				<i class='bx bx-plus-medical'></i>Agregar
+			</button>
 		</form>
 	</div>
 </div>

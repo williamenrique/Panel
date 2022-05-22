@@ -57,8 +57,8 @@
 						</div>
 					</li>
 					<!-- desplegable -->
-					<li class="list__item list__item--click cuenta">
-						<div class="list__button button_click cuenta_active">
+					<li class="list__item list__item--click ">
+						<div class="list__button button_click cuenta">
 							<i class='bx bx-key list_icon'></i>
 							<a href="#" class="nav__link">Cuentas</a>
 							<i class='bx bx-chevron-right list__arrow'></i>
@@ -66,13 +66,13 @@
 						<!-- la lista que se desplegara -->
 
 						<ul class="list__show">
-							<li class="list__inside">
+							<li class="list__inside cuenta_link">
 								<i class='bx bx-radio-circle-marked'></i>
-								<a href="<?= base_url()?>cuenta" class="nav__link nav__link--inside">Cuentas</a>
+								<a href="<?= base_url()?>cuenta" class="nav__link nav__link--inside ">Cuentas</a>
 							</li>
-							<li class="list__inside">
+							<li class="list__inside agregar_link">
 								<i class='bx bx-radio-circle-marked'></i>
-								<a href="<?= base_url()?>cuenta/agregar" class="nav__link nav__link--inside">Agregar cuenta</a>
+								<a href="<?= base_url()?>cuenta/agregar" class="nav__link nav__link--inside agregar">Agregar cuenta</a>
 							</li>
 						</ul>
 					</li>
@@ -80,7 +80,7 @@
 					<li class="list__item files">
 						<div class="list__button">
 							<i class='bx bx-home list_icon'></i>
-							<a href="<?= base_url()?>file" class="nav__link home">Administrador de archivos</a>
+							<a href="<?= base_url()?>file" class="nav__link files">Administrador de archivos</a>
 						</div>
 					</li>
 					<!-- desplegable -->

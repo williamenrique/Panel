@@ -54,7 +54,6 @@ html {
 }
 
 .row {
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
@@ -84,9 +83,17 @@ html {
   margin: 2rem 0;
 }
 
+.divider {
+  display: inline-block;
+  width: 100%;
+  height: 1px;
+  background: rgba(208, 210, 214, 0.26);
+}
+
 .box-input {
   width: 100%;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .box-input input[type=text],
@@ -112,7 +119,6 @@ html {
 .box-input label {
   display: inline-block;
   font-size: 12px;
-  margin-bottom: 5px;
   text-transform: capitalize;
 }
 
@@ -286,41 +292,33 @@ html {
   opacity: 1;
 }
 
-.titleSpan {
-  display: block;
-  width: 100%;
-}
-
-.box-input {
-  border: 1px solid;
-}
-
 .radiogroup {
   margin-top: 5px;
   display: inline-flex;
   overflow: hidden;
   border-radius: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
-.radio_input {
+.radiogroup .radio_input {
   display: none;
 }
 
-.radio_label {
+.radiogroup .radio_input:checked + .radio_label {
+  background: #161D31;
+}
+
+.radiogroup .radio_label {
   padding: 8px 14px;
   font-size: 14px;
   color: #fff;
-  background: #009578;
+  background: #283046;
   cursor: pointer;
   transition: background .1s;
 }
 
-.radio_label:not(:last-of-type) {
-  border-right: 1px solid #006B56;
-}
-
-.radio_input:checked + .radio_label {
-  background: #006B56;
+.radiogroup .radio_label:not(:last-of-type) {
+  border-right: 1px solid #161D31;
 }
 
 /************************
@@ -373,6 +371,11 @@ html {
 
 .show.arrow .bx {
   transform: rotate(180deg);
+}
+
+.box-main {
+  position: relative;
+  margin-top: 60px;
 }
 
 /***************************
@@ -565,13 +568,8 @@ html {
 }
 
 /*********************************
-* contenido principal	 *
+* contenido principal 	 *
 *********************************/
-.box-main {
-  position: relative;
-  margin-top: 60px;
-}
-
 .main {
   position: absolute;
   top: 0px;
@@ -643,8 +641,22 @@ html {
 }
 
 /*********************************
-* MEDIA QUERYS	 *
+* QUERYS*
 *********************************/
+@media (max-width: 760px) {
+  .section-nav {
+    left: -250px;
+    z-index: 1000;
+  }
+  .section-nav.nav-active {
+    left: 0;
+  }
+  .row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 @media (min-width: 768px) {
   .section-nav {
     left: 0;
@@ -663,9 +675,6 @@ html {
   }
 }
 
-/*********************************
-* colores para las notificaciones	 *
-*********************************/
 .colored-toast.swal2-icon-success {
   background-color: #a5dc86 !important;
 }

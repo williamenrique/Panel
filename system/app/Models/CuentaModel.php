@@ -23,6 +23,7 @@ class CuentaModel extends Mysql {
 	private $priority;
 	private $intIdCuenta;
 	private $status;
+	private $strFechaVenc;
 	public function __construct(){
 	//heradar la clase padre 
 		parent::__construct();
@@ -33,7 +34,7 @@ class CuentaModel extends Mysql {
 		$request = $this->select_all($sql);
 		return $request;
 	}
-	public function insertCuenta(int $intListBank,int $intTipoCuenta,int $intCuentaAut,int $intCcv,string $strNombre,string $strListBank,string $strNTarjeta,string $strNCuenta,string $intPassCajero,string $strUsuario,string $strPassInt,string $strPasssSpecial,string $strPassTlf,string $strP1,string $strR1,string $strP2,string $strR2,string $strP3,string $strR3){
+	public function insertCuenta(int $intListBank,int $intTipoCuenta,int $intCuentaAut,int $intCcv,string $strNombre,string $strListBank,string $strNTarjeta,string $strNCuenta,string $intPassCajero,string $strUsuario,string $strPassInt,string $strPasssSpecial,string $strPassTlf,string $strP1,string $strR1,string $strP2,string $strR2,string $strP3,string $strR3,string $strFechaVenc){
 	$this->intListBank = $intListBank;
 	$this->intTipoCuenta = $intTipoCuenta;
 	$this->intCuentaAut = $intCuentaAut;
@@ -47,6 +48,7 @@ class CuentaModel extends Mysql {
 	$this->strPassInt = $strPassInt;
 	$this->strPasssSpecial = $strPasssSpecial;
 	$this->strPassTlf = $strPassTlf;
+	$this->strFechaVenc = $strFechaVenc;
 	$this->strP1 = $strP1;
 	$this->strR1 = $strR1;
 	$this->strP2 = $strP2;
@@ -54,9 +56,8 @@ class CuentaModel extends Mysql {
 	$this->strP3 = $strP3;
 	$this->strR3 = $strR3;
 
-		$sql = "INSERT INTO table_cuenta (idUser,nombreAut,banco,tipoC,cuentaAut,nCuenta,nTarjeta,ccv,usuario,pass,passEspecial,claveTlf,passCajero,p1,r1,p2,r2,p3,r3,status,fechaAct) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW())";
-
-		$arraData = array(1,$this->strNombre,$this->intListBank,$this->intTipoCuenta,$this->intCuentaAut,$this->strNCuenta,$this->strNTarjeta,$this->intCcv,$this->strUsuario,$this->strPassInt,$this->strPasssSpecial,$this->strPassTlf,$this->intPassCajero,$this->strP1,$this->strR1,$this->strP2,$this->strR2,$this->strP3,$this->strR3,1);
+		$sql = "INSERT INTO table_cuenta (idUser,nombreAut,banco,tipoC,cuentaAut,nCuenta,nTarjeta,ccv,usuario,pass,passEspecial,claveTlf,passCajero,p1,r1,p2,r2,p3,r3,status,fecha_venc,fechaAct) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW())";
+		$arraData = array(1,$this->strNombre,$this->intListBank,$this->intTipoCuenta,$this->intCuentaAut,$this->strNCuenta,$this->strNTarjeta,$this->intCcv,$this->strUsuario,$this->strPassInt,$this->strPasssSpecial,$this->strPassTlf,$this->intPassCajero,$this->strP1,$this->strR1,$this->strP2,$this->strR2,$this->strP3,$this->strR3,$this->strFechaVenc,1);
 		$request = $this->insert($sql,$arraData);
 		return $request;
 	}
