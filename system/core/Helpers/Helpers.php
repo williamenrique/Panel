@@ -72,6 +72,7 @@ function sessionUser(int $idUser){
 	$objLogin = new LoginModel();
 	$request = $objLogin->sessionLogin($idUser);
 		$_SESSION['img'] =        $request['img'];
+		$_SESSION['user_id'] =        $request['user_id'];
 		$_SESSION['nick'] =		   $request['nick'];
 		$_SESSION['user'] = 		   $request['user'];
 		$_SESSION['pass'] = 		   $request['pass'];

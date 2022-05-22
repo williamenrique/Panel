@@ -2,6 +2,7 @@
  * calendario
  ********************************/
 let hoy = new Date()
+const url_event = base_url+'Home/actionEvent';
 document.addEventListener('DOMContentLoaded', function () {
 	document.querySelector('#txtInicio').value = hoy.toISOString().split('T')[0]
 	document.querySelector('#txtFin').value = hoy.toISOString().split('T')[0]
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			center: 'title',
 			right: 'dayGridMonth, timeGridWeek, listWeek'
 		},
-		// events: 'php/listarEvents.php',
+		events: base_url +'Home/listarEvents',
 		editable: true,
 		dateClick: function (info) {
 			// console.log(info)
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.querySelector('.btn-delete').style.display = 'none'
 		},
 		eventClick: function (info) {
-			// console.log(info.event.endStr)
+			// console.log(info)	
 			// formClean()
 			document.querySelector('.title-box').textContent = 'Editar evento'
 			document.querySelector('#idEvent').value = info.event.id
@@ -53,12 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			const idEvent = info.event.id
 			const start = info.event.startStr
 			const end = info.event.endtStr
+			console.log(end)
 			const formdata = new FormData()
 			formdata.append('accion','drop')
 			formdata.append('idEvent',idEvent)
 			formdata.append('start',start)
 			formdata.append('end',end)
-			fetch('php/dataEvents.php', {
+			fetch(url_event, {
 				method: 'POST',
 				body: formdata,
 			})
@@ -68,11 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			.then( (data) => {
 				// console.log(data)
 				if (data.status) {
-					notifi(data.message,'success')
+					notifi(data.msg,'success')
 					calendar.refetchEvents()
 					formClean()
 				} else {
-					notifi(data.message,'error')
+					notifi(data.msg,'error')
 				}
 			})
 			.catch( (err) => {
@@ -88,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.querySelector('.btn-delete').addEventListener('click', () => {
 			const formdata = new FormData(formCalendar);
 			formdata.append('accion','delete');
-			fetch('php/dataEvents.php', {
+			fetch(url_event, {
 				method: 'POST',
 				body: formdata,
 			})
@@ -98,13 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			.then((data) => {
 				// console.log(data)
 				if (data.status) {
-					notifi(data.message, 'success')
+					notifi(data.msg, 'success')
 					// document.querySelector('.btn-guardar').textContent = 'guardar'
 					// document.querySelector('.btn-delete').style.display = 'none'
 					calendar.refetchEvents()
 					formClean()
 				} else {
-					notifi(data.message,'error')
+					notifi(data.msg,'error')
 				}
 			})
 			.catch((err) => {
@@ -123,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	
 		const formdata = new FormData(formCalendar)
 		formdata.append('accion','event')
-		fetch('php/dataEvents.php', {
+		fetch(url_event, {
 			method: 'POST',
 			body: formdata,
 		})
@@ -132,11 +134,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			})
 			.then((data) => {
 				if (data.status) {
-					notifi(data.message,'success')
+					notifi(data.msg,'success')
 					calendar.refetchEvents()
 					formClean()
 				} else {
-					notifi(data.message, 'error')
+					notifi(data.msg, 'error')
 					txtTituloEvento.focus()
 				}
 			})
