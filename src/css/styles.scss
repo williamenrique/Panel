@@ -581,7 +581,12 @@ html{
 		@include button($danger-color,$white ,none )
 	}
 }
-
+.box-add-cuenta{
+	.btnEditCuenta{
+		display: none;
+		@include button($warning-color,$white ,none )
+	}
+}
 /*********************************
 * QUERYS*
 *********************************/

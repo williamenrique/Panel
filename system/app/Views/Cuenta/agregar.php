@@ -2,6 +2,9 @@
 <div class="box">
 	<div class="box-add-cuenta">
 		<form class="form-add-cuenta">
+			<?php if(isset($_GET['id'])):?>
+					<input type="hidden" id="txtInputID" name="txtInputID" value="<?= $_GET['id']?>">
+			<?php endif;?>
 			<div class="row">
 				<div class="box-input">
 					<label class="label" for="txtNombre"> nombre de cuenta</label>
@@ -57,7 +60,7 @@
 				<div class="box-input">
 					<label class="label">Tipo cuenta</label>
 					<div class="radiogroup">
-						<input type="radio" class="radio_input" name="tipoCuenta" id="corriente" checked value="1">
+						<input type="radio" class="radio_input" name="tipoCuenta" id="corriente" value="1">
 						<label for="corriente" class="radio_label">Corriente</label>
 						<input type="radio" class="radio_input" name="tipoCuenta" id="ahorro" value="0">
 						<label for="ahorro" class="radio_label">ahorro</label>
@@ -66,7 +69,7 @@
 				<div class="box-input">
 					<label class="label">Titular cuenta</label>
 					<div class="radiogroup">
-						<input type="radio" class="radio_input" name="cuentaAut" id="propia" checked value="1">
+						<input type="radio" class="radio_input" name="cuentaAut" id="propia" value="1">
 						<label for="propia" class="radio_label">propia</label>
 						<input type="radio" class="radio_input" name="cuentaAut" id="tercero" value="0">
 						<label for="tercero" class="radio_label">tercero</label>
@@ -109,6 +112,9 @@
 			</div>
 			<button type="submit" class="btn btnAddC">
 				<i class='bx bx-plus-medical'></i>Agregar
+			</button>
+			<button type="submit" class="btn btnEditCuenta">
+				<i class='bx bx-edit-alt' ></i>Actualizar
 			</button>
 		</form>
 	</div>

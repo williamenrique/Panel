@@ -29,6 +29,7 @@
 						<th>Respuesta 2 </th>
 						<th>Pregunta 3 </th>
 						<th>Respuesta 3 </th>
+						<th>Actualizado</th>
 						<th>Opciones</th>
 					</tr>
 				</thead>

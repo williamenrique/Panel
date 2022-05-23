@@ -14,9 +14,9 @@ class Cuenta extends Controllers{
 		//incluimos un arreglo que contendra toda la informacion que se enviara al home
 		$data['page_tag'] = "Cuenta Propia - Personal";
 		$data['page_title'] = "Pagina Principal";
-		$data['page_menu_open'] = "cuenta_active";
-		$data['page_link_active'] = "cuenta_link";
-		$data['page_link'] = "cuenta";
+			$data['page_menu_open'] = "cuenta";
+		$data['page_link'] = "agregar";
+		$data['page_link_active'] = "agregar_link";
 		$data['page_function'] = "function.cuenta.js";
 		$this->views->getViews($this, "cuenta", $data);
 	}
@@ -27,9 +27,17 @@ class Cuenta extends Controllers{
 		for ($i=0; $i < count($arrData) ; $i++) {
 			$arrData[$i]['opciones'] =
 					'<div class="box-options">
-						<i class="fa-solid fa-trash-can delCuenta" onclick="delCuenta('.$arrData[$i]['idCuenta'].')"></i>
-						<i class="fa-solid fa-pencil editCuenta" onclick="editCuenta('.$arrData[$i]['idCuenta'].')"></i>';
-					'</div>';
+						<i class="bx bxs-trash delCuenta" onclick="delCuenta('.$arrData[$i]['idCuenta'].')"></i>
+						<a href="'.base_url().'cuenta/agregar/?id='.$arrData[$i]['idCuenta'].'">
+							<i class="bx bx-edit-alt editCuenta" onclick="editCuenta('.$arrData[$i]['idCuenta'].')"></i>
+						</a>
+					</div>';
+			$arrData[$i]['fechaAct'] = formatear_fecha($arrData[$i]['fechaAct']);
+			if($arrData[$i]['tipoC'] == 0){
+				$arrData[$i]['tipoC'] = 'Ahorro';
+			}else{
+				$arrData[$i]['tipoC'] = 'Corriente';
+			}
 		}
 		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 		die();
@@ -53,6 +61,7 @@ class Cuenta extends Controllers{
 		/****************************************************************************************
 	****************************************************************************************/
 	public function agregar(){
+		
 		//invocar la vista con views y usamos getView y pasamos parametros esta clase y la vista
 		//incluimos un arreglo que contendra toda la informacion que se enviara al home
 		$data['page_tag'] = "Agregar cuenta - Personal";
@@ -78,7 +87,6 @@ class Cuenta extends Controllers{
 
 	public function addCuent(){
 		$strNombre = $_POST['txtNombre'];
-		$strListBank = $_POST['listBank'];
 		$strNTarjeta = $_POST['txtNTarjeta'];
 		$strNCuenta = $_POST['txtNCuenta'];
 		$strFechaVenc = $_POST['txtFechaVenc'];
@@ -99,7 +107,7 @@ class Cuenta extends Controllers{
 		$intCuentaAut = $_POST['cuentaAut'];
 		$intCcv = $_POST['txtCcv'];
 		
-		$request = $this->model->insertCuenta($intListBank,$intTipoCuenta,$intCuentaAut,$intCcv,$strNombre,$strListBank,$strNTarjeta,$strNCuenta,$strPassCajero,$strUsuario,$strPassInt,$strPasssSpecial,$strPassTlf,$strP1,$strR1,$strP2,$strR2,$strP3,$strR3,$strFechaVenc);
+		$request = $this->model->insertCuenta($intListBank,$intTipoCuenta,$intCuentaAut,$intCcv,$strNombre,$strNTarjeta,$strNCuenta,$strPassCajero,$strUsuario,$strPassInt,$strPasssSpecial,$strPassTlf,$strP1,$strR1,$strP2,$strR2,$strP3,$strR3,$strFechaVenc);
 		if($request > 0){
 			$arrResponse = array("status" => true, "msg" => "Cuenta agregada");
 		}else{
@@ -107,5 +115,40 @@ class Cuenta extends Controllers{
 		}
 		echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 	}
+	public function getEditCuenta(){
+		$intIdCuenta = $_POST['inputIdCuenta'];
+		$arrData = $this->model->getCuentaID($intIdCuenta);
+		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
+		die();
+	}
+	public function updateCuenta(){
+		$intInputID = $_POST['txtInputID'];
+		$strNombre = $_POST['txtNombre'];
+		$strNTarjeta = $_POST['txtNTarjeta'];
+		$strNCuenta = $_POST['txtNCuenta'];
+		$strFechaVenc = $_POST['txtFechaVenc'];
+		$strPassCajero = $_POST['txtPassCajero'];
+		$strUsuario = $_POST['txtUsuario'];
+		$strPassInt = $_POST['txtPassInt'];
+		$strPasssSpecial = $_POST['txtPasssSpecial'];
+		$strPassTlf = $_POST['txtPassTlf'];
+		$strP1 = $_POST['txtP1'];
+		$strR1 = $_POST['txtR1'];
+		$strP2 = $_POST['txtP2'];
+		$strR2 = $_POST['txtR2'];
+		$strP3 = $_POST['txtP3'];
+		$strR3 = $_POST['txtR3'];
 
+		$intListBank = $_POST['listBank'];
+		$intTipoCuenta = $_POST['tipoCuenta'];
+		$intCuentaAut = $_POST['cuentaAut'];
+		$intCcv = $_POST['txtCcv'];
+		$request = $this->model->updateCuenta($intInputID,$intListBank,$intTipoCuenta,$intCuentaAut,$intCcv,$strNombre,$strNTarjeta,$strNCuenta,$strPassCajero,$strUsuario,$strPassInt,$strPasssSpecial,$strPassTlf,$strP1,$strR1,$strP2,$strR2,$strP3,$strR3,$strFechaVenc);
+		if($request > 0){
+			$arrResponse = array("status" => true, "msg" => "Cuenta actualizada");
+		}else{
+			$arrResponse = array("status" => false, "msg" => "Atencion! imposible almacenar datos");
+		}
+		echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
+	}
 }

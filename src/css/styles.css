@@ -646,6 +646,13 @@ html {
   border: none;
 }
 
+.box-add-cuenta .btnEditCuenta {
+  display: none;
+  background: #FFA800;
+  color: #fff;
+  border: none;
+}
+
 /*********************************
 * QUERYS*
 *********************************/

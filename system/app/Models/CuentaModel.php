@@ -34,27 +34,26 @@ class CuentaModel extends Mysql {
 		$request = $this->select_all($sql);
 		return $request;
 	}
-	public function insertCuenta(int $intListBank,int $intTipoCuenta,int $intCuentaAut,int $intCcv,string $strNombre,string $strListBank,string $strNTarjeta,string $strNCuenta,string $intPassCajero,string $strUsuario,string $strPassInt,string $strPasssSpecial,string $strPassTlf,string $strP1,string $strR1,string $strP2,string $strR2,string $strP3,string $strR3,string $strFechaVenc){
-	$this->intListBank = $intListBank;
-	$this->intTipoCuenta = $intTipoCuenta;
-	$this->intCuentaAut = $intCuentaAut;
-	$this->intPassCajero = $intPassCajero;
-	$this->intCcv = $intCcv;
-	$this->strNombre = $strNombre;
-	$this->strListBank = $strListBank;
-	$this->strNTarjeta = $strNTarjeta;
-	$this->strNCuenta = $strNCuenta;
-	$this->strUsuario = $strUsuario;
-	$this->strPassInt = $strPassInt;
-	$this->strPasssSpecial = $strPasssSpecial;
-	$this->strPassTlf = $strPassTlf;
-	$this->strFechaVenc = $strFechaVenc;
-	$this->strP1 = $strP1;
-	$this->strR1 = $strR1;
-	$this->strP2 = $strP2;
-	$this->strR2 = $strR2;
-	$this->strP3 = $strP3;
-	$this->strR3 = $strR3;
+	public function insertCuenta(int $intListBank,int $intTipoCuenta,int $intCuentaAut,int $intCcv,string $strNombre,string $strNTarjeta,string $strNCuenta,string $intPassCajero,string $strUsuario,string $strPassInt,string $strPasssSpecial,string $strPassTlf,string $strP1,string $strR1,string $strP2,string $strR2,string $strP3,string $strR3,string $strFechaVenc){
+		$this->intListBank = $intListBank;
+		$this->intTipoCuenta = $intTipoCuenta;
+		$this->intCuentaAut = $intCuentaAut;
+		$this->intPassCajero = $intPassCajero;
+		$this->intCcv = $intCcv;
+		$this->strNombre = $strNombre;
+		$this->strNTarjeta = $strNTarjeta;
+		$this->strNCuenta = $strNCuenta;
+		$this->strUsuario = $strUsuario;
+		$this->strPassInt = $strPassInt;
+		$this->strPasssSpecial = $strPasssSpecial;
+		$this->strPassTlf = $strPassTlf;
+		$this->strFechaVenc = $strFechaVenc;
+		$this->strP1 = $strP1;
+		$this->strR1 = $strR1;
+		$this->strP2 = $strP2;
+		$this->strR2 = $strR2;
+		$this->strP3 = $strP3;
+		$this->strR3 = $strR3;
 
 		$sql = "INSERT INTO table_cuenta (idUser,nombreAut,banco,tipoC,cuentaAut,nCuenta,nTarjeta,ccv,usuario,pass,passEspecial,claveTlf,passCajero,p1,r1,p2,r2,p3,r3,status,fecha_venc,fechaAct) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW())";
 		$arraData = array(1,$this->strNombre,$this->intListBank,$this->intTipoCuenta,$this->intCuentaAut,$this->strNCuenta,$this->strNTarjeta,$this->intCcv,$this->strUsuario,$this->strPassInt,$this->strPasssSpecial,$this->strPassTlf,$this->intPassCajero,$this->strP1,$this->strR1,$this->strP2,$this->strR2,$this->strP3,$this->strR3,$this->strFechaVenc,1);
@@ -73,6 +72,40 @@ class CuentaModel extends Mysql {
 		$sql = "UPDATE table_cuenta SET status = ? WHERE idCuenta = $this->intIdCuenta";
 		$arrData = array($this->status);
 		$request = $this->update($sql, $arrData);
+		return $request;
+	}
+	public function getCuentaID(int $intIdCuenta){
+		$this-> intIdCuenta = $intIdCuenta;
+		$sql = "SELECT * FROM table_cuenta t_c INNER JOIN table_banco t_b WHERE t_b.cod = t_c.banco AND  idCuenta = $this->intIdCuenta";
+		$request = $this->select($sql);
+		return $request;
+	}
+
+	public function updateCuenta(int $intIdCuenta,int $intListBank,int $intTipoCuenta,int $intCuentaAut,int $intCcv,string $strNombre,string $strNTarjeta,string $strNCuenta,string $intPassCajero,string $strUsuario,string $strPassInt,string $strPasssSpecial,string $strPassTlf,string $strP1,string $strR1,string $strP2,string $strR2,string $strP3,string $strR3,string $strFechaVenc){
+		$this->intIdCuenta = $intIdCuenta;
+		$this->intListBank = $intListBank;
+		$this->intTipoCuenta = $intTipoCuenta;
+		$this->intCuentaAut = $intCuentaAut;
+		$this->intPassCajero = $intPassCajero;
+		$this->intCcv = $intCcv;
+		$this->strNombre = $strNombre;
+		$this->strNTarjeta = $strNTarjeta;
+		$this->strNCuenta = $strNCuenta;
+		$this->strUsuario = $strUsuario;
+		$this->strPassInt = $strPassInt;
+		$this->strPasssSpecial = $strPasssSpecial;
+		$this->strPassTlf = $strPassTlf;
+		$this->strFechaVenc = $strFechaVenc;
+		$this->strP1 = $strP1;
+		$this->strR1 = $strR1;
+		$this->strP2 = $strP2;
+		$this->strR2 = $strR2;
+		$this->strP3 = $strP3;
+		$this->strR3 = $strR3;
+
+		$sql = "UPDATE table_cuenta SET nombreAut = ?,banco = ?,tipoC = ?,cuentaAut = ?,nCuenta = ?,nTarjeta = ?,ccv = ?,usuario = ?,pass = ?,passEspecial = ?,claveTlf = ?,passCajero = ?,p1 = ?,r1 = ?,p2 = ?,r2 = ?,p3 = ?,r3 = ?,fecha_venc = ? WHERE idCuenta = $this->intIdCuenta";
+		$arraData = array($this->strNombre,$this->intListBank,$this->intTipoCuenta,$this->intCuentaAut,$this->strNCuenta,$this->strNTarjeta,$this->intCcv,$this->strUsuario,$this->strPassInt,$this->strPasssSpecial,$this->strPassTlf,$this->intPassCajero,$this->strP1,$this->strR1,$this->strP2,$this->strR2,$this->strP3,$this->strR3,$this->strFechaVenc);
+		$request = $this->update($sql,$arraData);
 		return $request;
 	}
 }
