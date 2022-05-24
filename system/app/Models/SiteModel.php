@@ -25,11 +25,12 @@ class SiteModel extends Mysql {
 		}
 		if($this->priority == 1){
 			// todos los activos
-		 	$sql = "SELECT * FROM table_sitio WHERE status != 0 AND user_id = $this->intIdUser";
+		 	$sql = "SELECT * FROM table_sitio WHERE favorite = $this->favorite AND status != 0 AND user_id = $this->intIdUser";
 		}
 		if($this->priority == 2){
 			// todos los activos y favoritos
-		 	$sql = "SELECT * FROM table_sitio WHERE favorite = $this->favorite AND status != 0 AND user_id = $this->intIdUser";
+		 	$sql = "SELECT * FROM table_sitio WHERE status != 0 AND user_id = $this->intIdUser";
+		 	// $sql = "SELECT * FROM table_sitio WHERE favorite = $this->favorite AND status != 0 AND user_id = $this->intIdUser";
 		}
 		// echo $sql;
 		$request = $this->select_all($sql);

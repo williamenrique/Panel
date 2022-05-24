@@ -1,99 +1,145 @@
-<?php head($data);$dataUser = data($_SESSION['idUser']);?>
-<div class="container">
-		<div class="heading">
-		<h2 class="title"><span>D</span>atos personales</h2>
-	</div>
-
-	<div class="box-perfil">
-		<div class="box-img">
-			<div class="box-img-profile">
-				<h5 class="title-profile">Imgen de perfil</h5>
-				<form  class="formImg">
-					<input type="file" id="file" name="file" accept="image/*">
+<?php head($data)?>
+<section class="box box-profile">
+	<div class="box-info-user">
+		<div class="box-img-head">
+			<form class="formImg">
+				<input type="file" id="file" name="file" accept="image/*">
+				<?php if($_SESSION['img'] != ''){?>
+				<div id="preview-images">
 					<span class="search">
-						<i class="fa-solid fa-camera"></i>
+						<i class='bx bx-camera'></i>
 					</span>
-						
-					<?php if($dataUser['imagen'] != ''){?>
-					<div id="preview-images">
-						<div class="thumbnail 0" data-id="0" style="background-image : url('<?= $dataUser['imgUser']?>')"></div>
+					<div class="thumbnail 0" data-id="0" style="background-image : url('<?= $_SESSION['imgUser']?>')"></div>
+				</div>
+				<?php }else{?>
+				<div id="preview-images">
+					<span class="search">
+						<i class='bx bx-camera'></i>
+					</span>
+					<div class="thumbnail 0" data-id="0"></div>
+				</div>
+				<?php }?>
+				<div class="row">
+					<div class="box-action">
+						<button type="button" class="btn btnUpImg"><i class='bx bx-cloud-upload'></i>subir</button>
+						<span class="files">Tipos de archivos permitidos: png, jpg, jpeg.</span>
 					</div>
-					<?php }else{?>
-						<div id="preview-images"></div>
-					<?php }?>
-				</form>
-				<button class="btn btnUpImg" type="button">
-					<i class="fa-solid fa-arrows-spin"></i>actualizar
-				</button>
-			</div>
+				</div>
+			</form>
 		</div>
-		<div class="box-datos">
-			<section class="box-form">
-				<h5 class="title-box">Formulario de actualizacion de datos</h5>
-				<form class="form-profile">
-					<input type="hidden" value="<?= $_SESSION['idUser']?>" name="intUserId" id="intUserId">
-					<!-- <section class="box-perfil data1"> -->
-						<div class="box-input">
-							<input type="text" id="txtCiProfile" name="txtCiProfile" required>
-							<label class="label" for="txtCiProfile">
-								<span class="span">C.I</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" id="txtEmailProfile" name="txtEmailProfile" required>
-							<label class="label" for="txtEmailProfile">
-								<span class="span"> Email</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" id="txtNombreProfile" name="txtNombreProfile" required>
-							<label class="label" for="txtNombreProfile">
-								<span class="span">Nombre</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" id="txtApellidoProfile" name="txtApellidoProfile" required>
-							<label class="label" for="txtApellidoProfile">
-								<span class="span"> Apelido</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" id="txtTlfProfile" name="txtTlfProfile" required>
-							<label class="label" for="txtTlfProfile">
-								<span class="span"> Telefono</span>
-							</label>
-						</div>
-						<div class="box-input">
-							<input type="text" id="txtCdPostal" name="txtCdPostal" required>
-							<label class="label" for="txtCdPostal">
-								<span class="span"> codigo postal</span>
-							</label>
-						</div>
-					<!-- </section> -->
-					<!-- <section class="box-perfil data2"> -->
-						<select name="listState" id="listState" class="listState">
-							<option value="0">Estado</option>
-						</select>
-						<select name="listCiudad" id="listCiudad" class="listCiudad">
-							<option value="0">Ciudad</option>
-						</select>
-						<div class="box-input direc">
-							<input type="text" id="txtDireccion" name="txtDireccion" required>
-							<label class="label" for="txtDireccion">
-								<span class="span"> Direccion</span>
-							</label>
-						</div>
-					<!-- </section> -->
+		<!-- formulario datos usuario -->
+		<form class="formProfile">
+			<input type="hidden" value="<?= $_SESSION['idUser']?>" name="intUserId" id="intUserId">
+			<div class="row">
+				<div class="box-input">
+					<label for="txtNombreProfile">nombres</label>
+					<input type="text" id="txtNombreProfile" name="txtNombreProfile">
+				</div>
+				<div class="box-input">
+					<label for="txtApellidoProfile">apellidos</label>
+					<input type="text" id="txtApellidoProfile" name="txtApellidoProfile">
+				</div>
+				<div class="box-input">
+					<label for="txtEmailProfile">email</label>
+					<input type="text" id="txtEmailProfile" name="txtEmailProfile">
+				</div>
+				<div class="box-input">
+					<label for="txtCiProfile">Identificacion</label>
+					<input type="text" id="txtCiProfile" name="txtCiProfile">
+				</div>
+			</div>
+			<div class="row">
+				<div class="box-input">
+					<label for="txtCdPostal">Cod Postal</label>
+					<input type="text" id="txtCdPostal" name="txtCdPostal">
+				</div>
+				<div class="box-input">
+					<label for="txtTlfProfile">Telefono</label>
+					<input type="text" name="txtTlfProfile" id="txtTlfProfile">
+				</div>
+				<div class="box-input">
+					<label for="listState">Estado</label>
+					<select name="listState" id="listState">
+						<option value="0">Seleccione estado</option>
+					</select>
+				</div>
+				<div class="box-input">
+					<label for="txtCiudad">ciudad</label>
+					<input type="text" id="txtCiudad" name="txtCiudad">
+				</div>
+			</div>
+			<div class="row">
+				<div class="box-input">
+					<label for="txtDireccion">Direccion</label>
+					<input type="text" name="txtDireccion" id="txtDireccion">
+				</div>
+			</div>
+			<div class="row">
+				<div class="box-button">
+					<button type="submit" class="btn btnPerfil"><i class='bx bx-sync'></i>Actualizar</button>
+				</div>
+			</div>
+		</form>
+		<!-- end formulario datos usuario -->
+	</div>
+</section>
+<!-- end box profile -->
 
-				</form>
-				<button type="button" class="btn btnPerfil">
-					<i class="fa-solid fa-arrows-spin"></i>actualizar
-				</button>
-			</section>
+<!-- crear user -->
+<?php if($_SESSION['user'] == ''):?>
+	<span class="divider-dotted"></span>
+<section class="box createUser">
+	<div class="row">
+		<div class="box-input icon-input">
+			<label for="">Crear usuario</label>
+			<input type="text" id="txtUser" name="txtUser" class="icon-input">
+			<i class='bx bx-search'></i>
+			<div class="txtMsj"></div>
+		</div>
+		<div class="box-input"></div>
+		<div class="box-input"></div>
+	</div>
+</section>
+<?php endif;?>
+<!-- end crear user -->
+<span class="divider-dotted"></span>
+<!-- cambiar clave -->
+<section class="box">
+	<div class="row">
+		<div class="box-input">
+			<label for="">password</label>
+			<input type="text" id="txtPass" name="txtPass">
+		</div>
+		<div class="box-input">
+			<label for="">confirm password</label>
+			<input type="text" id="txtConfirmPass" name="txtConfirmPass">
 		</div>
 	</div>
-	<div class="box-user"></div>
-</div>
-
-
+	<button type="button" class="btn btnChangePass"><i class='bx bx-sync'></i>cambiar password</button>
+</section>
+<!-- end cambiar clave -->
+<span class="divider-dotted"></span>
+<!-- eliminar cuenta -->
+<section class="box deletCount">
+	<div class="container">
+		<h3 class="title-box">
+			Eliminar cuenta
+		</h3>
+	</div>
+	<span class="divider"></span>
+	<div class="container">
+		<section class="alert">
+			<span>¿Está seguro de que desea eliminar su cuenta?</span>
+			<span>Una vez que eliminas tu cuenta, no hay vuelta atrás. Por favor, esté seguro.</span>
+			<div class="box-check">
+				<input type="checkbox" name="confirmDel" id="confirmDel">
+				<label class="check" for="confirmDel">Confirmo la desactivación de mi cuenta</label>
+			</div>
+			<div class="box-button">
+				<button type="button" class="btn btn-confirm"><i class='bx bx-trash' ></i> eliminar</button>
+			</div>
+		</section>
+	</div>
+</section>
+<!-- end delete cuenta -->
 <?php footer($data) ?>

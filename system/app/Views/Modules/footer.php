@@ -9,8 +9,9 @@
 		let page_link = "<?= $data['page_link']?>"
 		if (document.querySelector("." + page_link)) {
 			let activar = document.querySelector("." + page_link)
-			// let page_menu_open = document.querySelector("." + page_menu_open)
+			let iconActive = document.querySelector("." + page_link)
 			activar.classList.add('item_active')
+			iconActive.classList.add('icon-active')
 		}
 		if(document.querySelector("."+"<?= $data['page_menu_open']?>")){
 			

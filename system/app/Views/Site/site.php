@@ -4,12 +4,12 @@
 
 <section class="box">
 	<div class="radiogroup my">
-		<input type="radio" class="radio_input" name="prioridad" id="favorite" checked value="2">
+		<input type="radio" class="radio_input" name="prioridad" id="favorite" checked value="1">
 		<label for="favorite" class="radio_label">favoritos</label>
 		<input type="radio" class="radio_input" name="prioridad" id="all" value="2">
 		<label for="all" class="radio_label">Todos</label>
 		<input type="radio" class="radio_input" name="prioridad" id="deshabilitado" value="0">
-		<label for="all" class="radio_label">Deshabilitados</label>
+		<label for="deshabilitado" class="radio_label">Deshabilitados</label>
 	</div>
 	<!-- tabla de sitios -->
 	<div class="listSitios">

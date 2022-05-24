@@ -14,10 +14,12 @@ class User extends Controllers{
 		$data['page_tag'] = "Dashboard - Personal";
 		$data['page_title'] = "Pagina Principal";
 		$data['page_menu_open'] = "empty";
-		$data['page_link'] = "empty";
+		$data['page_link_active'] = "empty";
+		$data['page_link'] = "userIcon";
 		$data['page_function'] = "function.user.js";
 		$this->views->getViews($this, "perfil", $data);
 	}
+	/* subir la imagen de perfil */
 	public function imgUp(){
 		$archivos_permitidos = array('pdf', 'jpg', 'png', 'svg');
 		// capturo las partes del nombre del archivo
@@ -31,8 +33,7 @@ class User extends Controllers{
 				$arrResponse = ["status" => false, "msg" => "Imagen demasiado grande"];
 			}else{
 				$arrResponse = ["status" => true, "msg" => "Hasta aqui bien"];
-				$dataUser = data($_SESSION['idUser']);
-				$fileBase = $dataUser['ruta'];
+				$fileBase = $_SESSION['ruta'];
 	 			$fileHash = substr(md5($fileBase . uniqid(microtime() . mt_rand())), 0, 8);
 				if (!file_exists($fileBase))
 				mkdir($fileBase, 0777, true);
@@ -46,7 +47,7 @@ class User extends Controllers{
 					$requestUpdate = $this->model->imgProfile($_SESSION['idUser'],$namFile);
 					if($requestUpdate){
 						$arrResponse = ["status" => true, "msg" => "Archivo guardado con exito"];
-						$dataUser = data($_SESSION['idUser']);
+						sessionUser($_SESSION['idUser']);
 					}
 				}else{
 					$arrResponse = ["status" => false, "msg" => "Ah ocurrido un error al guardar"];
@@ -58,16 +59,16 @@ class User extends Controllers{
 		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
-
+	/* obtener el usuario  */
 	public function getUser(){
 		if($_POST){
 			$intUser = intval($_POST['intUser']);
 			$requestUser = $this->model->Data($intUser);
-			// $requestUser = estados();
 			echo json_encode($requestUser,JSON_UNESCAPED_UNICODE);
 			die();
 		}
 	}
+	/* actualizar datos del usuario */
 	public function updateProfile(){
 		$intUserId =  $_POST['intUserId'];
 		$txtCiProfile = $_POST['txtCiProfile'];
@@ -76,12 +77,13 @@ class User extends Controllers{
 		$txtApellidoProfile = $_POST['txtApellidoProfile'];
 		$txtTlfProfile = $_POST['txtTlfProfile'];
 		$txtCdPostal = $_POST['txtCdPostal'];
-		$listCiudad =  $_POST['listCiudad'];
+		$txtCiudad =  $_POST['txtCiudad'];
 		$listState =  $_POST['listState'];
 		$txtDireccion = $_POST['txtDireccion'];
-		$requestUpdate = $this->model->updateProfile($intUserId,$txtCiProfile,$txtEmailProfile,$txtNombreProfile,$txtApellidoProfile,$txtTlfProfile,$txtCdPostal,$listCiudad,$listState,$txtDireccion);
+		$requestUpdate = $this->model->updateProfile($intUserId,$txtCiProfile,$txtEmailProfile,$txtNombreProfile,$txtApellidoProfile,$txtTlfProfile,$txtCdPostal,$txtCiudad,$listState,$txtDireccion);
 		if($requestUpdate){
 			$arrResponse = ["status" => true, "msg" => "Seactualizo con exito"];
+			sessionUser($_SESSION['idUser']);
 		}else{
 			$arrResponse = ["status" => false, "msg" => "Ah ocurrido un error"];
 		}
@@ -109,6 +111,61 @@ class User extends Controllers{
 			}
 		}
 		echo $htmlOptions;
+		die();
+	}
+	/* crear usuario */
+	public function createUser(){
+		$txtUser = $_POST['txtUser'];
+		if($txtUser == ''){
+			$arrResponse = ["status" => false, "msg" => "Debe colocar un nombre"];
+		}else{
+			// comprobar si el usuario existe
+			$userRequest = $this->model->userNick($txtUser);
+			if($userRequest){
+				$arrResponse = ["status" => false, 'exist' => 'existe',"msg" => "Usuario se encuentra en uso"];
+			}else{
+				$request = $this->model->createUser($_SESSION['idUser'],$txtUser);
+				if($request){
+					$arrResponse = ["status" => true, "msg" => "Usuario creado con extito"];
+					sessionUser($_SESSION['idUser']);
+				}else{
+					$arrResponse = ["status" => false, "msg" => "Error al crear usuario"];
+				}
+			}
+		}
+		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+		die();
+	}
+	/* cambiar la clave */
+	public function changePass(){
+		$txtConfirmPass = $_POST['txtConfirmPass'];
+		$txtPass = $_POST['txtPass'];
+		if($txtConfirmPass == '' && $txtPass == ''){
+			$arrResponse = ["status" => false, "msg" => "Debe llenar los campos"];
+		}else{
+			if($txtConfirmPass != $txtPass){
+				$arrResponse = ["status" => false, "msg" => "Password no coinciden"];
+			}else{
+				$request = $this->model->changePass($_SESSION['idUser'],$txtPass);
+				if($request){
+					$arrResponse = ["status" => true, "msg" => "Password actualizada"];
+				}else{
+					$arrResponse = ["status" => false, "msg" => "Error actualizando"];
+				}
+			}
+		}
+		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+		die();
+	}
+	public function deleteCount(){
+		$idUser = $_POST['intUser'];
+		$request = $this->model->statusCount($idUser);
+		if($request){
+			$arrResponse = ["status" => true, "msg" => "Cuenta eliminada al cerrar session datos borrados"];
+		}else{
+			$arrResponse = ["status" => false, "msg" => "Ah ocurrido un error"];
+		}
+		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
 }

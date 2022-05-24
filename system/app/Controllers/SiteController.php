@@ -51,17 +51,18 @@ class Site extends Controllers{
 	public function getSites(){
 		$priority = intval($_GET['priority']);
 		if($priority == 0){$fav = 0;}
-		if($priority == 1){$fav = 0;}
+		if($priority == 1){$fav = 1;}
 		if($priority == 2){$fav = 1;}
 		$intUserId = $_SESSION['idUser'];
 		$arrData = $this->model->getSites($priority,$fav,$intUserId);
+
 		for ($i=0; $i < count($arrData) ; $i++) {
 			$arrData[$i]['url'] = '<a href="'.$arrData[$i]['url'].'" class="link_url" target="_blank">'.$arrData[$i]['url'].'</a>';
-			$status = '<i class="fa-solid fa-eye-slash"onclick="showSite('.$arrData[$i]['idSitio'].',2)"></i>';
-			$del = '<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>';
-			$edit = '<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>';
-			$favorite = '<i class="fa-solid fa-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
-			$favorite1 = '<i class="fa-regular fa-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
+			$status = '<i class="bx bx-hide"onclick="showSite('.$arrData[$i]['idSitio'].',2)"></i>';
+			$del = '<i class="bx bxs-trash delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>';
+			$edit = '<i class="bx bx-edit-alt aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>';
+			$favorite = '<i class="bx bxs-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
+			$favorite1 = '<i class="bx bx-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
 			$arrData[$i]['fechaUpdate'] = formatear_fecha($arrData[$i]['fecha_update']);
 			if($priority == 0){
 				$arrData[$i]['opciones'] =
@@ -70,6 +71,14 @@ class Site extends Controllers{
 				</div>';
 			}
 			if($priority == 1){
+					$arrData[$i]['opciones'] =
+					'<div class="box-options">
+						<i class="bx bxs-trash delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
+						<i class="bx bx-edit-alt aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
+						<i class="bx bxs-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
+					'</div>';
+			}
+			if($priority == 2){
 				$arrData[$i]['opciones'] =
 				'<div class="box-options">
 					'.$del.'
@@ -87,15 +96,9 @@ class Site extends Controllers{
 				}
 				'</div>';
 			}
-			if($priority == 2){
-					$arrData[$i]['opciones'] =
-					'<div class="box-options">
-						<i class="fa-solid fa-trash-can delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>
-						<i class="fa-solid fa-pencil aditSite" onclick="editSite('.$arrData[$i]['idSitio'].')"></i>
-						<i class="fa-solid fa-star" onclick="changeState('.$arrData[$i]['idSitio'].','.$arrData[$i]['favorite'].')"></i>';
-					'</div>';
-			}
+			
 		}
+
 		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 		die();
 	}

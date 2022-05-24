@@ -34,7 +34,11 @@
 		<!-- navegacion lateral -->
 		<section class="section-nav">
 			<div class="head-nav">
-				<div class="img_user"></div>
+				<?php if($_SESSION['img'] != ''){?>
+					<div class="img_user" style="background-image: url(<?= $_SESSION['imgUser'] ?>)"></div>
+					<?php }else{?>
+						<div class="img_user"></div>
+				<?php }?>
 				<div class="info_user">
 					<h6 class="nameUser"><?= $_SESSION['nombre']?></h6>
 					<h6 class="emailUSer"><?= $_SESSION['email']?></h6>
@@ -103,8 +107,8 @@
 				</ul>
 			</nav>
 			<div class="footer-nav">
-				<a href="pages/profile.html">
-					<i class='bx bx-user icon-active'></i>
+				<a href="<?= base_url()?>User/perfil">
+					<i class='bx bx-user userIcon'></i>
 				</a>
 				<a href="#">
 					<i class='bx bx-cog'></i>

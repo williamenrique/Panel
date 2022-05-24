@@ -2,6 +2,7 @@
 class UserModel extends Mysql {
 	// declaramos variables para el uso interno
 	private $intUserId;
+	private $strUser;
 	private $strRuta;
 	private $strFile;
 	private $txtCiProfile;
@@ -36,12 +37,27 @@ class UserModel extends Mysql {
 		$sql = "SELECT * FROM table_user t_u 
 		INNER JOIN table_block t_b ON t_b.user_id = t_u.user_id
 		INNER JOIN table_estados t_e ON t_e.id_estado = t_u.estado
-		INNER JOIN table_ciudades t_c ON t_c.id_ciudad = t_u.ciudad
 		WHERE t_u.user_id = $this->intUserId";
 		$request = $this->select($sql);
 		return $request;
 	}
-	public function updateProfile(int $intUserId,string $txtCiProfile,string $txtEmailProfile,string $txtNombreProfile,string $txtApellidoProfile,string $txtTlfProfile,string $txtCdPostal,int $listCiudad,int $listState,string $txtDireccion){
+	public function userNick(string $strUser){
+		$this->strUser = $strUser;
+		$sql = "SELECT user FROM table_user WHERE user = '$this->strUser'";
+		$request = $this->select($sql);
+		return $request;
+	}
+	/* crear usuario */
+	public function createUser(int $intUserId,string $strUser){
+		$this->intUserId = $intUserId;
+		$this->strUser = $strUser;
+		$sql = "UPDATE table_user SET user = ? WHERE user_id = $this->intUserId";
+		$arrData = array($this->strUser);
+		$request = $this->update($sql,$arrData);
+		return $request;
+	}
+	/* actualizar los datos del usuario */
+	public function updateProfile(int $intUserId,string $txtCiProfile,string $txtEmailProfile,string $txtNombreProfile,string $txtApellidoProfile,string $txtTlfProfile,string $txtCdPostal,string $listCiudad,int $listState,string $txtDireccion){
 		$this->intUserId = $intUserId;
 		$this->txtCiProfile = $txtCiProfile;
 		$this->txtEmailProfile = $txtEmailProfile;
@@ -57,7 +73,25 @@ class UserModel extends Mysql {
 		$request = $this->update($sql,$arrData);
 		return $request;
 	}
-
+	/* cambiar password */
+	public function changePass(int $intUserId,string $strTxtPass){
+		$this->intUserId = $intUserId;
+		$this->strTxtPass = $strTxtPass;
+		$sql = "UPDATE table_user SET pass = ? WHERE user_id = $this->intUserId";
+		$arrData = array($this->strTxtPass);
+		$request = $this->update($sql,$arrData);
+		return $request;
+	}
+	/* cambiar estado de cuenta  */
+	public function statusCount(int $intUserId){
+		$this->intUserId = $intUserId;
+		$sql = "UPDATE table_user SET status = ? WHERE user_id = $this->intUserId";
+		$this->a = 0;
+		$arrData = array($this->a);
+		$request = $this->update($sql,$arrData);
+		return $request;
+	}
+	/* Seleccionar los estados */
 	public function selectState(){
 		$sql = "SELECT * FROM table_estados ";
 		$request = $this->select_all($sql);

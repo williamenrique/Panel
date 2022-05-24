@@ -39,7 +39,7 @@ const createClearFormData = () => {
 const createClose = (thumbnail_id) => {
 	let closeButton = document.createElement('div')
 	closeButton.classList.add('close-button')
-	closeButton.innerText = 'x'
+	// closeButton.innerText = 'x'
 	// despues de crear la funcion para cerrar
 	document.getElementsByClassName(thumbnail_id)[0].appendChild(closeButton)
 }
@@ -74,7 +74,6 @@ btnUpImg.addEventListener('click', () => {
 		let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 		let ajaxUrl = base_url + 'User/imgUp';
 		//creamos un objeto del formulario con los Pass haciendo referencia a formData
-		// let formData = new FormData()
 		let formData = new FormData(formImg );
 		//prepara los datos por ajax preparando el dom
 		request.open('POST', ajaxUrl, true);
@@ -87,12 +86,9 @@ btnUpImg.addEventListener('click', () => {
 				let objData = JSON.parse(request.responseText);
 				//leemos el ststus de la respuesta
 				if (objData.status) {
-					notifi(objData.msg, 'info');
-					// formImg.reset()
-					// file.value = ""
-					// createClearFormData()
+					notifi(objData.msg, 'info')
 				} else {
-					notifi(objData.msg, 'error');
+					notifi(objData.msg, 'error')
 				}
 			}
 		}
@@ -102,10 +98,9 @@ btnUpImg.addEventListener('click', () => {
  * cargar los datos del usuario
  **********************/
 
-if (document.querySelector('.form-profile')) {
+if (document.querySelector('.formProfile')) {
 	let intUser = document.querySelector('#intUserId').value
-	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-	// let ajaxUrl = base_url + 'User/getUser/' + intUser
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP')
 	let ajaxUrl = base_url + 'User/getUser'
 	//id del atributo lr que obtuvimos enla variable
 	let strData = "intUser=" + intUser
@@ -113,8 +108,7 @@ if (document.querySelector('.form-profile')) {
 	//forma en como se enviara
 	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 	//enviamos
-	request.send(strData);
-	// request.send()
+	request.send(strData)
 	request.onreadystatechange = function () {
 		if (request.readyState == 4 && request.status == 200) { 
 			let objData = JSON.parse(request.responseText)
@@ -127,8 +121,7 @@ if (document.querySelector('.form-profile')) {
 				document.querySelector('#txtCdPostal').value = objData.codPostal
 				document.querySelector('#txtDireccion').value = objData.direccion
 				document.querySelector('#listState').innerHTML = request.responseText
-				// document.querySelector('#listState').value = 1
-				// document.querySelector('#listCiudad').innerHTML = objData.id_ciudad
+				document.querySelector('#txtCiudad').innerHTML = objData.ciudad
 			}else {
 				notifi(objData.msg, "error")
 			}
@@ -140,8 +133,9 @@ if (document.querySelector('.form-profile')) {
  * la actualizacion
  **********************/
 let btnPerfil = document.querySelector('.btnPerfil')
-let formProfile = document.querySelector('.form-profile')
-btnPerfil.addEventListener('click', () => {
+let formProfile = document.querySelector('.formProfile')
+btnPerfil.addEventListener('click', (e) => {
+	e.preventDefault()
 	let formData = new FormData(formProfile )
 	let ajaxUrl = base_url + "User/updateProfile"
 	//creamos el objeto para os navegadores
@@ -161,7 +155,7 @@ btnPerfil.addEventListener('click', () => {
 	}
 })
 /***********************
- * cargar los estados y ciudades
+ * cargar los estados 
  **********************/
 
 const listState = () => {
@@ -180,20 +174,104 @@ const listState = () => {
 		}
 	}
 }
-document.querySelector('#listState').addEventListener('change', function () {
-	let intState = document.querySelector('#listState').value
-	console.log(listState)
-	let ajaxUrl = base_url + 'User/getCiudad'
-	//creamos el objeto para os navegadores
-	var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+/***********************
+ * habilitar y deshabilitar 
+ * bot
+ **********************/
+let confirmDel = document.querySelector('#confirmDel')
+let btnConfirm = document.querySelector('.btn-confirm')
+btnConfirm.disabled = true
+btnConfirm.classList.add('disabled')
+confirmDel.addEventListener('change', () => {
+	if (confirmDel.checked) {
+		btnConfirm.disabled = false
+		btnConfirm.classList.remove('disabled')
+	} else {
+		btnConfirm.disabled = true
+		btnConfirm.classList.add('disabled')
+	}
+})
+btnConfirm.addEventListener('click', () => {
+	alerta()
+})
+/***********************
+ * cambiar clave 
+ **********************/
+let btnChangePass = document.querySelector('.btnChangePass')
+btnChangePass.addEventListener('click', () => {
+	let txtConfirmPass = document.querySelector('#txtConfirmPass').value
+	let txtPass = document.querySelector('#txtPass').value
+		//creamos el objeto para os navegadores
+	let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	let ajaxUrl = base_url + 'User/changePass'
 	//abrimos la conexion y enviamos los parametros para la peticion
+	let strData = new URLSearchParams("txtConfirmPass=" + txtConfirmPass+'&txtPass='+txtPass)
 	request.open("POST", ajaxUrl, true);
-	let strData = new URLSearchParams("intState="+intState)
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 	request.send(strData);
 	request.onreadystatechange = function () {
 		if (request.readyState == 4 && request.status == 200) {
 			//option obtenidos del controlador
-			document.querySelector('#listCiudad').innerHTML = request.responseText;
+			let objData = JSON.parse(request.responseText)
+			if (objData.status) {
+				notifi(objData.msg, 'success');
+			} else {
+				notifi(objData.msg, 'error');
+			}
+		}
+	}
+})
+/***********************
+ *crear usuario
+ **********************/
+if (document.querySelector('.bx-search')) {
+	let bxSearch = document.querySelector('.bx-search')
+	bxSearch.addEventListener('click', () => {
+		let txtUser = document.querySelector('#txtUser').value
+			//creamos el objeto para os navegadores
+		let request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+		let ajaxUrl = base_url + 'User/createUser'
+		//abrimos la conexion y enviamos los parametros para la peticion
+		let strData = new URLSearchParams("txtUser=" + txtUser)
+		request.open("POST", ajaxUrl, true);
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		request.send(strData);
+		request.onreadystatechange = function () {
+			if (request.readyState == 4 && request.status == 200) {
+				//option obtenidos del controlador
+				let objData = JSON.parse(request.responseText)
+				if (objData.status) {
+					notifi(objData.msg, 'success');
+					bxSearch.style.display = 'none' 
+				} else if (objData.exist == 'existe') {
+					document.querySelector('.txtMsj').textContent = objData.msg
+				} else {
+					notifi(objData.msg, 'error');
+				}
+			}
+		}
+	})
+}
+/***********************
+ * eliminar cuenta 
+ **********************/
+btnConfirm.addEventListener('click', function () {
+	let intUser = document.querySelector('#intUserId').value
+	let ajaxUrl = base_url + 'User/deleteCount'
+	//creamos el objeto para os navegadores
+	var request = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	//abrimos la conexion y enviamos los parametros para la peticion
+	request.open("POST", ajaxUrl, true);
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	let strData = "intUser=" + intUser
+	request.send(strData);
+	request.onreadystatechange = function () {
+		if (request.readyState == 4 && request.status == 200) {
+			//option obtenidos del controlador
+			let objData = JSON.parse(request.responseText)
+			if (objData.status) {
+				notifi(objData.msg, '');
+			}
 		}
 	}
 })
