@@ -52,6 +52,17 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
 	display: flex;
 	gap: 5px;
 }
+
+
+
+.box-options i{
+	font-size: 16px;
+	cursor: pointer;
+	margin: 0 5px;
+}
+
+
+
 table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options i{
 	font-size: 16px;
 	cursor: pointer;

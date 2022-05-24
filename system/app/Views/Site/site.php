@@ -54,10 +54,10 @@
 			</div>
 		</div>
 		
-		<button type="button" class="btn btn-addSite"><i class="fa-solid fa-plus"></i>
+		<button type="button" class="btn btn-addSite"><i class="bx bx-plus-medical"></i>
 			Agregar
 		</button>
-		<button type="button" class="btn btn-updateSite"><i class="fa-solid fa-arrows-spin"></i>
+		<button type="button" class="btn btn-updateSite"><i class='bx bx-sync'></i></i>
 			actualizar
 		</button>
 

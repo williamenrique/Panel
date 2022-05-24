@@ -164,14 +164,17 @@ function soloLetras(e) {
 window.addEventListener('load', function () {
 	let txtUserLogin = document.querySelector('#txtUserLogin')
 	let txtCheckRemember = document.querySelector('#txtCheckRemember')
+	let txtPassLogin = document.querySelector('#txtPassLogin')
 	if (this.localStorage.getItem('remember')) {
 		if (this.localStorage.getItem('remember') === 'true') {
 			txtUserLogin.value = this.localStorage.getItem('user')
+			txtPassLogin.value = this.localStorage.getItem('pass')
 			txtCheckRemember.checked = true
 		}
 	} else {
 		this.localStorage.setItem('remember', 'false')
 		this.localStorage.setItem('user', ' ')
+		this.localStorage.setItem('pass', ' ')
 	}
 
 	txtCheckRemember.addEventListener('change', () => {
@@ -181,9 +184,11 @@ window.addEventListener('load', function () {
 			let txtPassLogin = document.querySelector('#txtPassLogin').value
 			this.localStorage.setItem('remember', 'true')
 			this.localStorage.setItem('user', txtUserLogin)
+			this.localStorage.setItem('user', txtPassLogin)
 		} else {
 			this.localStorage.setItem('remember', 'false')
 			this.localStorage.setItem('user', ' ')
+			this.localStorage.setItem('pass', ' ')
 		}
 	})
 }, false)

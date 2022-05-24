@@ -131,6 +131,9 @@ updateSite.addEventListener('click', () => {
 funcion para obtener un sitio para actualizarlo
 y mostrarlos en la tabla
 ************************************/
+let btn_addSite = document.querySelector('.btn-addSite')
+let btn_updateSite = document.querySelector('.btn-updateSite')
+btn_updateSite.style.display = 'none'
 function editSite(intSite) {
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 	let ajaxUrl = base_url + 'Site/getSite/' + intSite
@@ -151,10 +154,8 @@ function editSite(intSite) {
 				document.querySelector('#txtUser').value = objData.data.usuario
 				document.querySelector('#txtPass').value = objData.data.password
 				document.querySelector('#txtIntSite').value = objData.data.idSitio
-				let btn_addSite = document.querySelector('.btn-addSite')
-				let btn_updateSite = document.querySelector('.btn-updateSite')
 				btn_addSite.style.display = 'none'
-				btn_updateSite.style.display = 'block'
+				btn_updateSite.style.display = 'flex'
 			}else {
 				notifi(objData.msg, "error")
 			}
