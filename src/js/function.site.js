@@ -12,10 +12,10 @@ const obtenerSitios = (intCheck) => {
 	tablaSitio = $('#tablaSitio').DataTable({
 		"language": {
 			"sProcessing": "Procesando...",
-			"sLengthMenu": "Mostrar _MENU_ registros",
+			"sLengthMenu": "Mostrar _MENU_",
 			"sZeroRecords": "No se encontraron resultados",
 			"sEmptyTable": "Ningún dato disponible",
-			"sInfo": "Total de _TOTAL_ Registros",
+			"sInfo": "Total de _TOTAL_",
 			"sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
 			"sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
 			"sInfoPostFix": "",
