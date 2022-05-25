@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.querySelector('.title-box').textContent = 'Editar evento'
 			document.querySelector('#idEvent').value = info.event.id
 			document.querySelector('.btn-guardar').textContent = 'Editar'
+			document.querySelector('.btn-guardar').classList.remove('btn-primary')
+			document.querySelector('.btn-guardar').classList.add('btn-warning')
+			document.querySelector('.btn-guardar').textContent = 'Editar'
 			document.querySelector('.btn-delete').style.display = 'block'
 			document.querySelector('#txtTituloEvento').value = info.event.title
 			document.querySelector('#txtInicio').value = info.event.startStr
@@ -103,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
 					notifi(data.msg, 'success')
 					// document.querySelector('.btn-guardar').textContent = 'guardar'
 					// document.querySelector('.btn-delete').style.display = 'none'
+					document.querySelector('.btn-guardar').classList.remove('btn-warning')
+					document.querySelector('.btn-guardar').classList.add('btn-primary')
 					calendar.refetchEvents()
 					formClean()
 				} else {

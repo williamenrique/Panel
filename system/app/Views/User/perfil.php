@@ -1,4 +1,17 @@
 <?php head($data)?>
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+	<h4>Datos Personales</h4>
+	<span class="separate"></span>
+	<div class="breadcrumbs_ruta">
+		<a href="<?= base_url() ?>" class="breadcrumbs_home">Inicio</a>
+		<i class='bx bx-chevron-right'></i>
+		<a href="#">Usuario</a>
+		<i class='bx bx-chevron-right'></i>
+		<span>Perfil</span>
+	</div>
+</div>
+<!-- end breadcrumbs -->
 <section class="box box-profile">
 	<div class="box-info-user">
 		<div class="box-img-head">
@@ -21,7 +34,7 @@
 				<?php }?>
 				<div class="row">
 					<div class="box-action">
-						<button type="button" class="btn btnUpImg"><i class='bx bx-cloud-upload'></i>subir</button>
+						<button type="button" class="btn btnUpImg btn-primary"><i class='bx bx-cloud-upload'></i>subir</button>
 						<span class="files">Tipos de archivos permitidos: png, jpg, jpeg.</span>
 					</div>
 				</div>
@@ -76,7 +89,7 @@
 			</div>
 			<div class="row">
 				<div class="box-button">
-					<button type="submit" class="btn btnPerfil"><i class='bx bx-sync'></i>Actualizar</button>
+					<button type="submit" class="btn btnPerfil btn-warning"><i class='bx bx-sync'></i>Actualizar</button>
 				</div>
 			</div>
 		</form>
@@ -115,7 +128,7 @@
 			<input type="text" id="txtConfirmPass" name="txtConfirmPass">
 		</div>
 	</div>
-	<button type="button" class="btn btnChangePass"><i class='bx bx-sync'></i>cambiar password</button>
+	<button type="button" class="btn btnChangePass btn-info"><i class='bx bx-sync'></i>cambiar password</button>
 </section>
 <!-- end cambiar clave -->
 <span class="divider-dotted"></span>
@@ -136,7 +149,7 @@
 				<label class="check" for="confirmDel">Confirmo la desactivación de mi cuenta</label>
 			</div>
 			<div class="box-button">
-				<button type="button" class="btn btn-confirm"><i class='bx bx-trash' ></i> eliminar</button>
+				<button type="button" class="btn btn-confirm btn-danger"><i class='bx bx-trash' ></i> eliminar cuenta</button>
 			</div>
 		</section>
 	</div>

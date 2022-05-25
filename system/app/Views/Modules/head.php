@@ -83,7 +83,7 @@
 					<!-- item solo -->
 					<li class="list__item files">
 						<div class="list__button">
-							<i class='bx bx-home list_icon'></i>
+							<i class='bx bx-file list_icon'></i>
 							<a href="<?= base_url()?>file" class="nav__link files">Administrador de archivos</a>
 						</div>
 					</li>

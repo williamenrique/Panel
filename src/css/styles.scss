@@ -94,6 +94,9 @@ html{
 .btn-danger{
 	background: $danger-color;
 }
+.btn-info{
+	background: $success-color;
+}
 .btn-border-none{
 	background: none;
 	border: 1px solid $text-color;
@@ -596,15 +599,20 @@ html{
 		background: rgba($color : $white, $alpha: 0.26);
 	}
 	.breadcrumbs_ruta{
+		display: flex;
+		align-items: flex-end;
 		a{
 			font-size: 12px;
 			color: $text-color;
 			text-decoration: none;
 		}
+		i{
+			font-size: 18px;
+		}
 		span{
 			color: $white;
 			font-weight: 600;
-			letter-spacing: .5px;
+			letter-spacing: 1.2px;
 		}
 		.breadcrumbs_home{
 			color: $primary-color;
@@ -654,23 +662,17 @@ html{
 	}
 	.btn-delete{
 		display: none;
-		@include button($danger-color,$white ,none )
 	}
 }
 .box-add-cuenta{
 	.btnEditCuenta{
 		display: none;
-		@include button($warning-color,$white ,none )
 	}
 }
 /*********************************
 * Profile*
 *********************************/
 .box-profile{
-	// background: $dark-color-ligth;
-	// border-radius: $border-radius;
-	// width: 100%;
-	// margin-bottom: 20px;
 	.box-img-head{
 		.formImg{
 			display: flex;

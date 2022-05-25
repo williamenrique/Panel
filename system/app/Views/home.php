@@ -32,9 +32,9 @@
 					</div>
 					<div class="row">
 						<div class="box-button">
-							<button class="btn btn-guardar" data-accion="" type="submit">Guardar</button>
-							<button class="btn btn-delete" type="button">Eliminar</button>
-							<button class="btn btn-reset" type="reset">Desechar</button>
+							<button class="btn btn-guardar btn-primary" data-accion="" type="submit">Guardar</button>
+							<button class="btn btn-delete btn-danger" type="button">Eliminar</button>
+							<button class="btn btn-reset btn-border-none" type="reset">Desechar</button>
 						</div>
 					</div>
 				</div>

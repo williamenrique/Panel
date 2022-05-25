@@ -58,6 +58,10 @@ html {
   background: #DA0806;
 }
 
+.btn-info {
+  background: #0BB783;
+}
+
 .btn-border-none {
   background: none;
   border: 1px solid #B6B9C8;
@@ -663,16 +667,25 @@ html {
   background: rgba(255, 255, 255, 0.26);
 }
 
+.breadcrumbs .breadcrumbs_ruta {
+  display: flex;
+  align-items: flex-end;
+}
+
 .breadcrumbs .breadcrumbs_ruta a {
   font-size: 12px;
   color: #B6B9C8;
   text-decoration: none;
 }
 
+.breadcrumbs .breadcrumbs_ruta i {
+  font-size: 18px;
+}
+
 .breadcrumbs .breadcrumbs_ruta span {
   color: #fff;
   font-weight: 600;
-  letter-spacing: .5px;
+  letter-spacing: 1.2px;
 }
 
 .breadcrumbs .breadcrumbs_ruta .breadcrumbs_home {
@@ -730,16 +743,10 @@ html {
 
 .box-calendar .btn-delete {
   display: none;
-  background: #DA0806;
-  color: #fff;
-  border: none;
 }
 
 .box-add-cuenta .btnEditCuenta {
   display: none;
-  background: #FFA800;
-  color: #fff;
-  border: none;
 }
 
 /*********************************

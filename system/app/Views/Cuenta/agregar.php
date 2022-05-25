@@ -1,4 +1,17 @@
 <?php head($data)?>
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+	<h4>Cuentas</h4>
+	<span class="separate"></span>
+	<div class="breadcrumbs_ruta">
+		<a href="<?= base_url() ?>" class="breadcrumbs_home">Inicio</a>
+		<i class='bx bx-chevron-right'></i>
+		<a href="#">Cuentas</a>
+		<i class='bx bx-chevron-right'></i>
+		<span>Agregar</span>
+	</div>
+</div>
+<!-- end breadcrumbs -->
 <div class="box">
 	<div class="box-add-cuenta">
 		<form class="form-add-cuenta">
@@ -110,10 +123,10 @@
 					</div>
 				</div>
 			</div>
-			<button type="submit" class="btn btnAddC">
+			<button type="submit" class="btn btnAddC btn-primary">
 				<i class='bx bx-plus-medical'></i>Agregar
 			</button>
-			<button type="submit" class="btn btnEditCuenta">
+			<button type="submit" class="btn btnEditCuenta btn-warning">
 				<i class='bx bx-edit-alt' ></i>Actualizar
 			</button>
 		</form>

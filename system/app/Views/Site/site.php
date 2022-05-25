@@ -1,7 +1,16 @@
 <?php head($data)?>
-
-
-
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+	<h4>Sitios web</h4>
+	<span class="separate"></span>
+	<div class="breadcrumbs_ruta">
+		<a href="<?= base_url() ?>" class="breadcrumbs_home">Inicio</a>
+		<i class='bx bx-chevron-right'></i>
+		<!-- <a href="#">Configuracion<i class='bx bx-chevron-right'></i></a> -->
+		<span>Sitios</span>
+	</div>
+</div>
+<!-- end breadcrumbs -->
 <section class="box">
 	<div class="radiogroup my">
 		<input type="radio" class="radio_input" name="prioridad" id="favorite" checked value="1">
@@ -54,10 +63,10 @@
 			</div>
 		</div>
 		
-		<button type="button" class="btn btn-addSite"><i class="bx bx-plus-medical"></i>
+		<button type="button" class="btn btn-addSite btn-primary"><i class="bx bx-plus-medical"></i>
 			Agregar
 		</button>
-		<button type="button" class="btn btn-updateSite"><i class='bx bx-sync'></i></i>
+		<button type="button" class="btn btn-updateSite btn-warning"><i class='bx bx-sync'></i></i>
 			actualizar
 		</button>
 

@@ -22,12 +22,12 @@
 				<i class='bx bx-search'></i>
 			</div>
 			<div class="box-files-upload ">
-				<button type="button" class="btn btn-searchFiles">
+				<button type="button" class="btn btn-searchFiles btn-warning">
 					<i class='bx bx-search'></i>
 					Archivos
 				</button>
 				<input type="file" id="uploadFile" name="uploadFile[]" multiple>
-				<button type="button" class="btn btn-subir-archivo">
+				<button type="button" class="btn btn-subir-archivo btn-border-none">
 					<i class='bx bx-upload'></i>
 					Subir archivo
 				</button>

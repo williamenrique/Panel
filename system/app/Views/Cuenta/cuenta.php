@@ -1,5 +1,16 @@
 <?php head($data)?>
-
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+	<h4>Cuenta</h4>
+	<span class="separate"></span>
+	<div class="breadcrumbs_ruta">
+		<a href="<?= base_url() ?>" class="breadcrumbs_home">Inicio</a>
+		<i class='bx bx-chevron-right'></i>
+		<!-- <a href="#">Configuracion<i class='bx bx-chevron-right'></i></a> -->
+		<span>Cuentas</span>
+	</div>
+</div>
+<!-- end breadcrumbs -->
 <div class="box">
 	<div class="radiogroup my">
 		<input type="radio" class="radio_input" name="prioridad" id="favorite" checked value="1">
