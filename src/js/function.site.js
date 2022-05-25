@@ -61,6 +61,46 @@ const obtenerSitios = (intCheck) => {
 	})
 }
 /************************************
+editar en vivo los datos
+************************************/
+$(document).on('blur', '#pass_site', function () {
+	let intSite = $(this).data('idsite')
+	let textSite = $(this).text()
+	updateSiteLive(intSite,textSite,'pass')
+})
+$(document).on('blur', '#usuario_site', function () {
+	let intSite = $(this).data('idsite')
+	let textSite = $(this).text()
+	updateSiteLive(intSite,textSite,'usuario')
+})
+const updateSiteLive = (intSite, textSite, column) => {
+	//hacer una validacion para diferentes navegadores y crear el formato de lectura y hacemos la peticion mediante ajax
+		let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+		let ajaxUrl = base_url + 'Site/updateSiteLive'
+		//id del atributo lr que obtuvimos enla variable
+		let strData = new URLSearchParams("intSite="+intSite+"&textSite="+textSite+"&column="+column)
+		request.open("POST", ajaxUrl, true);
+		//forma en como se enviara
+		request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		//enviamos
+		request.send(strData);
+		// request.send();
+		request.onreadystatechange = function () {
+			//comprobamos la peticion
+			if (request.readyState == 4 && request.status == 200) {
+				//convertir en objeto JSON
+				let objData = JSON.parse(request.responseText);
+				if (objData.status) {
+					notifi(objData.msg, 'info');
+					let tablaSitio = $('#tablaSitio').DataTable()
+					tablaSitio.ajax.reload(function () {})
+				} else {
+					notifi(objData.msg, 'error');
+				}
+			}
+		}
+}
+/************************************
 Agregar nuevos  sitios 
 y mostrarlos en la tabla
 ************************************/

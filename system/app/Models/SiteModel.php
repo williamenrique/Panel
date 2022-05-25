@@ -7,6 +7,8 @@ class SiteModel extends Mysql {
 	private $strUrl;
 	private $intSite;
 	private $intUserId;
+	private $strTextSitio;
+	private $strColumn;
 
 	public function __construct(){
 	//heradar la clase padre 
@@ -85,6 +87,18 @@ class SiteModel extends Mysql {
 		return $request;
 	}
 	/**********************************
+		actualizar un sitio live
+	**********************************/
+	public function updateSiteLive(int $intSite, string $textSite,string $column){
+		$this->intSite = $intSite;
+		$this->strTextSitio = $textSite;
+		$this->strColumn = $column;
+		$sql = "UPDATE table_sitio SET $this->strColumn = ? WHERE idSitio = $this->intSite";
+		$arrData = array($this->strTextSitio);
+		$request = $this->update($sql,$arrData);
+		return $request;
+	}
+	/**********************************
 		actualizar un sitio
 	**********************************/
 	public function updateSite(int $intSite, string $strSitio,string $strUsuario,string $strPass,string $strUrl){
@@ -96,7 +110,6 @@ class SiteModel extends Mysql {
 		$this->intStatus = 1;
 		$sql = "UPDATE table_sitio SET sitio = ? ,usuario = ? ,pass = ?, url = ?, status = ?  WHERE idSitio = $this->intSite";
 		$arrData = array($this->strSitio, $this->strUsuario, $this->strPass, $this->strUrl, $this->intStatus);
-		// dep($sql,$arrData);
 		$request = $this->update($sql,$arrData);
 		return $request;
 	}

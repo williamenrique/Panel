@@ -57,6 +57,9 @@ class Site extends Controllers{
 		$arrData = $this->model->getSites($priority,$fav,$intUserId);
 
 		for ($i=0; $i < count($arrData) ; $i++) {
+			$arrData[$i]['pass'] = '<span id="pass_site" data-idSite="'.$arrData[$i]['idSitio'].'" data-pass="'.$arrData[$i]['pass'].'" contenteditable>'.$arrData[$i]['pass'].'</span>';
+			$arrData[$i]['usuario'] = '<span id="usuario_site" data-idSite="'.$arrData[$i]['idSitio'].'" data-usuario="'.$arrData[$i]['usuario'].'" contenteditable>'.$arrData[$i]['usuario'].'</span>';
+
 			$arrData[$i]['url'] = '<a href="'.$arrData[$i]['url'].'" class="link_url" target="_blank">'.$arrData[$i]['url'].'</a>';
 			$status = '<i class="bx bx-hide"onclick="showSite('.$arrData[$i]['idSitio'].',2)"></i>';
 			$del = '<i class="bx bxs-trash delSite" onclick="delSite('.$arrData[$i]['idSitio'].')"></i>';
@@ -97,8 +100,8 @@ class Site extends Controllers{
 				'</div>';
 			}
 			
+			
 		}
-
 		echo json_encode($arrData,JSON_UNESCAPED_UNICODE);
 		die();
 	}
@@ -135,6 +138,20 @@ class Site extends Controllers{
 			}
 			echo json_encode($arrResponse,JSON_UNESCAPED_UNICODE);
 		}
+		die();
+	}
+	// actualizar en vivo
+	public function updateSiteLive(){
+		$intSite = $_POST['intSite'];
+		$textSite = $_POST['textSite'];
+		$column = $_POST['column'];
+		$request = $this->model->updateSiteLive($intSite,$textSite,$column);
+		if($request > 0){
+			$arrResponse = array("status" => true, "msg" => "Datos actualizados correctamente");
+		}else{
+			$arrResponse = array("status" => false, "msg" => "Error al actualizar datos");
+		}
+		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		die();
 	}
 	// actualizar sitio
