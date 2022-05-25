@@ -4,7 +4,8 @@
 	<h4>Administrador</h4>
 	<span class="separate"></span>
 	<div class="breadcrumbs_ruta">
-		<a href="<?= base_url() ?>" class="breadcrumbs_home">Inicio<i class='bx bx-chevron-right'></i></a>
+		<a href="<?= base_url() ?>" class="breadcrumbs_home">Inicio</a>
+		<i class='bx bx-chevron-right'></i>
 		<!-- <a href="#">Configuracion<i class='bx bx-chevron-right'></i></a> -->
 		<span>Archivos</span>
 	</div>
@@ -29,7 +30,7 @@
 				<input type="file" id="uploadFile" name="uploadFile[]" multiple>
 				<button type="button" class="btn btn-subir-archivo btn-border-none">
 					<i class='bx bx-upload'></i>
-					Subir archivo
+					almacenar
 				</button>
 			</div>
 		</div>

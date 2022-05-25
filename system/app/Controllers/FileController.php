@@ -23,18 +23,38 @@ class File extends Controllers{
 	public function getListFile(){
 		$arrData = $this->model->getFiles($_SESSION['user_id']);
 		for ($i=0; $i < count($arrData) ; $i++) {
+			$name = $arrData[$i]['file_name'];
 			$arrData[$i]['file_name'] = '	
-						<a href="'.$arrData[$i]['file_ruta'].'/'.$arrData[$i]['file_name'].'" class="linkFile" download="'.$arrData[$i]['file_name'].'">'.$arrData[$i]['file_name'].'</a>';
+				<p id="fileName" data-idname_file ="'.$arrData[$i]['id_file'].'" data-name_file="'.$arrData[$i]['file_name'].'" contenteditable>'.$arrData[$i]['file_name'].'</p>';
 			$arrData[$i]['opciones'] =
 					'<div class="box-options">
-						<i class="bx bxs-trash delFile" onclick="delFile('.$arrData[$i]['id_file'].')"></i>
-
+						<i class="bx bxs-trash delFile delete" onclick="delFile('.$arrData[$i]['id_file'].')"></i>
+						<a href="'.$arrData[$i]['file_ruta'].'file/'.$name.'" download="'.$name.'">
+							<i class="bx bxs-cloud-download dowload"></i>
+						</a>
 					</div>';
 			$arrData[$i]['file_date_mod'] = formatear_fecha($arrData[$i]['file_date_mod']);
 		}
 		echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
 		die();
 	}
+
+/* 
+<a href="'.$arrData[$i]['file_ruta'].'/'.$arrData[$i]['file_name'].'" class="linkFile" download="'.$arrData[$i]['file_name'].'">'.$arrData[$i]['file_name'].'</a>';
+
+
+			$arrData[$i]['file_name'] = '
+						<span id="fileName" data-idFileName="'.$arrData[$i]['id_file'].'" "data-fileName="'.$arrData[$i]['file_name'].'">'.$arrData[$i]['file_name'].'</p>';
+			$arrData[$i]['opciones'] =
+					'<div class="box-options">
+						<i class="bx bxs-trash delFile" onclick="delFile('.$arrData[$i]['id_file'].')"></i>
+						<a href="#" class="linkFile" download="'.$arrData[$i]['file_name'].'">
+							<i class="bx bxs-cloud-download"></i>
+						</a>
+					</div>';
+			$arrData[$i]['file_date_mod'] = formatear_fecha($arrData[$i]['file_date_mod']);
+*/
+
 
 	public function setFiles(){
 		if(!$_FILES == null){
@@ -50,16 +70,17 @@ class File extends Controllers{
 				}
 				// cada vez que itera agregamos un elemnto ala rray
 				$fileSize = round($file['size'] / 1048576, 2);
-				$arrData = $this->model->setFiles($_SESSION['idUser'],$filename,$fileSize.'MB',$_SESSION['ruta'] );
+				$fileData = pathinfo($file['name']);
+				$fileExtension = strtolower($fileData['extension']);
+				$arrData = $this->model->setFiles($_SESSION['idUser'],$filename,$fileSize.'MB',$_SESSION['ruta'],$fileExtension);
 				// se incrementa para poder usarlo para enviar un msj de exito
 				$cont ++;
 			}
-			
 			if($cont == count($_FILES)){
 				if($cont == 0){
 						$arrResponse = ['msg' => $msg,'status' => false];
 				}else{
-					$msg = ( $cont > 1 ? 'Se subieron ' . $cont . ' fotos con éxito' : 'Se subió ' . $cont . ' foto con éxito' );
+					$msg = ( $cont > 1 ? 'Se subieron ' . $cont . ' archivos con éxito' : 'Se subió ' . $cont . ' archivo con éxito' );
 					$arrResponse = ['msg' => $msg,'status' => true];
 				}
 			}
@@ -70,6 +91,26 @@ class File extends Controllers{
 		die();
 	}
 
+		// actualizar en vivo
+	public function updateFileLive(){
+		$intFile = $_POST['idname_file'];
+		$textFile = $_POST['textFile'];
+		$name_file = $_POST['name_file'];
+		$selecFile = "";
+		$oldName = $_SESSION['ruta'].'/file'.'/'.$name_file;
+		$newName = $_SESSION['ruta'].'/file'.'/'.$textFile;
+		if(rename($oldName,$newName)){
+			$request = $this->model->updateFileLive($intFile,$_SESSION['idUser'],$textFile);
+			if($request > 0){
+				$arrResponse = array("status" => true, "msg" => "Archivo renombrado exitoso");
+			}else{
+				$arrResponse = array("status" => false, "msg" => "Error al actualizar datos");
+			}
+		}
+
+		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
+		die();
+	}
 	/* descargar el archivo */
 	public function delFile(){
 		$intIdFile = $_POST['intFile'];

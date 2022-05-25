@@ -31,19 +31,16 @@ const getTableFiles = () => {
 	"order": [[0, "asc"]]
 	} )
 }
-// let file = document.querySelector('#file')
 let formDataFiles = new FormData()
 let uploadFile = document.querySelector('#uploadFile')
 let upFiles = document.querySelector('.btn-subir-archivo')
 upFiles.disabled = true
-// if (document.querySelector('.search')) {
-	let search = document.querySelector('.btn-searchFiles')
-	search.addEventListener('click', () => {
-		document.querySelector('#uploadFile').click()
-		uploadFile.value = ""
-		createClearFormDataFiles()
-	})
-// }
+let search = document.querySelector('.btn-searchFiles')
+search.addEventListener('click', () => {
+	document.querySelector('#uploadFile').click()
+	uploadFile.value = ""
+	createClearFormDataFiles()
+})
 uploadFile.addEventListener('change', (e) => {
 	if (uploadFile === "") {
 		upFiles.disabled = true
@@ -55,14 +52,10 @@ uploadFile.addEventListener('change', (e) => {
 	for (let i = 0; i < uploadFile.files.length; i++) {
 		let fileThumbnail_id = Math.floor(Math.random() * 30000) + '_' + Date.now()
 		// crear una funcion para guardar los files
-		// console.log(fileThumbnail_id)
-		// console.log(uploadFile.files.length)
 		createFileThumbnail(uploadFile, i, fileThumbnail_id)
 		// agregar un apenchild por cada file que se agrega
 		formDataFiles.append(fileThumbnail_id,uploadFile.files[i])
 	}
-	// limpiar el input file
-	// e.target.value = 'ggggggg'
 })
 
 upFiles.addEventListener('click', () => {
@@ -110,7 +103,6 @@ const createCloseFile = (fileThumbnail_id) => {
 	// despues de crear la funcion para cerrar
 	document.getElementsByClassName(fileThumbnail_id)[0].appendChild(closeButtonFile)
 }
-
 // funcion para limpiar el formdata y ficheros
 const createClearFormDataFiles = () => {
 	// formdata es un array se recorre
@@ -131,6 +123,44 @@ document.body.addEventListener('click', function (e) {
 	}
 })
 
+/************************************
+editar en vivo los datos
+************************************/
+$(document).on('blur', '#fileName', function () {
+	let idname_file = $(this).data('idname_file')
+	let name_file = $(this).data('name_file')
+	let textFile = $(this).text()
+	updateFileLive(idname_file,textFile,name_file)
+	// updateFileLive(intFile,textFile,fileName,'pass')
+})
+
+const updateFileLive = (idname_file, textFile,name_file) => {
+	//hacer una validacion para diferentes navegadores y crear el formato de lectura y hacemos la peticion mediante ajax
+	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+	let ajaxUrl = base_url + 'File/updateFileLive'
+	//id del atributo lr que obtuvimos enla variable
+	let strData = new URLSearchParams("idname_file="+idname_file+"&textFile="+textFile+"&name_file="+name_file)
+	request.open("POST", ajaxUrl, true);
+	//forma en como se enviara
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+	//enviamos
+	request.send(strData);
+	// request.send();
+	request.onreadystatechange = function () {
+		//comprobamos la peticion
+		if (request.readyState == 4 && request.status == 200) {
+			//convertir en objeto JSON
+			let objData = JSON.parse(request.responseText);
+			if (objData.status) {
+				notifi(objData.msg, 'info');
+				let tableFiles = $('#tableFiles').DataTable()
+				tableFiles.ajax.reload(function () {})
+			} else {
+				notifi(objData.msg, 'error');
+			}
+		}
+	}
+}
 const delFile = (intFile) => {
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 	let ajaxUrl = base_url + 'File/delFile'
