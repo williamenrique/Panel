@@ -163,6 +163,17 @@ const updateFileLive = (idname_file, textFile,name_file) => {
 	}
 }
 const delFile = (intFile) => {
+		Swal.fire({
+		title: 'Estas seguro de eliminar el sitio.?',
+		text: "No podra ser revertido el proceso!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: 'btn btn-success',
+		cancelButtonColor: 'btn btn-danger',
+		confirmButtonText: 'Si, eliminar!'
+		}).then((result) => {
+			if (result.isConfirmed) { }
+		})
 	let request = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
 	let ajaxUrl = base_url + 'File/delFile'
 	//id del atributo lr que obtuvimos enla variable

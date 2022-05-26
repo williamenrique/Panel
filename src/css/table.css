@@ -72,7 +72,10 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
 	cursor: pointer;
 	margin: 0 5px;
 }
-
+.box-options a{
+	text-decoration: none;
+	color: #ccc;
+}
 .icon-file{
 	font-size: 24px;
 }
