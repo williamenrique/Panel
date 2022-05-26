@@ -19,11 +19,20 @@ class File extends Controllers{
 		$data['page_function'] = "function.files.js";
 		$this->views->getViews($this, "file", $data);
 	}
-
+	/* obtener files y mostrarlos en la tabla */
 	public function getListFile(){
 		$arrData = $this->model->getFiles($_SESSION['user_id']);
+		$ext = ['png','jpg','doc','txt','pdf','image','gif','json','html','css'];
 		for ($i=0; $i < count($arrData) ; $i++) {
+			// $fileData = pathinfo($arrData[$i]['file_name']);
+			$fileExtension = strtolower($arrData[$i]['file_ext']);
 			$name = $arrData[$i]['file_name'];
+			if(!in_array($fileExtension,$ext)){
+				$arrData[$i]['file_icon'] = '<i class="icon-file bx bxs-file-doc"></i>';
+			}else{
+				$arrData[$i]['file_icon'] = '<i class="icon-file bx bxs-file-'.$arrData[$i]['file_ext'].'"></i>';
+			}
+
 			$arrData[$i]['file_name'] = '	
 				<p id="fileName" data-idname_file ="'.$arrData[$i]['id_file'].'" data-name_file="'.$arrData[$i]['file_name'].'" contenteditable>'.$arrData[$i]['file_name'].'</p>';
 			$arrData[$i]['opciones'] =
@@ -38,24 +47,7 @@ class File extends Controllers{
 		echo json_encode($arrData, JSON_UNESCAPED_UNICODE);
 		die();
 	}
-
-/* 
-<a href="'.$arrData[$i]['file_ruta'].'/'.$arrData[$i]['file_name'].'" class="linkFile" download="'.$arrData[$i]['file_name'].'">'.$arrData[$i]['file_name'].'</a>';
-
-
-			$arrData[$i]['file_name'] = '
-						<span id="fileName" data-idFileName="'.$arrData[$i]['id_file'].'" "data-fileName="'.$arrData[$i]['file_name'].'">'.$arrData[$i]['file_name'].'</p>';
-			$arrData[$i]['opciones'] =
-					'<div class="box-options">
-						<i class="bx bxs-trash delFile" onclick="delFile('.$arrData[$i]['id_file'].')"></i>
-						<a href="#" class="linkFile" download="'.$arrData[$i]['file_name'].'">
-							<i class="bx bxs-cloud-download"></i>
-						</a>
-					</div>';
-			$arrData[$i]['file_date_mod'] = formatear_fecha($arrData[$i]['file_date_mod']);
-*/
-
-
+	/* subir y agregar files en la base de datos */
 	public function setFiles(){
 		if(!$_FILES == null){
 			$cont = 0;

@@ -1,12 +1,13 @@
 # panel
 
 <i class='bx bxs-file-css'></i>
+<i class='bx bxs-file-js' ></i>
+<i class='bx bxs-file-json' ></i>
 <i class='bx bxs-file-html' ></i>
 <i class='bx bxs-file-doc' ></i>
 <i class='bx bxs-file-gif' ></i>
 <i class='bx bxs-file-pdf' ></i>
 <i class='bx bxs-file-png' ></i>
-<i class='bx bxs-file' ></i>
 <i class='bx bxs-file' ></i>
 <i class='bx bxs-file-js' ></i>
 <i class='bx bxs-file-image' ></i>

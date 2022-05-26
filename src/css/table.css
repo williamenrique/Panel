@@ -73,25 +73,11 @@ table.dataTable>tbody>tr.child ul.dtr-details>li:last-child {
 	margin: 0 5px;
 }
 
+.icon-file{
+	font-size: 24px;
+}
 
 
-table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options i{
-	font-size: 16px;
-	cursor: pointer;
-	margin: 0 5px;
-}
-/* table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options .delCuenta{
-	color: rgb(218, 8, 6);
-}
-table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options .delCuenta:hover{
-	color: rgba(218, 8, 6,.5);
-}
-table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options .editCuenta{
-	color: rgb(255, 168, 0);
-}
-table.dataTable>tbody>tr.child ul.dtr-details>li:last-child .box-options .editCuenta:hover{
-	color: rgba(255, 168, 0, .5);
-} */
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
     top: 10px;
     left: 4px;

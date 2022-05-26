@@ -43,6 +43,7 @@
 			<table id="tableFiles" class="display nowrap" style="width:100%">
 				<thead>
 					<tr>
+						<th></th>
 						<th>Nombre De archivo</th>
 						<th>Tamano</th>
 						<th>Actualizacion</th>

@@ -21,6 +21,7 @@ const getTableFiles = () => {
 		"dataSrc": ''
 	},
 	"columns": [
+		{ 'data': 'file_icon'},
 		{ 'data': 'file_name'},
 		{ 'data': 'file_size'},
 		{ 'data': 'file_date_mod'},
