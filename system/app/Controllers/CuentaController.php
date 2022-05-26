@@ -27,9 +27,9 @@ class Cuenta extends Controllers{
 		for ($i=0; $i < count($arrData) ; $i++) {
 			$arrData[$i]['opciones'] =
 					'<div class="box-options">
-						<i class="bx bxs-trash delCuenta" onclick="delCuenta('.$arrData[$i]['idCuenta'].')"></i>
+						<i class="bx bxs-trash delCuenta delete" onclick="delCuenta('.$arrData[$i]['idCuenta'].')"></i>
 						<a href="'.base_url().'cuenta/agregar/?id='.$arrData[$i]['idCuenta'].'">
-							<i class="bx bx-edit-alt editCuenta" onclick="editCuenta('.$arrData[$i]['idCuenta'].')"></i>
+							<i class="bx bx-edit-alt editCuenta edit" onclick="editCuenta('.$arrData[$i]['idCuenta'].')"></i>
 						</a>
 					</div>';
 			$arrData[$i]['fechaAct'] = formatear_fecha($arrData[$i]['fechaAct']);
