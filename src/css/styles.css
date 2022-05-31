@@ -74,6 +74,7 @@ html {
 }
 
 .row {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
@@ -937,6 +938,21 @@ html {
   color: #fff;
 }
 
+/*********************************
+* site*
+*********************************/
+.link_url {
+  color: #B6B9C8;
+  text-decoration: none;
+}
+
+.link_url:hover {
+  color: #fff;
+}
+
+/*********************************
+* card files*
+*********************************/
 /*********************************
 * QUERYS*
 *********************************/

@@ -184,7 +184,7 @@ window.addEventListener('load', function () {
 			let txtPassLogin = document.querySelector('#txtPassLogin').value
 			this.localStorage.setItem('remember', 'true')
 			this.localStorage.setItem('user', txtUserLogin)
-			this.localStorage.setItem('user', txtPassLogin)
+			this.localStorage.setItem('pass', txtPassLogin)
 		} else {
 			this.localStorage.setItem('remember', 'false')
 			this.localStorage.setItem('user', ' ')

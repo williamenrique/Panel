@@ -9,6 +9,7 @@ class LoginModel extends Mysql {
 	private $intStatus;
 	private $strTxtEmail;
 	private $strTxtNombre;
+	private $strVarLogin;
 	public function __construct(){
 	//heradar la clase padre 
 		parent::__construct();
@@ -19,6 +20,14 @@ class LoginModel extends Mysql {
 		$this->strTxtPass = $strTxtPass;
 		$sql = "SELECT * FROM table_user t_u JOIN table_block t_b WHERE t_b.user_id = t_u.user_id AND (t_u.user = '$this->strTxtUser' OR t_u.email = '$this->strTxtUser')";
 		$request = $this->select($sql);
+		return $request;
+	}
+	public function updateCodSesion(string $strVarLogin, int $intIdUser){
+		$this->strVarLogin = $strVarLogin;
+		$this->intIdUser = $intIdUser;
+		$sql = "UPDATE  table_user SET codigo = ? WHERE user_id = $this->intIdUser";
+		$arrData = array($this->strVarLogin);
+		$request = $this->update($sql,$arrData);
 		return $request;
 	}
 	public function getUser(int $intIdUser){

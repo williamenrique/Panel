@@ -3,7 +3,7 @@
 class Login extends Controllers{
 	public function __construct(){
 		session_start();
-		if (isset($_SESSION['login'])) {
+		if (isset($_SESSION['strVarLogin'])) {
 			header("Location:".base_url().'home');
 		}
 		//invocar para que se ejecute el metodo de la herencia
@@ -48,8 +48,11 @@ class Login extends Controllers{
 							// creamos la sesion y las variables
 							// echo "id de usuario es ".$arrData['user_id'];
 							$_SESSION['idUser'] = $arrData['user_id'];
-							$_SESSION['login'] = true;
+							// $_SESSION['login'] = true;
+							// TODO: crear variable de sesion para cada usuario
+							$_SESSION['strVarLogin'] = codGenerator();
 							$arrData = $this->model->sessionLogin($_SESSION['idUser']);
+							$this->model->updateCodSesion($_SESSION['strVarLogin'],$arrData['user_id']);
 							//creamos la variable de sesion mediante un helper
 							sessionUser($_SESSION['idUser']);
 							$_SESSION['img'] =        $arrData['img'];
@@ -78,7 +81,30 @@ class Login extends Controllers{
 			echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
 		}
 	}
-	public function registerUser(){
+
+	public function logout(){
+		//invocar la vista con views y usamos getViews y pasamos parametros esta clase y la vista
+		//incluimos un arreglo que contendra toda la informacion que se enviara al home
+
+		$this->views->getViews($this, "logout", $data);
+		session_start();
+		session_unset();
+		session_destroy();
+	}
+
+
+	public function register(){
+		//invocar la vista con views y usamos getViews y pasamos parametros esta clase y la vista
+		//incluimos un arreglo que contendra toda la informacion que se enviara al home
+		$data['page_title'] = "Login";
+		$data['page_userImg'] = "usuario/default.png";
+		$data['page_userNomb'] = "William Enrique";
+		$data['page_userRol'] = "Administrador";
+		$data['page_name'] = "login";
+		$data['page_function'] = "function.login.js";
+		$this->views->getViews($this, "register", $data);
+	}
+		public function registerUser(){
 		if($_POST){
 
 			$txtNombRegister = $_POST['txtNombRegister'];
@@ -113,30 +139,5 @@ class Login extends Controllers{
 			}
 		}
 		echo json_encode($arrResponse, JSON_UNESCAPED_UNICODE);
-	}
-
-
-
-	public function logout(){
-		//invocar la vista con views y usamos getViews y pasamos parametros esta clase y la vista
-		//incluimos un arreglo que contendra toda la informacion que se enviara al home
-
-		$this->views->getViews($this, "logout", $data);
-		session_start();
-		session_unset();
-		session_destroy();
-	}
-
-
-	public function register(){
-		//invocar la vista con views y usamos getViews y pasamos parametros esta clase y la vista
-		//incluimos un arreglo que contendra toda la informacion que se enviara al home
-		$data['page_title'] = "Login";
-		$data['page_userImg'] = "usuario/default.png";
-		$data['page_userNomb'] = "William Enrique";
-		$data['page_userRol'] = "Administrador";
-		$data['page_name'] = "login";
-		$data['page_function'] = "function.login.js";
-		$this->views->getViews($this, "register", $data);
 	}
 }

@@ -118,21 +118,10 @@ function strClean($srtCadena){
 	return $string;
 }
 
-function passGenerator($length = 10){
+function codGenerator($length = 8){
 	$pass = "";
 	$longitud = $length;
-	$cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	$longitudcadena = strlen($cadena);
-	for ($i=1; $i <= $longitud; $i++) { 
-		$pas = rand(0, $longitudcadena -1);
-		$pass .= substr($cadena,$pas,1);
-	}
-	return $pass;
-}
-function codGenerator($length = 4){
-	$pass = "";
-	$longitud = $length;
-	$cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	$cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@*&";
 	$longitudcadena = strlen($cadena);
 	for ($i=1; $i <= $longitud; $i++) { 
 		$pas = rand(0, $longitudcadena -1);

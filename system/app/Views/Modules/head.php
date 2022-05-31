@@ -87,21 +87,27 @@
 							<a href="<?= base_url()?>file" class="nav__link files">Administrador de archivos</a>
 						</div>
 					</li>
+					<li class="list__item files">
+						<div class="list__button">
+							<i class='bx bx-file list_icon'></i>
+							<a href="<?= base_url()?>nota" class="nav__link files">Notas</a>
+						</div>
+					</li>
 					<!-- desplegable -->
-					<li class="list__item list__item--click">
+					<!-- <li class="list__item list__item--click">
 						<div class="list__button button_click">
 							<i class='bx bx-bar-chart-square list_icon'></i>
 							<a href="#" class="nav__link">Pages</a>
 							<i class='bx bx-chevron-right list__arrow'></i>
-						</div>
+						</div> -->
 						<!-- la lista que se desplegara -->
-						<ul class="list__show">
+						<!-- <ul class="list__show">
 							<li class="list__inside">
 								<i class='bx bx-radio-circle-marked'></i>
 								<a href="pages/404.html" target="_blank" class="nav__link nav__link--inside">404</a>
 							</li>
 						</ul>
-					</li>
+					</li> -->
 					<!-- item solo -->
 					
 				</ul>
