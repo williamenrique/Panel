@@ -1,4 +1,5 @@
 <?php
+// const BASE_URL = "http://panelpersonal.byethost12.com/";
 const BASE_URL = "http://panel.lat/";
 const HEAD = "src/include/head.php";
 const FOOTER = "src/include/footer.php";
@@ -18,12 +19,18 @@ const PLUGINS = BASE_URL."src/plugins/";
 const CONTROLLER = BASE_URL."system/core/Libraries/Controllers.php";
 const LOAD = BASE_URL."system/core/Libraries/Load.php";
 
-//constantes de base de datos
+// ? constantes de base de datos local
 const DB_HOST = "localhost";
 const DB_USER = "root";
 const DB_PASS = "";
 const DB_NAME = "db_personal";
 const DB_CHARSET = "charset=utf8";
+// * constantes de base de datos  server
+// const DB_HOST = "sql205.byethost12.com";
+// const DB_USER = "b12_31878334";
+// const DB_PASS = "william21Enrique";
+// const DB_NAME = "b12_31878334_personal";
+// const DB_CHARSET = "charset=utf8";
 //constantes de encriptacion
 define('METHOD','AES-256-CBC');
 define('SECRET_KEY','$P@n3lP3r50n@l');

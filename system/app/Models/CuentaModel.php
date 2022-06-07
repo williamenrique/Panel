@@ -56,13 +56,15 @@ class CuentaModel extends Mysql {
 		$this->strR3 = $strR3;
 
 		$sql = "INSERT INTO table_cuenta (idUser,nombreAut,banco,tipoC,cuentaAut,nCuenta,nTarjeta,ccv,usuario,pass,passEspecial,claveTlf,passCajero,p1,r1,p2,r2,p3,r3,status,fecha_venc,fechaAct) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW())";
-		$arraData = array(1,$this->strNombre,$this->intListBank,$this->intTipoCuenta,$this->intCuentaAut,$this->strNCuenta,$this->strNTarjeta,$this->intCcv,$this->strUsuario,$this->strPassInt,$this->strPasssSpecial,$this->strPassTlf,$this->intPassCajero,$this->strP1,$this->strR1,$this->strP2,$this->strR2,$this->strP3,$this->strR3,$this->strFechaVenc,1);
+		$arraData = array(1,$this->strNombre,$this->intListBank,$this->intTipoCuenta,$this->intCuentaAut,$this->strNCuenta,$this->strNTarjeta,$this->intCcv,$this->strUsuario,$this->strPassInt,$this->strPasssSpecial,$this->strPassTlf,$this->intPassCajero,$this->strP1,$this->strR1,$this->strP2,$this->strR2,$this->strP3,$this->strR3,1,$this->strFechaVenc);
 		$request = $this->insert($sql,$arraData);
 		return $request;
 	}
 	public function getCuentaP(int $priority){
 		$this->priority = $priority;
-		$sql = "SELECT * FROM table_cuenta WHERE cuentaAut = $this->priority AND status != 0";
+		$sql = "SELECT * FROM table_cuenta tc JOIN table_banco tb WHERE 
+		tb.cod = tc.banco AND tc.cuentaAut = $this->priority AND tc.status != 0;";
+		// $sql = "SELECT * FROM table_cuenta WHERE cuentaAut = $this->priority AND status != 0";
 		$request = $this->select_all($sql);
 		return $request;
 	}
